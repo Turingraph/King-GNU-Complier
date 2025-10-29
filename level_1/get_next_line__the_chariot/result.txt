@@ -1,0 +1,1030 @@
+==1270821==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270821==    by 0x10D587: main (mandatory.cpp:50)
+==1270821== 
+==1270821== Invalid read of size 1
+==1270821==    at 0x10F9CA: f_len_line (get_next_line.c:43)
+==1270821==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270821==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270821==    by 0x10D596: main (mandatory.cpp:50)
+==1270821==  Address 0x4def0cf is 1 bytes before a block of size 42 alloc'd
+==1270821==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270821==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270821==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270821==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270821==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270821==    by 0x10D587: main (mandatory.cpp:50)
+==1270821== 
+2.OK ==1270821== Invalid read of size 1
+==1270821==    at 0x10F9CA: f_len_line (get_next_line.c:43)
+==1270821==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270821==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270821==    by 0x10D5A2: main (mandatory.cpp:50)
+==1270821==  Address 0x4def0cf is 1 bytes before a block of size 42 alloc'd
+==1270821==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270821==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270821==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270821==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270821==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270821==    by 0x10D587: main (mandatory.cpp:50)
+==1270821== 
+3.OK ==1270821== 42 bytes in 1 blocks are definitely lost in loss record 5 of 5
+==1270821==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270821==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270821==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270821==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270821==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270821==    by 0x10D587: main (mandatory.cpp:50)
+==1270821== 
+
+files/42_no_nl: ==1270822== Invalid read of size 1
+==1270822==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270822==    by 0x110002: f_ll_char (get_next_line_utils.c:117)
+==1270822==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270822==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270822==    by 0x10D833: main (mandatory.cpp:56)
+==1270822==  Address 0x4def34a is 0 bytes after a block of size 42 alloc'd
+==1270822==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270822==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270822==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270822==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270822==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270822==    by 0x10D833: main (mandatory.cpp:56)
+==1270822== 
+==1270822== Invalid read of size 1
+==1270822==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270822==    by 0x10F9AF: f_len_line (get_next_line.c:42)
+==1270822==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270822==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270822==    by 0x10D833: main (mandatory.cpp:56)
+==1270822==  Address 0x4def34a is 0 bytes after a block of size 42 alloc'd
+==1270822==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270822==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270822==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270822==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270822==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270822==    by 0x10D833: main (mandatory.cpp:56)
+==1270822== 
+==1270822== Invalid read of size 1
+==1270822==    at 0x10FF55: f_strlen (get_next_line_utils.c:75)
+==1270822==    by 0x10F9AF: f_len_line (get_next_line.c:42)
+==1270822==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270822==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270822==    by 0x10D833: main (mandatory.cpp:56)
+==1270822==  Address 0x4def34a is 0 bytes after a block of size 42 alloc'd
+==1270822==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270822==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270822==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270822==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270822==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270822==    by 0x10D833: main (mandatory.cpp:56)
+==1270822== 
+==1270822== Invalid read of size 1
+==1270822==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270822==    by 0x10F9E9: f_len_line (get_next_line.c:44)
+==1270822==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270822==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270822==    by 0x10D833: main (mandatory.cpp:56)
+==1270822==  Address 0x4def34a is 0 bytes after a block of size 42 alloc'd
+==1270822==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270822==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270822==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270822==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270822==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270822==    by 0x10D833: main (mandatory.cpp:56)
+==1270822== 
+==1270822== Invalid read of size 1
+==1270822==    at 0x10F9CA: f_len_line (get_next_line.c:43)
+==1270822==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270822==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270822==    by 0x10D833: main (mandatory.cpp:56)
+==1270822==  Address 0x4def3df is 1 bytes before a block of size 42 alloc'd
+==1270822==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270822==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270822==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270822==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270822==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270822==    by 0x10D833: main (mandatory.cpp:56)
+==1270822== 
+1.OK ==1270822== Invalid read of size 1
+==1270822==    at 0x10F9CA: f_len_line (get_next_line.c:43)
+==1270822==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270822==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270822==    by 0x10D83F: main (mandatory.cpp:56)
+==1270822==  Address 0x4def3df is 1 bytes before a block of size 42 alloc'd
+==1270822==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270822==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270822==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270822==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270822==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270822==    by 0x10D833: main (mandatory.cpp:56)
+==1270822== 
+2.OK ==1270822== 42 bytes in 1 blocks are definitely lost in loss record 5 of 5
+==1270822==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270822==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270822==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270822==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270822==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270822==    by 0x10D833: main (mandatory.cpp:56)
+==1270822== 
+
+files/42_with_nl: ==1270823== Invalid read of size 1
+==1270823==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270823==    by 0x110002: f_ll_char (get_next_line_utils.c:117)
+==1270823==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270823==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270823==    by 0x10DAD0: main (mandatory.cpp:61)
+==1270823==  Address 0x4def65a is 0 bytes after a block of size 42 alloc'd
+==1270823==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270823==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270823==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270823==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270823==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270823==    by 0x10DAD0: main (mandatory.cpp:61)
+==1270823== 
+1.OK 2.KO 3.KO ==1270823== 42 bytes in 1 blocks are definitely lost in loss record 3 of 4
+==1270823==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270823==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270823==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270823==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270823==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270823==    by 0x10DAD0: main (mandatory.cpp:61)
+==1270823== 
+==1270823== 42 bytes in 1 blocks are definitely lost in loss record 4 of 4
+==1270823==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270823==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270823==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270823==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270823==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270823==    by 0x10DAD0: main (mandatory.cpp:61)
+==1270823== 
+
+files/43_no_nl: ==1270824== Invalid read of size 1
+==1270824==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270824==    by 0x110002: f_ll_char (get_next_line_utils.c:117)
+==1270824==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270824==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270824==    by 0x10DDB9: main (mandatory.cpp:72)
+==1270824==  Address 0x4def96a is 0 bytes after a block of size 42 alloc'd
+==1270824==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270824==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270824==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270824==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270824==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270824==    by 0x10DDB9: main (mandatory.cpp:72)
+==1270824== 
+==1270824== Invalid read of size 1
+==1270824==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270824==    by 0x10F9AF: f_len_line (get_next_line.c:42)
+==1270824==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270824==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270824==    by 0x10DDB9: main (mandatory.cpp:72)
+==1270824==  Address 0x4def96a is 0 bytes after a block of size 42 alloc'd
+==1270824==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270824==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270824==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270824==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270824==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270824==    by 0x10DDB9: main (mandatory.cpp:72)
+==1270824== 
+==1270824== Invalid read of size 1
+==1270824==    at 0x10FF55: f_strlen (get_next_line_utils.c:75)
+==1270824==    by 0x10F9AF: f_len_line (get_next_line.c:42)
+==1270824==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270824==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270824==    by 0x10DDB9: main (mandatory.cpp:72)
+==1270824==  Address 0x4def96a is 0 bytes after a block of size 42 alloc'd
+==1270824==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270824==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270824==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270824==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270824==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270824==    by 0x10DDB9: main (mandatory.cpp:72)
+==1270824== 
+==1270824== Invalid read of size 1
+==1270824==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270824==    by 0x10F9E9: f_len_line (get_next_line.c:44)
+==1270824==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270824==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270824==    by 0x10DDB9: main (mandatory.cpp:72)
+==1270824==  Address 0x4def96a is 0 bytes after a block of size 42 alloc'd
+==1270824==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270824==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270824==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270824==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270824==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270824==    by 0x10DDB9: main (mandatory.cpp:72)
+==1270824== 
+1.OK 2.OK ==1270824== 42 bytes in 1 blocks are definitely lost in loss record 3 of 4
+==1270824==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270824==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270824==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270824==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270824==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270824==    by 0x10DDB9: main (mandatory.cpp:72)
+==1270824== 
+==1270824== 42 bytes in 1 blocks are definitely lost in loss record 4 of 4
+==1270824==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270824==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270824==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270824==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270824==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270824==    by 0x10DDB9: main (mandatory.cpp:72)
+==1270824== 
+
+files/43_with_nl: ==1270825== Invalid read of size 1
+==1270825==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270825==    by 0x110002: f_ll_char (get_next_line_utils.c:117)
+==1270825==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270825==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270825==    by 0x10E056: main (mandatory.cpp:77)
+==1270825==  Address 0x4defc7a is 0 bytes after a block of size 42 alloc'd
+==1270825==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270825==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270825==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270825==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270825==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270825==    by 0x10E056: main (mandatory.cpp:77)
+==1270825== 
+==1270825== Invalid read of size 1
+==1270825==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270825==    by 0x10F9AF: f_len_line (get_next_line.c:42)
+==1270825==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270825==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270825==    by 0x10E056: main (mandatory.cpp:77)
+==1270825==  Address 0x4defc7a is 0 bytes after a block of size 42 alloc'd
+==1270825==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270825==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270825==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270825==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270825==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270825==    by 0x10E056: main (mandatory.cpp:77)
+==1270825== 
+==1270825== Invalid read of size 1
+==1270825==    at 0x10FF55: f_strlen (get_next_line_utils.c:75)
+==1270825==    by 0x10F9AF: f_len_line (get_next_line.c:42)
+==1270825==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270825==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270825==    by 0x10E056: main (mandatory.cpp:77)
+==1270825==  Address 0x4defc7a is 0 bytes after a block of size 42 alloc'd
+==1270825==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270825==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270825==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270825==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270825==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270825==    by 0x10E056: main (mandatory.cpp:77)
+==1270825== 
+==1270825== Invalid read of size 1
+==1270825==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270825==    by 0x10F9E9: f_len_line (get_next_line.c:44)
+==1270825==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270825==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270825==    by 0x10E056: main (mandatory.cpp:77)
+==1270825==  Address 0x4defc7a is 0 bytes after a block of size 42 alloc'd
+==1270825==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270825==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270825==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270825==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270825==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270825==    by 0x10E056: main (mandatory.cpp:77)
+==1270825== 
+1.OK 2.OK 3.OK ==1270825== 42 bytes in 1 blocks are definitely lost in loss record 3 of 4
+==1270825==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270825==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270825==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270825==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270825==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270825==    by 0x10E056: main (mandatory.cpp:77)
+==1270825== 
+==1270825== 42 bytes in 1 blocks are definitely lost in loss record 4 of 4
+==1270825==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270825==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270825==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270825==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270825==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270825==    by 0x10E056: main (mandatory.cpp:77)
+==1270825== 
+
+files/multiple_nlx5: 1.OK 2.OK 3.OK 4.OK 5.OK 6.OK ==1270826== 42 bytes in 1 blocks are definitely lost in loss record 3 of 3
+==1270826==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270826==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270826==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270826==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270826==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270826==    by 0x10E302: main (mandatory.cpp:83)
+==1270826== 
+
+files/multiple_line_no_nl: ==1270827== Invalid read of size 1
+==1270827==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270827==    by 0x110002: f_ll_char (get_next_line_utils.c:117)
+==1270827==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270827==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270827==    by 0x10E5DB: main (mandatory.cpp:92)
+==1270827==  Address 0x4df02ba is 0 bytes after a block of size 42 alloc'd
+==1270827==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270827==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270827==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270827==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270827==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270827==    by 0x10E5DB: main (mandatory.cpp:92)
+==1270827== 
+1.OK ==1270827== Invalid read of size 1
+==1270827==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270827==    by 0x10F9AF: f_len_line (get_next_line.c:42)
+==1270827==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270827==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270827==    by 0x10E5EA: main (mandatory.cpp:92)
+==1270827==  Address 0x4df037a is 0 bytes after a block of size 42 alloc'd
+==1270827==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270827==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270827==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270827==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270827==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270827==    by 0x10E5DB: main (mandatory.cpp:92)
+==1270827== 
+==1270827== Invalid read of size 1
+==1270827==    at 0x10FF55: f_strlen (get_next_line_utils.c:75)
+==1270827==    by 0x10F9AF: f_len_line (get_next_line.c:42)
+==1270827==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270827==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270827==    by 0x10E5EA: main (mandatory.cpp:92)
+==1270827==  Address 0x4df037a is 0 bytes after a block of size 42 alloc'd
+==1270827==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270827==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270827==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270827==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270827==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270827==    by 0x10E5DB: main (mandatory.cpp:92)
+==1270827== 
+==1270827== Invalid read of size 1
+==1270827==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270827==    by 0x10F9E9: f_len_line (get_next_line.c:44)
+==1270827==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270827==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270827==    by 0x10E5EA: main (mandatory.cpp:92)
+==1270827==  Address 0x4df037a is 0 bytes after a block of size 42 alloc'd
+==1270827==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270827==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270827==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270827==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270827==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270827==    by 0x10E5DB: main (mandatory.cpp:92)
+==1270827== 
+2.OK 3.OK 4.OK 5.OK 6.OK ==1270827== 42 bytes in 1 blocks are definitely lost in loss record 3 of 4
+==1270827==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270827==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270827==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270827==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270827==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270827==    by 0x10E5DB: main (mandatory.cpp:92)
+==1270827== 
+==1270827== 210 bytes in 5 blocks are definitely lost in loss record 4 of 4
+==1270827==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270827==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270827==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270827==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270827==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270827==    by 0x10E5DB: main (mandatory.cpp:92)
+==1270827== 
+
+files/multiple_line_with_nl: ==1270829== Invalid read of size 1
+==1270829==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270829==    by 0x110002: f_ll_char (get_next_line_utils.c:117)
+==1270829==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270829==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270829==    by 0x10E8B4: main (mandatory.cpp:101)
+==1270829==  Address 0x4df05ea is 0 bytes after a block of size 42 alloc'd
+==1270829==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270829==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270829==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270829==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270829==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270829==    by 0x10E8B4: main (mandatory.cpp:101)
+==1270829== 
+1.OK ==1270829== Invalid read of size 1
+==1270829==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270829==    by 0x10F9AF: f_len_line (get_next_line.c:42)
+==1270829==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270829==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270829==    by 0x10E8C3: main (mandatory.cpp:101)
+==1270829==  Address 0x4df05ea is 0 bytes after a block of size 42 alloc'd
+==1270829==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270829==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270829==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270829==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270829==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270829==    by 0x10E8B4: main (mandatory.cpp:101)
+==1270829== 
+==1270829== Invalid read of size 1
+==1270829==    at 0x10FF55: f_strlen (get_next_line_utils.c:75)
+==1270829==    by 0x10F9AF: f_len_line (get_next_line.c:42)
+==1270829==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270829==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270829==    by 0x10E8C3: main (mandatory.cpp:101)
+==1270829==  Address 0x4df05ea is 0 bytes after a block of size 42 alloc'd
+==1270829==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270829==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270829==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270829==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270829==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270829==    by 0x10E8B4: main (mandatory.cpp:101)
+==1270829== 
+==1270829== Invalid read of size 1
+==1270829==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270829==    by 0x10F9E9: f_len_line (get_next_line.c:44)
+==1270829==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270829==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270829==    by 0x10E8C3: main (mandatory.cpp:101)
+==1270829==  Address 0x4df05ea is 0 bytes after a block of size 42 alloc'd
+==1270829==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270829==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270829==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270829==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270829==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270829==    by 0x10E8B4: main (mandatory.cpp:101)
+==1270829== 
+2.OK 3.OK 4.OK 5.OK 6.OK ==1270829== 42 bytes in 1 blocks are definitely lost in loss record 3 of 4
+==1270829==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270829==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270829==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270829==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270829==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270829==    by 0x10E8B4: main (mandatory.cpp:101)
+==1270829== 
+==1270829== 168 bytes in 4 blocks are definitely lost in loss record 4 of 4
+==1270829==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270829==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270829==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270829==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270829==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270829==    by 0x10E8B4: main (mandatory.cpp:101)
+==1270829== 
+
+files/alternate_line_nl_no_nl: ==1270830== Invalid read of size 1
+==1270830==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270830==    by 0x110002: f_ll_char (get_next_line_utils.c:117)
+==1270830==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270830==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270830==    by 0x10EB8D: main (mandatory.cpp:110)
+==1270830==  Address 0x4df091a is 0 bytes after a block of size 42 alloc'd
+==1270830==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270830==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270830==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270830==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270830==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270830==    by 0x10EB8D: main (mandatory.cpp:110)
+==1270830== 
+1.OK 2.OK ==1270830== Invalid read of size 1
+==1270830==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270830==    by 0x10F9AF: f_len_line (get_next_line.c:42)
+==1270830==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270830==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270830==    by 0x10EBAB: main (mandatory.cpp:110)
+==1270830==  Address 0x4df09da is 0 bytes after a block of size 42 alloc'd
+==1270830==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270830==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270830==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270830==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270830==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270830==    by 0x10EB8D: main (mandatory.cpp:110)
+==1270830== 
+==1270830== Invalid read of size 1
+==1270830==    at 0x10FF55: f_strlen (get_next_line_utils.c:75)
+==1270830==    by 0x10F9AF: f_len_line (get_next_line.c:42)
+==1270830==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270830==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270830==    by 0x10EBAB: main (mandatory.cpp:110)
+==1270830==  Address 0x4df09da is 0 bytes after a block of size 42 alloc'd
+==1270830==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270830==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270830==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270830==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270830==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270830==    by 0x10EB8D: main (mandatory.cpp:110)
+==1270830== 
+==1270830== Invalid read of size 1
+==1270830==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270830==    by 0x10F9E9: f_len_line (get_next_line.c:44)
+==1270830==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270830==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270830==    by 0x10EBAB: main (mandatory.cpp:110)
+==1270830==  Address 0x4df09da is 0 bytes after a block of size 42 alloc'd
+==1270830==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270830==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270830==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270830==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270830==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270830==    by 0x10EB8D: main (mandatory.cpp:110)
+==1270830== 
+3.OK 4.OK 5.OK 6.OK 7.OK 8.OK 9.OK 10.OK ==1270830== 42 bytes in 1 blocks are definitely lost in loss record 3 of 4
+==1270830==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270830==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270830==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270830==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270830==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270830==    by 0x10EB8D: main (mandatory.cpp:110)
+==1270830== 
+==1270830== 210 bytes in 5 blocks are definitely lost in loss record 4 of 4
+==1270830==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270830==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270830==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270830==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270830==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270830==    by 0x10EB8D: main (mandatory.cpp:110)
+==1270830== 
+
+files/alternate_line_nl_with_nl: ==1270831== Invalid read of size 1
+==1270831==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270831==    by 0x110002: f_ll_char (get_next_line_utils.c:117)
+==1270831==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270831==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270831==    by 0x10EEA2: main (mandatory.cpp:123)
+==1270831==  Address 0x4df0c4a is 0 bytes after a block of size 42 alloc'd
+==1270831==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270831==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270831==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270831==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270831==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270831==    by 0x10EEA2: main (mandatory.cpp:123)
+==1270831== 
+1.OK 2.OK ==1270831== Invalid read of size 1
+==1270831==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270831==    by 0x10F9AF: f_len_line (get_next_line.c:42)
+==1270831==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270831==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270831==    by 0x10EEC0: main (mandatory.cpp:123)
+==1270831==  Address 0x4df0d0a is 0 bytes after a block of size 42 alloc'd
+==1270831==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270831==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270831==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270831==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270831==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270831==    by 0x10EEA2: main (mandatory.cpp:123)
+==1270831== 
+==1270831== Invalid read of size 1
+==1270831==    at 0x10FF55: f_strlen (get_next_line_utils.c:75)
+==1270831==    by 0x10F9AF: f_len_line (get_next_line.c:42)
+==1270831==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270831==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270831==    by 0x10EEC0: main (mandatory.cpp:123)
+==1270831==  Address 0x4df0d0a is 0 bytes after a block of size 42 alloc'd
+==1270831==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270831==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270831==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270831==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270831==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270831==    by 0x10EEA2: main (mandatory.cpp:123)
+==1270831== 
+==1270831== Invalid read of size 1
+==1270831==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270831==    by 0x10F9E9: f_len_line (get_next_line.c:44)
+==1270831==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270831==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270831==    by 0x10EEC0: main (mandatory.cpp:123)
+==1270831==  Address 0x4df0d0a is 0 bytes after a block of size 42 alloc'd
+==1270831==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270831==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270831==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270831==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270831==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270831==    by 0x10EEA2: main (mandatory.cpp:123)
+==1270831== 
+3.OK 4.OK 5.OK 6.OK 7.OK 8.OK 9.OK 10.OK ==1270831== 42 bytes in 1 blocks are definitely lost in loss record 3 of 4
+==1270831==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270831==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270831==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270831==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270831==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270831==    by 0x10EEA2: main (mandatory.cpp:123)
+==1270831== 
+==1270831== 210 bytes in 5 blocks are definitely lost in loss record 4 of 4
+==1270831==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270831==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270831==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270831==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270831==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270831==    by 0x10EEA2: main (mandatory.cpp:123)
+==1270831== 
+
+files/big_line_no_nl: ==1270833== Invalid read of size 1
+==1270833==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270833==    by 0x110002: f_ll_char (get_next_line_utils.c:117)
+==1270833==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270833==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270833==    by 0x10F1B7: main (mandatory.cpp:136)
+==1270833==  Address 0x4df0f5a is 0 bytes after a block of size 42 alloc'd
+==1270833==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270833==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270833==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270833==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270833==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270833==    by 0x10F1B7: main (mandatory.cpp:136)
+==1270833== 
+==1270833== Invalid read of size 1
+==1270833==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270833==    by 0x10F9AF: f_len_line (get_next_line.c:42)
+==1270833==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270833==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270833==    by 0x10F1B7: main (mandatory.cpp:136)
+==1270833==  Address 0x4df0f5a is 0 bytes after a block of size 42 alloc'd
+==1270833==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270833==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270833==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270833==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270833==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270833==    by 0x10F1B7: main (mandatory.cpp:136)
+==1270833== 
+==1270833== Invalid read of size 1
+==1270833==    at 0x10FF55: f_strlen (get_next_line_utils.c:75)
+==1270833==    by 0x10F9AF: f_len_line (get_next_line.c:42)
+==1270833==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270833==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270833==    by 0x10F1B7: main (mandatory.cpp:136)
+==1270833==  Address 0x4df0f5a is 0 bytes after a block of size 42 alloc'd
+==1270833==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270833==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270833==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270833==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270833==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270833==    by 0x10F1B7: main (mandatory.cpp:136)
+==1270833== 
+==1270833== Invalid read of size 1
+==1270833==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270833==    by 0x10F9E9: f_len_line (get_next_line.c:44)
+==1270833==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270833==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270833==    by 0x10F1B7: main (mandatory.cpp:136)
+==1270833==  Address 0x4df0f5a is 0 bytes after a block of size 42 alloc'd
+==1270833==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270833==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270833==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270833==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270833==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270833==    by 0x10F1B7: main (mandatory.cpp:136)
+==1270833== 
+1.OK 2.OK ==1270833== 42 bytes in 1 blocks are definitely lost in loss record 3 of 4
+==1270833==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270833==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270833==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270833==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270833==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270833==    by 0x10F1B7: main (mandatory.cpp:136)
+==1270833== 
+==1270833== 9,996 bytes in 238 blocks are definitely lost in loss record 4 of 4
+==1270833==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270833==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270833==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270833==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270833==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270833==    by 0x10F1B7: main (mandatory.cpp:136)
+==1270833== 
+
+files/big_line_with_nl: ==1270834== Invalid read of size 1
+==1270834==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270834==    by 0x110002: f_ll_char (get_next_line_utils.c:117)
+==1270834==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270834==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270834==    by 0x10F454: main (mandatory.cpp:140)
+==1270834==  Address 0x4df126a is 0 bytes after a block of size 42 alloc'd
+==1270834==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270834==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270834==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270834==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270834==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270834==    by 0x10F454: main (mandatory.cpp:140)
+==1270834== 
+==1270834== Invalid read of size 1
+==1270834==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270834==    by 0x10F9AF: f_len_line (get_next_line.c:42)
+==1270834==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270834==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270834==    by 0x10F454: main (mandatory.cpp:140)
+==1270834==  Address 0x4df126a is 0 bytes after a block of size 42 alloc'd
+==1270834==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270834==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270834==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270834==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270834==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270834==    by 0x10F454: main (mandatory.cpp:140)
+==1270834== 
+==1270834== Invalid read of size 1
+==1270834==    at 0x10FF55: f_strlen (get_next_line_utils.c:75)
+==1270834==    by 0x10F9AF: f_len_line (get_next_line.c:42)
+==1270834==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270834==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270834==    by 0x10F454: main (mandatory.cpp:140)
+==1270834==  Address 0x4df126a is 0 bytes after a block of size 42 alloc'd
+==1270834==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270834==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270834==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270834==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270834==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270834==    by 0x10F454: main (mandatory.cpp:140)
+==1270834== 
+==1270834== Invalid read of size 1
+==1270834==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270834==    by 0x10F9E9: f_len_line (get_next_line.c:44)
+==1270834==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270834==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270834==    by 0x10F454: main (mandatory.cpp:140)
+==1270834==  Address 0x4df126a is 0 bytes after a block of size 42 alloc'd
+==1270834==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270834==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270834==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270834==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270834==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270834==    by 0x10F454: main (mandatory.cpp:140)
+==1270834== 
+1.OK 2.OK ==1270834== 42 bytes in 1 blocks are definitely lost in loss record 3 of 4
+==1270834==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270834==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270834==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270834==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270834==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270834==    by 0x10F454: main (mandatory.cpp:140)
+==1270834== 
+==1270834== 9,996 bytes in 238 blocks are definitely lost in loss record 4 of 4
+==1270834==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270834==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270834==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270834==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270834==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270834==    by 0x10F454: main (mandatory.cpp:140)
+==1270834== 
+
+stdin: ==1270835== Invalid read of size 1
+==1270835==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270835==    by 0x110002: f_ll_char (get_next_line_utils.c:117)
+==1270835==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270835==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270835==    by 0x10F6F0: main (mandatory.cpp:145)
+==1270835==  Address 0x4df126a is 0 bytes after a block of size 42 alloc'd
+==1270835==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270835==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270835==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270835==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270835==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270835==    by 0x10F6F0: main (mandatory.cpp:145)
+==1270835== 
+1.OK 2.OK ==1270835== Invalid read of size 1
+==1270835==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270835==    by 0x10F9AF: f_len_line (get_next_line.c:42)
+==1270835==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270835==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270835==    by 0x10F70C: main (mandatory.cpp:145)
+==1270835==  Address 0x4df132a is 0 bytes after a block of size 42 alloc'd
+==1270835==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270835==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270835==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270835==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270835==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270835==    by 0x10F6F0: main (mandatory.cpp:145)
+==1270835== 
+==1270835== Invalid read of size 1
+==1270835==    at 0x10FF55: f_strlen (get_next_line_utils.c:75)
+==1270835==    by 0x10F9AF: f_len_line (get_next_line.c:42)
+==1270835==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270835==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270835==    by 0x10F70C: main (mandatory.cpp:145)
+==1270835==  Address 0x4df132a is 0 bytes after a block of size 42 alloc'd
+==1270835==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270835==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270835==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270835==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270835==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270835==    by 0x10F6F0: main (mandatory.cpp:145)
+==1270835== 
+==1270835== Invalid read of size 1
+==1270835==    at 0x10FEED: f_strlen (get_next_line_utils.c:73)
+==1270835==    by 0x10F9E9: f_len_line (get_next_line.c:44)
+==1270835==    by 0x10FC85: get_next_line (get_next_line.c:205)
+==1270835==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270835==    by 0x10F70C: main (mandatory.cpp:145)
+==1270835==  Address 0x4df132a is 0 bytes after a block of size 42 alloc'd
+==1270835==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270835==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270835==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270835==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270835==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270835==    by 0x10F6F0: main (mandatory.cpp:145)
+==1270835== 
+3.OK 4.OK 5.OK 6.OK 7.OK 8.OK 9.OK 10.OK ==1270835== 42 bytes in 1 blocks are definitely lost in loss record 3 of 4
+==1270835==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270835==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270835==    by 0x10FF9A: f_ll_char (get_next_line_utils.c:107)
+==1270835==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270835==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270835==    by 0x10F6F0: main (mandatory.cpp:145)
+==1270835== 
+==1270835== 210 bytes in 5 blocks are definitely lost in loss record 4 of 4
+==1270835==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270835==    by 0x10FE4B: f_data (get_next_line_utils.c:57)
+==1270835==    by 0x11003B: f_ll_char (get_next_line_utils.c:119)
+==1270835==    by 0x10FC47: get_next_line (get_next_line.c:200)
+==1270835==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270835==    by 0x10F6F0: main (mandatory.cpp:145)
+==1270835== 
+
+[BUFFER_SIZE = 10000000]: 
+Invalid fd: ==1270874== Invalid read of size 1
+==1270874==    at 0x10F98A: f_len_line (get_next_line.c:43)
+==1270874==    by 0x10FC45: get_next_line (get_next_line.c:205)
+==1270874==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270874==    by 0x10CA9F: main (mandatory.cpp:29)
+==1270874==  Address 0x51dc03f is 1 bytes before a block of size 10,000,000 alloc'd
+==1270874==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270874==    by 0x10FE0B: f_data (get_next_line_utils.c:57)
+==1270874==    by 0x10FF5A: f_ll_char (get_next_line_utils.c:107)
+==1270874==    by 0x10FC07: get_next_line (get_next_line.c:200)
+==1270874==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270874==    by 0x10CA9F: main (mandatory.cpp:29)
+==1270874== 
+1.OK ==1270874== Invalid read of size 1
+==1270874==    at 0x10F98A: f_len_line (get_next_line.c:43)
+==1270874==    by 0x10FC45: get_next_line (get_next_line.c:205)
+==1270874==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270874==    by 0x10CAAD: main (mandatory.cpp:29)
+==1270874==  Address 0x51dc03f is 1 bytes before a block of size 10,000,000 alloc'd
+==1270874==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270874==    by 0x10FE0B: f_data (get_next_line_utils.c:57)
+==1270874==    by 0x10FF5A: f_ll_char (get_next_line_utils.c:107)
+==1270874==    by 0x10FC07: get_next_line (get_next_line.c:200)
+==1270874==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270874==    by 0x10CA9F: main (mandatory.cpp:29)
+==1270874== 
+2.OK ==1270874== Invalid read of size 1
+==1270874==    at 0x10F98A: f_len_line (get_next_line.c:43)
+==1270874==    by 0x10FC45: get_next_line (get_next_line.c:205)
+==1270874==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270874==    by 0x10CAC1: main (mandatory.cpp:29)
+==1270874==  Address 0x51dc03f is 1 bytes before a block of size 10,000,000 alloc'd
+==1270874==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270874==    by 0x10FE0B: f_data (get_next_line_utils.c:57)
+==1270874==    by 0x10FF5A: f_ll_char (get_next_line_utils.c:107)
+==1270874==    by 0x10FC07: get_next_line (get_next_line.c:200)
+==1270874==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270874==    by 0x10CA9F: main (mandatory.cpp:29)
+==1270874== 
+3.OK 
+files/empty: ==1270875== Invalid read of size 1
+==1270875==    at 0x10F98A: f_len_line (get_next_line.c:43)
+==1270875==    by 0x10FC45: get_next_line (get_next_line.c:205)
+==1270875==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270875==    by 0x10CDB0: main (mandatory.cpp:35)
+==1270875==  Address 0x51dc03f is 1 bytes before a block of size 10,000,000 alloc'd
+==1270875==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270875==    by 0x10FE0B: f_data (get_next_line_utils.c:57)
+==1270875==    by 0x10FF5A: f_ll_char (get_next_line_utils.c:107)
+==1270875==    by 0x10FC07: get_next_line (get_next_line.c:200)
+==1270875==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270875==    by 0x10CDB0: main (mandatory.cpp:35)
+==1270875== 
+1.OK ==1270875== Invalid read of size 1
+==1270875==    at 0x10F98A: f_len_line (get_next_line.c:43)
+==1270875==    by 0x10FC45: get_next_line (get_next_line.c:205)
+==1270875==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270875==    by 0x10CDBC: main (mandatory.cpp:35)
+==1270875==  Address 0x51dc03f is 1 bytes before a block of size 10,000,000 alloc'd
+==1270875==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270875==    by 0x10FE0B: f_data (get_next_line_utils.c:57)
+==1270875==    by 0x10FF5A: f_ll_char (get_next_line_utils.c:107)
+==1270875==    by 0x10FC07: get_next_line (get_next_line.c:200)
+==1270875==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270875==    by 0x10CDB0: main (mandatory.cpp:35)
+==1270875== 
+2.OK 
+files/nl: 1.OK 2.OK ==1270877== 10,000,000 bytes in 1 blocks are possibly lost in loss record 3 of 3
+==1270877==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270877==    by 0x10FE0B: f_data (get_next_line_utils.c:57)
+==1270877==    by 0x10FF5A: f_ll_char (get_next_line_utils.c:107)
+==1270877==    by 0x10FC07: get_next_line (get_next_line.c:200)
+==1270877==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270877==    by 0x10D04D: main (mandatory.cpp:40)
+==1270877== 
+
+files/41_no_nl: 1.OK 2.OK ==1270878== 10,000,000 bytes in 1 blocks are possibly lost in loss record 3 of 3
+==1270878==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270878==    by 0x10FE0B: f_data (get_next_line_utils.c:57)
+==1270878==    by 0x10FF5A: f_ll_char (get_next_line_utils.c:107)
+==1270878==    by 0x10FC07: get_next_line (get_next_line.c:200)
+==1270878==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270878==    by 0x10D2EA: main (mandatory.cpp:45)
+==1270878== 
+
+files/41_with_nl: 1.OK 2.OK 3.OK ==1270886== 10,000,000 bytes in 1 blocks are possibly lost in loss record 3 of 3
+==1270886==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270886==    by 0x10FE0B: f_data (get_next_line_utils.c:57)
+==1270886==    by 0x10FF5A: f_ll_char (get_next_line_utils.c:107)
+==1270886==    by 0x10FC07: get_next_line (get_next_line.c:200)
+==1270886==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270886==    by 0x10D587: main (mandatory.cpp:50)
+==1270886== 
+
+files/42_no_nl: 1.OK 2.OK ==1270887== 10,000,000 bytes in 1 blocks are possibly lost in loss record 3 of 3
+==1270887==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270887==    by 0x10FE0B: f_data (get_next_line_utils.c:57)
+==1270887==    by 0x10FF5A: f_ll_char (get_next_line_utils.c:107)
+==1270887==    by 0x10FC07: get_next_line (get_next_line.c:200)
+==1270887==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270887==    by 0x10D833: main (mandatory.cpp:56)
+==1270887== 
+
+files/42_with_nl: 1.OK 2.OK 3.OK ==1270889== 10,000,000 bytes in 1 blocks are possibly lost in loss record 3 of 3
+==1270889==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270889==    by 0x10FE0B: f_data (get_next_line_utils.c:57)
+==1270889==    by 0x10FF5A: f_ll_char (get_next_line_utils.c:107)
+==1270889==    by 0x10FC07: get_next_line (get_next_line.c:200)
+==1270889==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270889==    by 0x10DAD0: main (mandatory.cpp:61)
+==1270889== 
+
+files/43_no_nl: 1.OK 2.OK ==1270890== 10,000,000 bytes in 1 blocks are possibly lost in loss record 3 of 3
+==1270890==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270890==    by 0x10FE0B: f_data (get_next_line_utils.c:57)
+==1270890==    by 0x10FF5A: f_ll_char (get_next_line_utils.c:107)
+==1270890==    by 0x10FC07: get_next_line (get_next_line.c:200)
+==1270890==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270890==    by 0x10DD86: main (mandatory.cpp:72)
+==1270890== 
+
+files/43_with_nl: 1.OK 2.OK 3.OK ==1270892== 10,000,000 bytes in 1 blocks are possibly lost in loss record 3 of 3
+==1270892==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270892==    by 0x10FE0B: f_data (get_next_line_utils.c:57)
+==1270892==    by 0x10FF5A: f_ll_char (get_next_line_utils.c:107)
+==1270892==    by 0x10FC07: get_next_line (get_next_line.c:200)
+==1270892==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270892==    by 0x10E023: main (mandatory.cpp:77)
+==1270892== 
+
+files/multiple_nlx5: 1.OK 2.OK 3.OK 4.OK 5.OK 6.OK ==1270907== 10,000,000 bytes in 1 blocks are possibly lost in loss record 3 of 3
+==1270907==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270907==    by 0x10FE0B: f_data (get_next_line_utils.c:57)
+==1270907==    by 0x10FF5A: f_ll_char (get_next_line_utils.c:107)
+==1270907==    by 0x10FC07: get_next_line (get_next_line.c:200)
+==1270907==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270907==    by 0x10E2CF: main (mandatory.cpp:83)
+==1270907== 
+
+files/multiple_line_no_nl: 1.OK 2.OK 3.OK 4.OK 5.OK 6.OK ==1270908== 10,000,000 bytes in 1 blocks are possibly lost in loss record 3 of 3
+==1270908==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270908==    by 0x10FE0B: f_data (get_next_line_utils.c:57)
+==1270908==    by 0x10FF5A: f_ll_char (get_next_line_utils.c:107)
+==1270908==    by 0x10FC07: get_next_line (get_next_line.c:200)
+==1270908==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270908==    by 0x10E5A8: main (mandatory.cpp:92)
+==1270908== 
+
+files/multiple_line_with_nl: 1.OK 2.OK 3.OK 4.OK 5.OK 6.OK ==1270910== 10,000,000 bytes in 1 blocks are possibly lost in loss record 3 of 3
+==1270910==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270910==    by 0x10FE0B: f_data (get_next_line_utils.c:57)
+==1270910==    by 0x10FF5A: f_ll_char (get_next_line_utils.c:107)
+==1270910==    by 0x10FC07: get_next_line (get_next_line.c:200)
+==1270910==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270910==    by 0x10E881: main (mandatory.cpp:101)
+==1270910== 
+
+files/alternate_line_nl_no_nl: 1.OK 2.OK 3.OK 4.OK 5.OK 6.OK 7.OK 8.OK 9.OK 10.OK ==1270921== 10,000,000 bytes in 1 blocks are possibly lost in loss record 3 of 3
+==1270921==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270921==    by 0x10FE0B: f_data (get_next_line_utils.c:57)
+==1270921==    by 0x10FF5A: f_ll_char (get_next_line_utils.c:107)
+==1270921==    by 0x10FC07: get_next_line (get_next_line.c:200)
+==1270921==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270921==    by 0x10EB5A: main (mandatory.cpp:110)
+==1270921== 
+
+files/alternate_line_nl_with_nl: 1.OK 2.OK 3.OK 4.OK 5.OK 6.OK 7.OK 8.OK 9.OK 10.OK ==1270922== 10,000,000 bytes in 1 blocks are possibly lost in loss record 3 of 3
+==1270922==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270922==    by 0x10FE0B: f_data (get_next_line_utils.c:57)
+==1270922==    by 0x10FF5A: f_ll_char (get_next_line_utils.c:107)
+==1270922==    by 0x10FC07: get_next_line (get_next_line.c:200)
+==1270922==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270922==    by 0x10EE6F: main (mandatory.cpp:123)
+==1270922== 
+
+files/big_line_no_nl: 1.OK 2.OK ==1270923== 10,000,000 bytes in 1 blocks are possibly lost in loss record 3 of 3
+==1270923==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270923==    by 0x10FE0B: f_data (get_next_line_utils.c:57)
+==1270923==    by 0x10FF5A: f_ll_char (get_next_line_utils.c:107)
+==1270923==    by 0x10FC07: get_next_line (get_next_line.c:200)
+==1270923==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270923==    by 0x10F184: main (mandatory.cpp:136)
+==1270923== 
+
+files/big_line_with_nl: 1.OK 2.OK ==1270925== 10,000,000 bytes in 1 blocks are possibly lost in loss record 3 of 3
+==1270925==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270925==    by 0x10FE0B: f_data (get_next_line_utils.c:57)
+==1270925==    by 0x10FF5A: f_ll_char (get_next_line_utils.c:107)
+==1270925==    by 0x10FC07: get_next_line (get_next_line.c:200)
+==1270925==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270925==    by 0x10F421: main (mandatory.cpp:140)
+==1270925== 
+
+stdin: 1.OK 2.OK 3.OK 4.OK 5.OK 6.OK 7.OK 8.OK 9.OK 10.OK ==1270926== 10,000,000 bytes in 1 blocks are possibly lost in loss record 3 of 3
+==1270926==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==1270926==    by 0x10FE0B: f_data (get_next_line_utils.c:57)
+==1270926==    by 0x10FF5A: f_ll_char (get_next_line_utils.c:107)
+==1270926==    by 0x10FC07: get_next_line (get_next_line.c:200)
+==1270926==    by 0x10AC66: gnl(int, char const*) (gnl.cpp:20)
+==1270926==    by 0x10F6BD: main (mandatory.cpp:145)
+==1270926== 
+
+phsottat@z1t3c1 ~/Desktop/25_09/get_next_line__the_chariot/get_next_line_tester_ace_of_cup

@@ -1,0 +1,59 @@
+ % valgrind --show-leak-kinds=all --leak-check=full ./prog
+==288720== Memcheck, a memory error detector
+==288720== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==288720== Using Valgrind-3.24.0 and LibVEX; rerun with -h for copyright info
+==288720== Command: ./prog
+==288720== 
+==288720== Invalid read of size 1
+==288720==    at 0x10950F: f_len_line (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720==    by 0x1097BC: get_next_line (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720==    by 0x1098A0: main (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720==  Address 0x4aa703f is 1 bytes before a block of size 43 alloc'd
+==288720==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==288720==    by 0x109AE3: f_data (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720==    by 0x109CBE: f_ll_char (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720==    by 0x109785: get_next_line (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720==    by 0x1098A0: main (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720== 
+==288720== 
+==288720== HEAP SUMMARY:
+==288720==     in use at exit: 118 bytes in 4 blocks
+==288720==   total heap usage: 4 allocs, 0 frees, 118 bytes allocated
+==288720== 
+==288720== 16 bytes in 1 blocks are still reachable in loss record 1 of 4
+==288720==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==288720==    by 0x109989: f_init_ll (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720==    by 0x109CE8: f_ll_char (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720==    by 0x109785: get_next_line (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720==    by 0x1098A0: main (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720== 
+==288720== 16 bytes in 1 blocks are still reachable in loss record 2 of 4
+==288720==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==288720==    by 0x109A11: f_insert_ll_end (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720==    by 0x109D9C: f_ll_char (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720==    by 0x109785: get_next_line (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720==    by 0x1098A0: main (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720== 
+==288720== 43 bytes in 1 blocks are still reachable in loss record 3 of 4
+==288720==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==288720==    by 0x109AE3: f_data (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720==    by 0x109CBE: f_ll_char (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720==    by 0x109785: get_next_line (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720==    by 0x1098A0: main (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720== 
+==288720== 43 bytes in 1 blocks are still reachable in loss record 4 of 4
+==288720==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==288720==    by 0x109AE3: f_data (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720==    by 0x109D20: f_ll_char (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720==    by 0x109785: get_next_line (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720==    by 0x1098A0: main (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==288720== 
+==288720== LEAK SUMMARY:
+==288720==    definitely lost: 0 bytes in 0 blocks
+==288720==    indirectly lost: 0 bytes in 0 blocks
+==288720==      possibly lost: 0 bytes in 0 blocks
+==288720==    still reachable: 118 bytes in 4 blocks
+==288720==         suppressed: 0 bytes in 0 blocks
+==288720== 
+==288720== For lists of detected and suppressed errors, rerun with: -s
+==288720== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)

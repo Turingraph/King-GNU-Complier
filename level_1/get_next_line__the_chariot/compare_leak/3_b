@@ -1,0 +1,29 @@
+==118446== 16 bytes in 1 blocks are still reachable in loss record 1 of 4
+==118446==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==118446==    by 0x1099A9: f_init_ll (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/get_next_line_tester_3_pentacles/t42.esq)
+==118446==    by 0x109CE8: f_ll_char (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/get_next_line_tester_3_pentacles/t42.esq)
+==118446==    by 0x1098D5: get_next_line (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/get_next_line_tester_3_pentacles/t42.esq)
+==118446==    by 0x109204: main (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/get_next_line_tester_3_pentacles/t42.esq)
+==118446== 
+==118446== 16 bytes in 1 blocks are still reachable in loss record 2 of 4
+==118446==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==118446==    by 0x109A31: f_insert_ll_end (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/get_next_line_tester_3_pentacles/t42.esq)
+==118446==    by 0x109D9C: f_ll_char (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/get_next_line_tester_3_pentacles/t42.esq)
+==118446==    by 0x1098D5: get_next_line (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/get_next_line_tester_3_pentacles/t42.esq)
+==118446==    by 0x109204: main (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/get_next_line_tester_3_pentacles/t42.esq)
+==118446== 
+==118446== 43 bytes in 1 blocks are still reachable in loss record 3 of 4
+==118446==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==118446==    by 0x109AE3: f_data (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/get_next_line_tester_3_pentacles/t42.esq)
+==118446==    by 0x109CBE: f_ll_char (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/get_next_line_tester_3_pentacles/t42.esq)
+==118446==    by 0x1098D5: get_next_line (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/get_next_line_tester_3_pentacles/t42.esq)
+==118446==    by 0x109204: main (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/get_next_line_tester_3_pentacles/t42.esq)
+==118446== 
+==118446== 43 bytes in 1 blocks are still reachable in loss record 4 of 4
+==118446==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==118446==    by 0x109AE3: f_data (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/get_next_line_tester_3_pentacles/t42.esq)
+==118446==    by 0x109D20: f_ll_char (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/get_next_line_tester_3_pentacles/t42.esq)
+==118446==    by 0x1098D5: get_next_line (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/get_next_line_tester_3_pentacles/t42.esq)
+==118446==    by 0x109204: main (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/get_next_line_tester_3_pentacles/t42.esq)
+==118446== 
+==118446== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

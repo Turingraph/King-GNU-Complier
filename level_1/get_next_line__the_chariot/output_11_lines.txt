@@ -1,0 +1,58 @@
+ % valgrind --show-leak-kinds=all --leak-check=full ./prog
+==72545== Memcheck, a memory error detector
+==72545== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==72545== Using Valgrind-3.24.0 and LibVEX; rerun with -h for copyright info
+==72545== Command: ./prog
+==72545== 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta enim ut purus sodales dictum sit amet ut justo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque aliquet tortor elementum, congue ante sit amet, congue eros. Nullam aliquet magna sed ante facilisis, ut mattis urna condimentum. Ut semper at ipsum nec volutpat. Nam dignissim accumsan massa a facilisis. Praesent placerat aliquet laoreet. Praesent finibus enim nisi, rhoncus sagittis nunc luctus non.
+
+----------------------------------------------------------------------
+
+ ^^      ..                                       ..
+             []                                       []
+           .:[]:_          ^^                       ,:[]:.
+         .: :[]: :-.                             ,-: :[]: :.
+       .: : :[]: : :`._                       ,.': : :[]: : :.
+     .: : : :[]: : : : :-._               _,-: : : : :[]: : : :.
+ _..: : : : :[]: : : : : : :-._________.-: : : : : : :[]: : : : :-._
+ _:_:_:_:_:_:[]:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:[]:_:_:_:_:_:_
+==72545== 
+==72545== HEAP SUMMARY:
+==72545==     in use at exit: 1,250 bytes in 41 blocks
+==72545==   total heap usage: 102 allocs, 61 frees, 3,724 bytes allocated
+==72545== 
+==72545== 16 bytes in 1 blocks are still reachable in loss record 1 of 4
+==72545==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==72545==    by 0x109A01: f_insert_ll_end (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==72545==    by 0x109D4C: f_ll_char (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==72545==    by 0x109785: get_next_line (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==72545==    by 0x1098A8: main (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==72545== 
+==72545== 70 bytes in 1 blocks are definitely lost in loss record 2 of 4
+==72545==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==72545==    by 0x1097E9: get_next_line (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==72545==    by 0x109905: main (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==72545== 
+==72545== 304 bytes in 19 blocks are still reachable in loss record 3 of 4
+==72545==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==72545==    by 0x109A01: f_insert_ll_end (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==72545==    by 0x109D0D: f_ll_char (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==72545==    by 0x109785: get_next_line (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==72545==    by 0x1098A8: main (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==72545== 
+==72545== 860 bytes in 20 blocks are still reachable in loss record 4 of 4
+==72545==    at 0x48484F4: malloc (m_replacemalloc/vg_replace_malloc.c:446)
+==72545==    by 0x109AB3: f_data (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==72545==    by 0x109D1D: f_ll_char (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==72545==    by 0x109785: get_next_line (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==72545==    by 0x1098A8: main (in /home/phsottat/Desktop/25_09/get_next_line__the_chariot/prog)
+==72545== 
+==72545== LEAK SUMMARY:
+==72545==    definitely lost: 70 bytes in 1 blocks
+==72545==    indirectly lost: 0 bytes in 0 blocks
+==72545==      possibly lost: 0 bytes in 0 blocks
+==72545==    still reachable: 1,180 bytes in 40 blocks
+==72545==         suppressed: 0 bytes in 0 blocks
+==72545== 
+==72545== For lists of detected and suppressed errors, rerun with: -s
+==72545== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
