@@ -12,7 +12,6 @@
 
 #include "get_next_line.h"
 
-// Knight of Coin = discipline = count how many char in str before '\n' or '\0'
 // time : O(n)
 // space: O(1)
 size_t	knight_of_coin(char *str, char stop)
@@ -25,12 +24,6 @@ size_t	knight_of_coin(char *str, char stop)
 	return (i);
 }
 
-// The Chariot = success, ambition, determination, willpower, focus
-// = get as many char (a.k.a. ace_of_coin) as many as possible 
-// before discover '\n' or '\0'.
-// IMO, the second most suitable name of this function is Pod of Greed.
-// However, The Chariot is more about exact careful control than pure greed.
-// In addition, I want to name all function within the Tarot theme.
 // time : O(n)
 // space: O(n)
 char	the_chariot(int fd, t_temperance **angel, char *ambition)
@@ -58,8 +51,6 @@ char	the_chariot(int fd, t_temperance **angel, char *ambition)
 	return (0);
 }
 
-// This function is not to be confused with King GNU and 4 Tarot King Cards.
-// GNL = Get Next Line, and King = leadership.
 // time : O(n)
 // space: O(n)
 static inline char	*king_gnl(int fd)
