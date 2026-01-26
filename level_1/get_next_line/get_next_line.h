@@ -21,8 +21,6 @@
 #  define BUFFER_SIZE 42
 # endif
 
-// Temperance = Angel pours water from an old cup to a new cup 
-// = flexible resizing dynamic array.
 typedef struct t_temperance
 {
 	size_t	length;
