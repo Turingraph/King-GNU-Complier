@@ -12,7 +12,6 @@
 
 #include "get_next_line.h"
 
-// Ace of Coin = new resource = initializing/copy string.
 // time : O(n)
 // space: O(n)
 char	*ace_of_coin(char *src, size_t length, size_t capacity)
@@ -39,7 +38,6 @@ char	*ace_of_coin(char *src, size_t length, size_t capacity)
 	return (dst);
 }
 
-// Ace of Cup = creativity, love, intuition = initializing dynamic array.
 // time : O(n)
 // space: O(n)
 t_temperance	*ace_of_cup(size_t capacity, char create_arr)
@@ -65,8 +63,6 @@ t_temperance	*ace_of_cup(size_t capacity, char create_arr)
 	return (cup);
 }
 
-// 2 of Cups = Friendship/Companion = Add positive things in our life
-// = Add the fortune in the cup = Append Dynamic Array.
 // time : O(1)
 // space: O(1)
 // worse time : O(n)
@@ -99,7 +95,6 @@ static inline t_temperance	*two_of_cups(t_temperance **left_cup, char c)
 	return (two_of_cups(left_cup, c));
 }
 
-// 3 of Cups = Multiple Friendship/Companion = Concat string in dynamic Array.
 // time : O(n)
 // space: O(n)
 t_temperance	**three_of_cups(t_temperance **group, char *friends)
