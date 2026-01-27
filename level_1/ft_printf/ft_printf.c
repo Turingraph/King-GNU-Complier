@@ -29,62 +29,6 @@ int	print_string(char *input)
 	return (ft_strlen(input));
 }
 
-/*
-int	print_pointer(long long input)
-{
-	unsigned int		i;
-	unsigned long long	d;
-	unsigned long long	inp;
-
-	if (input == 0)
-	{
-		write(1, "(nil)", 5);
-		return (5);
-	}
-	write(1, "0x", 2);
-	if (input < 0)
-		inp = (unsigned long long)(input * (-1));
-	else
-		inp = (unsigned long long) input;
-	d = 1;
-	i = 0;
-	while (i < 16)
-	{
-		d *= 2;
-		i += 1;
-	}
-	return (print_int(inp, "0123456789abcdef", d) + 2);
-}
-*/
-
-/*
-#include <stdio.h>
-
-int	print_pointer(long long input)
-{
-	int					y;
-	long long			front;
-	long long			back;
-	unsigned long long	inp;
-
-	if (input == 0)
-	{
-		write(1, "(nil)", 5);
-		return (5);
-	}
-	write(1, "0x", 2);
-	if (input < 0)
-		inp = (unsigned long long)(input * (-1));
-	else
-		inp = (unsigned long long) input;
-	front = inp / (4294967295);
-	back = inp % (4294967295 / 2);
-	y = print_int(front, "0123456789abcdef", 4294967296);
-	y += print_int(back, "0123456789abcdef", 4294967296) + 2;
-	return (y);
-}
-*/
-
 int	print_pointer(long long input)
 {
 	if (input == 0)
