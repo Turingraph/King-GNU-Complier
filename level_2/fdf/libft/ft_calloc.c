@@ -109,8 +109,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	product = nmemb * size;
 	if (nmemb == 0 || size == 0)
 		product = 1;
-	if ((nmemb > 2147483647 && size > 2147483647) || product > 2147483647
-		|| product < 0)
+	if ((nmemb > 2147483647 && size > 2147483647) || product > 2147483647)
 		return (NULL);
 	y = (void *)malloc(product);
 	if (y == NULL)

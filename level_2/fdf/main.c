@@ -122,6 +122,5 @@ int32_t main(void)
 }
 
 /*
-cc -Wall -Wextra -Werror main.c -Iinclude libmlx42.a 
-libft.a -ldl -lglfw -pthread -lm
+cc -Wall -Wextra -Werror main.c -Iinclude libmlx42.a libft.a -ldl -lglfw3 -pthread -lm
 */

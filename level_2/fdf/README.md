@@ -1,3 +1,7 @@
+# Description
+
+This is FdF from 42 coding school assignment.
+
 # How am I doing this project ?
 
 ## How to use Library ?
@@ -7,11 +11,13 @@
     2.  `cd libft`
     3.  `make`
     4.  Copy `libft/libft.a` as `libft.a` in root directory.
-2.  Creating `libmlx42.a`
-    1.  git clone [... url of Git repo of MLX42 ]
-    2.  `cd MLX42`
-    3.  `make`
-    4.  Copy `MLX42/build/libmlx42.a` as `libmlx42.a` in root directory.
+2.	Install GLFW library according to this resource
+3.  Creating `libmlx42.a`
+	1.	`sudo apt-get install libglew-dev`
+    2.  git clone [... url of Git repo of MLX42 ]
+    3.  `cd MLX42`
+    4.  `cmake -B build`
+    5.  `cmake --build build -j4`
 3.  Creating `include/` folder which contains the copy of `libft.h` and `MLX42.h`
 4.  Creating `main.c` to test if library works as expected.
 
@@ -59,7 +65,7 @@ int32_t	main(void)
 }
 ```
 5.  Executing this command.
-*   `cc -Wall -Wextra -Werror main.c -Iinclude libmlx42.a libft.a -ldl -lglfw -pthread -lm`
+*   `cc -Wall -Wextra -Werror main.c -Iinclude libmlx42.a libft.a -ldl -lglfw3 -pthread -lm`
 
 Meaning of each Bash command
 1.  `-l` is the name of the library you want to link to.
@@ -83,6 +89,15 @@ Resource
 *   https://stackoverflow.com/questions/15127279/whats-a-pthread
 4.  Static linking vs dynamic linking
 *	https://stackoverflow.com/questions/1993390/static-linking-vs-dynamic-linking
+5.	Install OpenGL on Ubuntu
+*	https://stackoverflow.com/questions/7842622/setting-up-opengl-on-ubuntu
+6.	Install X11 on Ubuntu.
+*	https://askubuntu.com/questions/1167278/how-to-install-x11-development-libraries-on-ubuntu-19-04
+7.	RandR headers not found; install libxrandr development package error
+*	https://github.com/openMVG/openMVG/issues/85
+8.	Install GLFW
+*	https://stackoverflow.com/questions/17768008/how-to-build-install-glfw-3-and-use-it-in-a-linux-project
+*	https://www.glfw.org/docs/latest/compile.html#compile_deps_wayland
 
 ## isometric projection
 
@@ -91,6 +106,8 @@ Resource
 *	.
 
 ## Quaternion Ring
+
+(I choose quaternion because I'm interested in applied math and I want to calculate how 2 different rotated color light source (the white light and the light according to my synesthesia color) interacting with the rotated object)
 
 Resource
 1.	Visualizing the 4d numbers Quaternions
@@ -103,6 +120,8 @@ Resource
 *	.
 
 ## Text Color Synesthesia
+
+(I add this topic because I have text color synesthesia, this project is about displaying 3D text on screen, and I want to show my peer what it feel like to see colorful text)
 
 My Text Color Synesthesia
 *	A = red
