@@ -15,7 +15,7 @@ void	free_nested_arr(void **target, size_t length)
 
 // time : O(n)
 // space: O(n)
-char	*create_empty_line(size_t length, char space)
+char	*create_duplicate_char(size_t length, char space)
 {
 	size_t	i;
 	char	*text;
@@ -72,7 +72,7 @@ t_ascii_canvas	*ascii_create_canvas(size_t w, size_t h)
 	i = 0;
 	while (i < (*canvas).h)
 	{
-		if ((*((*canvas).canvas + i) = create_empty_line((*canvas).w, ' ')) == NULL)
+		if ((*((*canvas).canvas + i) = create_duplicate_char((*canvas).w, ' ')) == NULL)
 		{
 			ascii_delete_canvas((*canvas).canvas, i - 1);
 			return (NULL);

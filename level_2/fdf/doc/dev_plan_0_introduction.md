@@ -24,13 +24,13 @@ Here is the 6 steps plan on how am I implementing this project inside `src/` dir
 	1.	`bresenham_line.c`
 		*	time : O(n)
 		*	space: O(1)
-	2.	`flood_fill.c` (for my React based Piskel clone project in this Git repo https://github.com/Turingraph/Planck_Palette and also for edit ASCII art much more easily)
+	<!-- 2.	`flood_fill.c` (for my React based Piskel clone project in this Git repo https://github.com/Turingraph/Planck_Palette and also for edit ASCII art much more easily)
 		*	time : O(n^2)
-		*	space: O(n)
-	3.	`rasterization.c`
+		*	space: O(n) -->
+	2.	`rasterization.c`
 		*	time : O(n^2)
 		*	space: O(1)
-	4.	`z_buffer_1d.c`
+	3.	`z_buffer_1d.c`
 		*	time : O(n)
 		*	space: O(n)
 2.	import MXL42 library.

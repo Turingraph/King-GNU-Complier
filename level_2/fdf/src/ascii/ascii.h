@@ -11,8 +11,9 @@
 # include "libft.h"
 # include <math.h>
 
-#define TRUE (char) 0
-#define FALSE (char) 1
+// Global variables are forbidden in the assignment.
+// #define TRUE (char) 1
+// #define FALSE (char) 0
 
 typedef struct t_ascii_canvas
 {
@@ -26,6 +27,26 @@ typedef struct t_2d_dim
 	size_t	x;
 	size_t	y;
 }	t_2d_dim;
+
+typedef struct t_triangle
+{
+	t_2d_dim	*u;
+	t_2d_dim	*v;
+	t_2d_dim	*w;
+}	t_triangle;
+
+typedef struct t_line
+{
+	t_2d_dim	*u;
+	t_2d_dim	*v;
+}	t_line;
+
+/*
+// flood_fill.c
+
+// I don't add this feature for saving time.
+
+void	flood_fill(t_ascii_canvas *canvas, t_2d_dim *v, char color);
 
 typedef struct t_noah_tree
 {
@@ -43,34 +64,31 @@ typedef struct t_lamech_tree
 	size_t		height;
 	size_t		count;
 } t_lamech_tree;
+*/
 
 // create.c
 void			free_nested_arr(void **target, size_t length);
-char			*create_empty_line(size_t length, char space);
+char			*create_duplicate_char(size_t length, char space);
 t_ascii_canvas	*ascii_define_canvas(size_t w, size_t h);
 void			ascii_delete_canvas(t_ascii_canvas *canvas, size_t height);
 t_ascii_canvas	*ascii_create_canvas(size_t w, size_t h);
 
 // import.c
 t_ascii_canvas	*ascii_import_canvas(char *file_name);
-t_ascii_canvas	*ascii_export_canvas(char *file_name);
 
 // bresenham_line.c
-void	bresenham_line(t_2d_dim *v1, t_2d_dim *v2, t_ascii_canvas *canvas, char mark);
-
-// flood_fill.c
-void	flood_fill(t_ascii_canvas *canvas, t_2d_dim *v, char color);
-void	ascii_replace(t_ascii_canvas *canvas, char old_color, char new_color);
+void			bresenham_line(t_2d_dim *v1, t_2d_dim *v2, t_ascii_canvas *canvas, char mark);
 
 // rasterization.c
+void			rasterization(t_ascii_canvas *canvas, t_triangle *triangle, char color);
 
 // z_buffer_1d.c
+void			z_buffer_1d(t_ascii_canvas *canvas, t_line **line_arr, size_t arr_len);
 
-// add_row.c
-t_ascii_canvas	*add_ascii_left_column(t_ascii_canvas *canvas);
-t_ascii_canvas	*add_ascii_right_column(t_ascii_canvas *canvas);
-t_ascii_canvas	*add_ascii_down_row(t_ascii_canvas *canvas);
-t_ascii_canvas	*add_ascii_up_row(t_ascii_canvas *canvas);
+// edit.c
+void			replace_ascii_char(t_ascii_canvas *canvas, char old_color, char new_color);
+t_ascii_canvas	*add_ascii_column(t_ascii_canvas *canvas, char is_left);
+t_ascii_canvas	*add_ascii_row(t_ascii_canvas *canvas, char is_down);
 
 #endif
 

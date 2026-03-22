@@ -6,8 +6,8 @@ void	swap_vector(t_2d_dim *v1, t_2d_dim *v2, char is_x)
 {
 	size_t	temp;
 
-	if ((is_x == TRUE && v1->x >= v2->x) || 
-		(is_x == FALSE && v1->y >= v2->y))
+	if ((is_x == 1 && v1->x >= v2->x) || 
+		(is_x == 0 && v1->y >= v2->y))
 	{
 		temp = v1->x;
 		v1->x = v2->x;
@@ -103,12 +103,12 @@ void	bresenham_line(t_2d_dim *v1, t_2d_dim *v2, t_ascii_canvas *canvas, char mar
 		return (0);
 	if (abs(v1->x - v2->x) <= abs(v1->y - v2->y))
 	{
-		swap_vector(v1, v2, FALSE);
+		swap_vector(v1, v2, 0);
 		bresenham_line_y(v1, v2, canvas, mark);
 	}
 	else
 	{
-		swap_vector(v1, v2, TRUE);
+		swap_vector(v1, v2, 1);
 		bresenham_line_x(v1, v2, canvas, mark);
 	}
 }
