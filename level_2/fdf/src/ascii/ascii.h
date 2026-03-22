@@ -28,18 +28,18 @@ typedef struct t_2d_dim
 	size_t	y;
 }	t_2d_dim;
 
-typedef struct t_triangle
+typedef struct t_2d_triangle
 {
 	t_2d_dim	*u;
 	t_2d_dim	*v;
 	t_2d_dim	*w;
-}	t_triangle;
+}	t_2d_triangle;
 
-typedef struct t_line
+typedef struct t_2d_line
 {
-	t_2d_dim	*u;
-	t_2d_dim	*v;
-}	t_line;
+	t_2d_dim	*left;
+	t_2d_dim	*right;
+}	t_2d_line;
 
 /*
 // flood_fill.c
@@ -66,29 +66,38 @@ typedef struct t_lamech_tree
 } t_lamech_tree;
 */
 
-// create.c
+// bresenham_line.c
+void			bresenham_line(t_2d_dim *v1, t_2d_dim *v2, t_ascii_canvas *canvas, char mark);
+
+// create_canvas.c
 void			free_nested_arr(void **target, size_t length);
 char			*create_duplicate_char(size_t length, char space);
 t_ascii_canvas	*ascii_define_canvas(size_t w, size_t h);
 void			ascii_delete_canvas(t_ascii_canvas *canvas, size_t height);
 t_ascii_canvas	*ascii_create_canvas(size_t w, size_t h);
 
-// import.c
-t_ascii_canvas	*ascii_import_canvas(char *file_name);
+// create_line.c
+void			swap_point(t_2d_dim *start, t_2d_dim *stop, char is_sort);
+t_2d_dim		*copy_2d_point(t_2d_dim *src);
+t_2d_dim		*replace_2d_points(t_2d_dim **src, t_2d_dim **dst, size_t len);
+void			free_line(t_2d_line *line);
+t_2d_line		*copy_line(t_2d_line *src);
 
-// bresenham_line.c
-void			bresenham_line(t_2d_dim *v1, t_2d_dim *v2, t_ascii_canvas *canvas, char mark);
-
-// rasterization.c
-void			rasterization(t_ascii_canvas *canvas, t_triangle *triangle, char color);
-
-// z_buffer_1d.c
-void			z_buffer_1d(t_ascii_canvas *canvas, t_line **line_arr, size_t arr_len);
-
-// edit.c
+// edit_canvas.c
 void			replace_ascii_char(t_ascii_canvas *canvas, char old_color, char new_color);
 t_ascii_canvas	*add_ascii_column(t_ascii_canvas *canvas, char is_left);
 t_ascii_canvas	*add_ascii_row(t_ascii_canvas *canvas, char is_down);
+
+// import_canvas.c
+t_ascii_canvas	*ascii_import_canvas(char *file_name);
+
+// rasterization.c
+void			rasterization(t_2d_triangle *triangle, char color);
+
+// sort_line.c
+
+// z_buffer_1d.c
+char			*z_buffer_1d(t_ascii_canvas *canvas, t_2d_line **line_arr, size_t arr_len);
 
 #endif
 

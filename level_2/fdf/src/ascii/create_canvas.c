@@ -6,7 +6,8 @@ void	free_nested_arr(void **target, size_t length)
 {
 	while (length > 0)
 	{
-		free(*(target + length));
+		if (*(target + length) != NULL)
+			free(*(target + length));
 		length -= 1;
 	}
 	free(*(target + length));
