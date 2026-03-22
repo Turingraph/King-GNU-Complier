@@ -59,10 +59,14 @@ t_ascii_canvas	*ascii_export_canvas(char *file_name);
 void	bresenham_line(t_2d_dim *v1, t_2d_dim *v2, t_ascii_canvas *canvas, char mark);
 
 // flood_fill.c
-void	flood_filling(t_ascii_canvas *canvas, t_2d_dim *v, char color);
+void	flood_fill(t_ascii_canvas *canvas, t_2d_dim *v, char color);
 void	ascii_replace(t_ascii_canvas *canvas, char old_color, char new_color);
 
-// clean.c
+// rasterization.c
+
+// z_buffer_1d.c
+
+// add_row.c
 t_ascii_canvas	*add_ascii_left_column(t_ascii_canvas *canvas);
 t_ascii_canvas	*add_ascii_right_column(t_ascii_canvas *canvas);
 t_ascii_canvas	*add_ascii_down_row(t_ascii_canvas *canvas);
