@@ -40,6 +40,7 @@ int	main(int av, char **ac)
 
 #include <stdlib.h>
 #include <unistd.h>
+#include "get_next_line.h"
 #include "libft.h"
 #include "MLX42.h"
 #define WIDTH 750
@@ -62,10 +63,14 @@ void ft_randomize(void* param)
 		for (uint32_t y = 0; y < image->height; ++y)
 		{
 			uint32_t color = ft_pixel(
-				rand() % 0xFF, // R
-				rand() % 0xFF, // G
-				rand() % 0xFF, // B
-				rand() % 0xFF  // A
+				0x22,
+				0x00,
+				0xAA,
+				0xFF
+				// rand() % 0xFF, // R
+				// rand() % 0xFF, // G
+				// rand() % 0xFF, // B
+				// rand() % 0xFF  // A
 			);
 			mlx_put_pixel(image, i, y, color);
 		}
@@ -122,5 +127,16 @@ int32_t main(void)
 }
 
 /*
-cc -Wall -Wextra -Werror main.c -Iinclude libmlx42.a libft.a -ldl -lglfw3 -pthread -lm
+cc -Wall -Wextra -Werror main.c -Iinclude 
+libmlx42.a libft.a get_next_line.a 
+-ldl -lglfw3 -pthread -lm
+*/
+
+/*
+To Do List
+1.	finish 2D projection of 3D image https://www.desmos.com/calculator/bxklvqtozp
+2.	MLX 2D projection of 3D image
+3.	implementing flood filling and Rasterization in ASCII art.
+4.	learn light physics
+5.	learn quaternion
 */
