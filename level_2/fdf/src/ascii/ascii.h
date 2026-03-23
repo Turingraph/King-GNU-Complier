@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ascii.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/23 10:18:32 by phsottat          #+#    #+#             */
+/*   Updated: 2026/03/23 12:23:00 by phsottat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef ASCII_H
 # define ASCII_H
@@ -67,7 +78,8 @@ typedef struct t_lamech_tree
 */
 
 // bresenham_line.c
-void			bresenham_line(t_2d_dim *v1, t_2d_dim *v2, t_ascii_canvas *canvas, char mark);
+char			bresenham_line(t_2d_dim *v1, t_2d_dim *v2,
+					t_ascii_canvas *canvas, char mark);
 
 // create_canvas.c
 void			free_nested_arr(void **target, size_t length);
@@ -77,14 +89,18 @@ void			ascii_delete_canvas(t_ascii_canvas *canvas, size_t height);
 t_ascii_canvas	*ascii_create_canvas(size_t w, size_t h);
 
 // create_line.c
+void			free_line(t_2d_line *line);
+t_2d_line		*create_line(size_t x_1, size_t y_1, size_t x_2, size_t y_2);
+t_2d_line		*copy_line(t_2d_line *src);
+
+// create_point.c
 void			swap_point(t_2d_dim *start, t_2d_dim *stop, char is_sort);
 t_2d_dim		*copy_2d_point(t_2d_dim *src);
 t_2d_dim		*replace_2d_points(t_2d_dim **src, t_2d_dim **dst, size_t len);
-void			free_line(t_2d_line *line);
-t_2d_line		*copy_line(t_2d_line *src);
 
 // edit_canvas.c
-void			replace_ascii_char(t_ascii_canvas *canvas, char old_color, char new_color);
+void			replace_ascii_char(t_ascii_canvas *canvas, char old_color,
+					char new_color);
 t_ascii_canvas	*add_ascii_column(t_ascii_canvas *canvas, char is_left);
 t_ascii_canvas	*add_ascii_row(t_ascii_canvas *canvas, char is_down);
 
@@ -95,9 +111,11 @@ t_ascii_canvas	*ascii_import_canvas(char *file_name);
 void			rasterization(t_2d_triangle *triangle, char color);
 
 // sort_line.c
+t_2d_line		**msortl_x(t_2d_line **line_arr, size_t start, size_t stop);
 
 // z_buffer_1d.c
-char			*z_buffer_1d(t_ascii_canvas *canvas, t_2d_line **line_arr, size_t arr_len);
+char			*z_buffer_1d(t_ascii_canvas *canvas, t_2d_line **line_arr,
+					size_t arr_len);
 
 #endif
 

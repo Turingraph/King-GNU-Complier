@@ -1,6 +1,15 @@
-## 1. `ascii/` (UNFINISHED)
 
-### Calculating the angle and projection of 2 vectors
+# Z Buffer in 1D (a.k.a. `z_buffer_1d.c`)
+
+## Prove the lower bound time complexity
+
+The lower bound time complexity of Z Buffer in 1D is `O(n log(n))`
+
+Resource
+1.  Prove the lower bound of sorting algorithm
+*   https://youtu.be/WffUZk1pgXE?si=XinBcXM96UDfOyAq
+
+# Calculating the angle and projection of 2 vectors
 
 The Law of Cosine is used for finding the angle between 2 vector `v`, and `u`. Where 
 *	`B = |v|`

@@ -1,25 +1,43 @@
-# include "ascii.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_line.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/23 11:43:10 by phsottat          #+#    #+#             */
+/*   Updated: 2026/03/23 12:41:10 by phsottat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ascii.h"
 
 // time : O(1)
 // space: O(1)
-void			swap_line_x(t_2d_line **start, t_2d_line **stop)
+t_2d_line	**free_line_arr(t_2d_line **line_arr, size_t length)
 {
-	if ((*start)->left->x > (*stop)->left->x)
+	size_t	i;
+
+	i = 0;
+	while (i <= length)
 	{
-		swap_point((*start)->left, (*stop)->left, 1);
-		swap_point((*start)->right, (*stop)->right, 0);
+		free_line(line_arr[i]);
+		i += 1;
 	}
+	free(line_arr);
 }
 
 // time : O(n)
 // space: O(n)
-t_2d_line	**merge_sort_sub_linear_loop(t_2d_line **line_arr, t_2d_line **dst_arr, size_t i, size_t stop)
+t_2d_line	**msortl_post_n_loop(t_2d_line **line_arr,
+	t_2d_line **dst_arr, size_t i, size_t stop)
 {
 	while (i <= stop)
 	{
-		if ((dst_arr[i] = copy_line((line_arr)[i])) == NULL)
+		dst_arr[i] = copy_line(line_arr[i]);
+		if (dst_arr[i] == NULL)
 		{
-			free_nested_arr(dst_arr, i - 1);
+			free_line_arr(dst_arr, i - 1);
 			dst_arr = NULL;
 			i = stop;
 		}
@@ -28,67 +46,77 @@ t_2d_line	**merge_sort_sub_linear_loop(t_2d_line **line_arr, t_2d_line **dst_arr
 	return (dst_arr);
 }
 
-// time : O(n)
-// space: O(n)
-t_2d_line			**merge_sort_linear_loop(t_2d_line **line_arr, size_t start, size_t stop)
+// time : O(1)
+// space: O(1)
+t_2d_line	**msortl_mid_n_loop(t_2d_line **line_arr,
+	t_2d_line **dst_arr, size_t *i, size_t j)
 {
-	t_2d_line	**temp_line;
-	size_t	i;
-	size_t	j;
-	size_t	mid;
-
-	if ((temp_line = (t_2d_line **)malloc(sizeof(t_2d_line *) * (stop - start))) == NULL)
-		return (line_arr);
-	mid = (stop + start) / 2;
-	i = start;
-	j = mid + 1;
-	while (i <= mid && j <= stop)
+	dst_arr[*i] = copy_line(line_arr[j]);
+	if (dst_arr[*i] == NULL)
 	{
-		i += 1;
-		j += 1;
+		free_line_arr(dst_arr, *i - 1);
+		return (NULL);
 	}
-	if (merge_sort_sub_linear_loop(line_arr, temp_line, i, mid) == NULL)
+	*i += 1;
+	return (dst_arr);
+}
+
+// time : O(n)
+// space: O(1)
+t_2d_line	**msortl_n_loop(t_2d_line **line_arr, t_2d_line **dst_line,
+	size_t start, size_t stop)
+{
+	size_t		i;
+	size_t		j;
+	size_t		mid;
+
+	mid = (stop + start) / 2;
+	i = 0;
+	j = 0;
+	while (i <= mid - start && j <= stop - mid - 1)
+	{
+		if (line_arr[i + start]->left->x > line_arr[j]->left->x)
+			if (msortl_mid_n_loop(line_arr, dst_line,
+					&i, i + start) == NULL)
+				return (line_arr);
+		else
+			if (msortl_mid_n_loop(line_arr, dst_line,
+					&j, j + mid + 1) == NULL)
+				return (line_arr);
+	}
+	if (msortl_post_n_loop(line_arr, dst_line + start, i, mid - start) == NULL)
 		return (line_arr);
-	if (merge_sort_sub_linear_loop(line_arr, temp_line, j, stop) == NULL)
+	if (msortl_post_n_loop(line_arr, dst_line + mid, j, stop - mid - 1) == NULL)
 		return (line_arr);
-	replace_2d_points(temp_line, line_arr + start, stop - start);
-	free_nested_arr(temp_line, stop - start);
+	replace_2d_points(dst_line, line_arr + start, stop - start);
 	return (line_arr);
 }
 
 // time : O(n log(n))
 // space: O(n)
-t_2d_line			**merge_sort_line_x(t_2d_line **line_arr, size_t start, size_t stop)
+t_2d_line	**msortl_x(t_2d_line **line_arr, size_t start, size_t stop)
 {
-	size_t	mid;
-	t_2d_line	**temp_line;
-	size_t	i;
-	size_t	j;
+	size_t		mid;
+	t_2d_line	**dst_line;
+	size_t		i;
+	size_t		j;
 
 	if (stop - start <= 1)
 	{
-		swap_line_x(line_arr + start, line_arr + stop);
+		if (line_arr[start]->left->x > line_arr[stop]->left->x)
+		{
+			swap_point(line_arr[start]->left, line_arr[stop]->left, 1);
+			swap_point(line_arr[start]->right, line_arr[stop]->right, 0);
+		}
 		return (NULL);
 	}
 	mid = (stop + start) / 2;
-	merge_sort_line_x(line_arr, start, mid);
-	merge_sort_line_x(line_arr, mid + 1, stop);
-	if ((temp_line = (t_2d_line **)malloc(sizeof(t_2d_line *) * (stop - start))) == NULL)
+	msortl_x(line_arr, start, mid);
+	msortl_x(line_arr, mid + 1, stop);
+	dst_line = (t_2d_line **)malloc(sizeof(t_2d_line *) * (stop - start));
+	if (dst_line == NULL)
 		return (line_arr);
-	i = start;
-	j = mid + 1;
-	while (i <= mid && j <= stop)
-	{
-		i += 1;
-		j += 1;
-	}
-	while (i <= stop)
-	{
-		i += 1;
-	}
-	while (j <= stop)
-	{
-		j += 1;
-	}
+	msortl_n_loop(line_arr, dst_line, start, stop);
+	free_line_arr(dst_line, stop - start);
 	return (line_arr);
 }

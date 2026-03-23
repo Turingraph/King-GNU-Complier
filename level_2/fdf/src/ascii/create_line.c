@@ -1,48 +1,20 @@
-# include "ascii.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   create_line.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/23 11:05:07 by phsottat          #+#    #+#             */
+/*   Updated: 2026/03/23 12:21:44 by phsottat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ascii.h"
 
 // time : O(1)
 // space: O(1)
-void			swap_point(t_2d_dim *start, t_2d_dim *stop, char is_sort)
-{
-	size_t	temp;
-
-	if ((start->x > stop->x && is_sort == 1) || is_sort == 0)
-	{
-		temp = start->x;
-		start->x = stop->x;
-		stop->x = temp;
-		temp = start->y;
-		start->y = stop->y;
-		stop->y = temp;
-	}
-}
-
-t_2d_dim		*copy_2d_point(t_2d_dim *src)
-{
-	t_2d_dim	*dst;
-
-	if ((dst = (t_2d_dim *)malloc(sizeof(t_2d_dim))) == NULL)
-		return (NULL);
-	dst->x = src->x;
-	dst->y = src->y;
-	return (dst);
-}
-
-t_2d_dim		*replace_2d_points(t_2d_dim **src, t_2d_dim **dst, size_t len)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < len)
-	{
-		(dst[i])->x = (src[i])->x;
-		(dst[i])->y = (src[i])->y;
-		i += 1;
-	}
-	return (dst);
-}
-
-void			free_line(t_2d_line *line)
+void	free_line(t_2d_line *line)
 {
 	if (line != NULL)
 	{
@@ -54,24 +26,42 @@ void			free_line(t_2d_line *line)
 	}
 }
 
-t_2d_line			*copy_line(t_2d_line *src)
+// time : O(1)
+// space: O(1)
+t_2d_line	*create_line(size_t x_1, size_t y_1, size_t x_2, size_t y_2)
+{
+	t_2d_line	*output;
+
+	output = (t_2d_line *)malloc(sizeof(t_2d_line));
+	if (output == NULL)
+		return (NULL);
+	output->right = NULL;
+	output->left = (t_2d_dim *)malloc(sizeof(t_2d_dim));
+	if (output->left == NULL)
+	{
+		free_line(output);
+		return (NULL);
+	}
+	output->left->x = x_1;
+	output->left->y = y_1;
+	output->right = (t_2d_dim *)malloc(sizeof(t_2d_dim));
+	if (output->right == NULL)
+	{
+		free_line(output);
+		return (NULL);
+	}
+	output->right->x = x_2;
+	output->right->y = y_2;
+	swap_point(output->left, output->right, 1);
+	return (output);
+}
+
+// time : O(1)
+// space: O(1)
+t_2d_line	*copy_line(t_2d_line *src)
 {
 	t_2d_line	*dst;
 
-	if ((dst = (t_2d_line *)malloc(sizeof(t_2d_line))) == NULL)
-		return (NULL);
-	dst->right = NULL;
-	if ((dst->left = copy_2d_point(src->left)) == NULL)
-	{
-		free_line(dst);
-		return (NULL);
-	}
-	if ((dst->right = copy_2d_point(src->right)) == NULL)
-	{
-		free_line(dst);
-		return (NULL);
-	}
-	swap_point(dst->left, dst->right, 1);
+	dst = create_line(src->left->x, src->left->y, src->right->x, src->right->y);
 	return (dst);
 }
-

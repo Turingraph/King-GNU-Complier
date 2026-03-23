@@ -1,4 +1,16 @@
-# include "ascii.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bresenham_line.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/23 11:02:47 by phsottat          #+#    #+#             */
+/*   Updated: 2026/03/23 11:05:27 by phsottat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ascii.h"
 
 // time : O(1)
 // space: O(1)
@@ -6,8 +18,8 @@ void	swap_vector(t_2d_dim *v1, t_2d_dim *v2, char is_x)
 {
 	size_t	temp;
 
-	if ((is_x == 1 && v1->x >= v2->x) || 
-		(is_x == 0 && v1->y >= v2->y))
+	if ((is_x == 1 && v1->x >= v2->x)
+		|| (is_x == 0 && v1->y >= v2->y))
 	{
 		temp = v1->x;
 		v1->x = v2->x;
@@ -46,7 +58,8 @@ Condition when y += j, where j <= i
 
 // time : O(n)
 // space: O(1)
-char	bresenham_line_x(t_2d_dim *v1, t_2d_dim *v2, t_ascii_canvas *canvas, char mark)
+char	bresenham_line_x(t_2d_dim *v1, t_2d_dim *v2,
+	t_ascii_canvas *canvas, char mark)
 {
 	size_t	i;
 	int		decision;
@@ -71,7 +84,8 @@ char	bresenham_line_x(t_2d_dim *v1, t_2d_dim *v2, t_ascii_canvas *canvas, char m
 
 // time : O(n)
 // space: O(1)
-char	bresenham_line_y(t_2d_dim *v1, t_2d_dim *v2, t_ascii_canvas *canvas, char mark)
+char	bresenham_line_y(t_2d_dim *v1, t_2d_dim *v2,
+	t_ascii_canvas *canvas, char mark)
 {
 	size_t	i;
 	int		decision;
@@ -96,10 +110,11 @@ char	bresenham_line_y(t_2d_dim *v1, t_2d_dim *v2, t_ascii_canvas *canvas, char m
 
 // time : O(n)
 // space: O(1)
-void	bresenham_line(t_2d_dim *v1, t_2d_dim *v2, t_ascii_canvas *canvas, char mark)
+char	bresenham_line(t_2d_dim *v1, t_2d_dim *v2,
+	t_ascii_canvas *canvas, char mark)
 {
-	if (v1->x < 0 || v1->x >= canvas->w || v2->x < 0 || v2->x >= canvas->w ||
-		v1->y < 0 || v1->y >= canvas->h || v2->y < 0 || v2->y >= canvas->h)
+	if (v1->x < 0 || v1->x >= canvas->w || v2->x < 0 || v2->x >= canvas->w
+		|| v1->y < 0 || v1->y >= canvas->h || v2->y < 0 || v2->y >= canvas->h)
 		return (0);
 	if (abs(v1->x - v2->x) <= abs(v1->y - v2->y))
 	{
@@ -111,4 +126,5 @@ void	bresenham_line(t_2d_dim *v1, t_2d_dim *v2, t_ascii_canvas *canvas, char mar
 		swap_vector(v1, v2, 1);
 		bresenham_line_x(v1, v2, canvas, mark);
 	}
+	return (1);
 }

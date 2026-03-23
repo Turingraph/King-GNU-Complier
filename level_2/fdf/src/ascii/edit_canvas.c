@@ -1,6 +1,21 @@
-# include "ascii.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   edit_canvas.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/23 11:11:02 by phsottat          #+#    #+#             */
+/*   Updated: 2026/03/23 12:18:06 by phsottat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void			replace_ascii_char(t_ascii_canvas *canvas, char old_color, char new_color)
+#include "ascii.h"
+
+// time : O(n)
+// space: O(n)
+void	replace_ascii_char(t_ascii_canvas *canvas, char old_color,
+	char new_color)
 {
 	size_t	i;
 	size_t	j;
@@ -19,12 +34,15 @@ void			replace_ascii_char(t_ascii_canvas *canvas, char old_color, char new_color
 	}
 }
 
+// time : O(n)
+// space: O(n)
 t_ascii_canvas	*add_ascii_column(t_ascii_canvas *canvas, char is_left)
 {
 	t_ascii_canvas	*new_canvas;
 	size_t			i;
 
-	if((new_canvas = ascii_create_canvas(canvas->w + 1, canvas->h)) == NULL)
+	new_canvas = ascii_create_canvas(canvas->w + 1, canvas->h);
+	if (new_canvas == NULL)
 	{
 		ascii_delete_canvas(canvas, canvas->h);
 		return (NULL);
@@ -45,13 +63,16 @@ t_ascii_canvas	*add_ascii_column(t_ascii_canvas *canvas, char is_left)
 	return (new_canvas);
 }
 
+// time : O(n)
+// space: O(n)
 t_ascii_canvas	*add_ascii_row(t_ascii_canvas *canvas, char is_down)
 {
 	t_ascii_canvas	*new_canvas;
 	size_t			i;
 	size_t			j;
 
-	if((new_canvas = ascii_create_canvas(canvas->w, canvas->h + 1)) == NULL)
+	new_canvas = ascii_create_canvas(canvas->w, canvas->h + 1);
+	if (new_canvas == NULL)
 	{
 		ascii_delete_canvas(canvas, canvas->h);
 		return (NULL);
