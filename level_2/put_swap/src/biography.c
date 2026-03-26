@@ -1,0 +1,97 @@
+#include "push_swap.h"
+
+long int	translating_word(char *src, char *err, size_t *digit, size_t sign)
+{
+	long int	y;
+
+	y = 0;
+	while (src[*digit] != '\0' && *digit < 11 + sign && *err != 'E')
+	{
+		if (digit == sign && src[*digit] == '0')
+			*err = 'E';
+		else if (src[*digit] >= '0' && src[*digit] <= '9')
+			y += (long int) (src[*digit] - '0');
+		else
+			*err = 'E';
+		*digit += 1;
+		y *= 10;
+	}
+	y /= 10;
+	return (y);
+}
+
+int	translating_book(char *src, char *err)
+{
+	long int	y;
+	size_t		digit;
+	size_t		sign;
+
+	sign = 0;
+	if (src[digit] == '-')
+		sign = 1;
+	digit = sign;
+	y = translating_word(src, err, &digit, sign);
+	if (sign == 1)
+		y *= -1;
+	if (src[digit] != '\0' && digit >= 11 + sign)
+	{
+		*err = 'E';
+		return (-1);
+	}
+	if (y < -2147483648 || y > 2147483647)
+	{
+		*err = 'E';
+		return (-1);
+	}
+	return ((int) y);
+}
+
+int	*write_biography(size_t n_chapters, char **imagine, char *err)
+{
+	int		*record;
+	size_t	i;
+
+	record = (int *)malloc(sizeof(int) * (n_chapters));
+	if (record == NULL)
+		return (NULL);
+	i = 0;
+	while (i < n_chapters)
+	{
+		record[i] = translating_book(imagine, err);
+		if (*err == 'E')
+		{
+			free(record);
+			return (NULL);
+		}
+		i += 1;
+	}
+	return (record);
+}
+
+void	burning_memory(t_chapter *memory)
+{
+	t_chapter		*page;
+
+	if (memory != NULL)
+	{
+		while (memory->future != NULL)
+		{
+			page = memory->future;
+			free(memory);
+			memory = page;
+		}
+		free(memory);
+	}
+}
+
+t_chapter	*write_a_chapter(int moment)
+{
+	t_chapter	*record;
+
+	record = (t_chapter *)malloc(sizeof(t_chapter));
+	if (record == NULL)
+		return (NULL);
+	record->future = NULL;
+	record->moment = moment;
+	return (record);
+}
