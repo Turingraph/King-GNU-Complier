@@ -88,7 +88,7 @@ char	kagerou_day(int *events, size_t time)
 	if (memory == NULL)
 		return (0);
 	i = 0;
-	while (i < eclipse && is_dejavu == 0)
+	while (i < time && is_dejavu == 0)
 	{
 		if (am_i_see_this_before(memory, events[i], eclipse) == 1)
 			is_dejavu = 1;
