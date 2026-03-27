@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   biography.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/27 12:29:30 by phsottat          #+#    #+#             */
+/*   Updated: 2026/03/27 17:18:28 by phsottat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 long int	translating_word(char *src, char *err, size_t *digit, size_t sign)
@@ -10,7 +22,7 @@ long int	translating_word(char *src, char *err, size_t *digit, size_t sign)
 		if (digit == sign && src[*digit] == '0')
 			*err = 'E';
 		else if (src[*digit] >= '0' && src[*digit] <= '9')
-			y += (long int) (src[*digit] - '0');
+			y += (long int)(src[*digit] - '0');
 		else
 			*err = 'E';
 		*digit += 1;
@@ -26,6 +38,7 @@ int	translating_book(char *src, char *err)
 	size_t		digit;
 	size_t		sign;
 
+	digit = 0;
 	sign = 0;
 	if (src[digit] == '-')
 		sign = 1;

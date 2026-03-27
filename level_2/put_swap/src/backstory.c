@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   backstory.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/27 12:29:40 by phsottat          #+#    #+#             */
+/*   Updated: 2026/03/27 18:45:30 by phsottat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include"push_swap.h"
 
 t_chapter	*write_diary(size_t n_chapters, int *record, t_vision **mc)
@@ -69,4 +81,28 @@ t_yin_yang	*write_backstory(size_t n_chapters, char **imagine, char *err)
 		return (NULL);
 	story = study_me(n_chapters, record, &mc);
 	return (story);
+}
+
+size_t	reincarnation(t_vision **original_time,
+	t_vision **parallel_time, t_yin_yang *story, char *whoami)
+{
+	size_t	life_energy;
+
+	*original_time = story->me;
+	*parallel_time = story->them;
+	life_energy = 0;
+	story->seasons = 0;
+	if (story->me != NULL)
+		life_energy = story->me->n_chapters;
+	if (*whoami == 'b')
+	{
+		*original_time = story->them;
+		*parallel_time = story->me;
+		*whoami = 'a';
+		if (story->them != NULL)
+			life_energy = story->them->n_chapters;
+	}
+	else
+		*whoami = 'b';
+	return (life_energy);
 }

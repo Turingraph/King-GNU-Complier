@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   eclipse.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/27 17:15:02 by phsottat          #+#    #+#             */
+/*   Updated: 2026/03/27 18:31:45 by phsottat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 char	is_eclipse(size_t sun)
@@ -14,20 +26,20 @@ char	is_eclipse(size_t sun)
 	return (1);
 }
 
-size_t	get_next_eclipse(size_t today)
+size_t	wait_next_eclipse(size_t today)
 {
-	char	eclipse_state;
+	char	telescope;
 
-	eclipse_state = is_eclipse(today);
-	while (eclipse_state == 0)
+	telescope = is_eclipse(today);
+	while (telescope == 0)
 	{
 		today += 1;
-		eclipse_state = is_eclipse(today);
+		telescope = is_eclipse(today);
 	}
 	return (today);
 }
 
-size_t	a_power_b(size_t a, size_t b)
+size_t	numerology(size_t a, size_t b)
 {
 	size_t	i;
 	size_t	y;
@@ -51,14 +63,14 @@ size_t	the_wheel_of_fortune(int event, size_t eclipse)
 	size_t		prediction;
 
 	prediction = (size_t) event;
-	first_digits = a_power_b(2, 8 + 1);
-	last_digits = a_power_b(2, 2 * 8 + 1);
+	first_digits = numerology(2, 8 + 1);
+	last_digits = numerology(2, 2 * 8 + 1);
 	month = 0;
 	while (month < 12)
 	{
 		prediction *= prediction;
-	    prediction = prediction / first_digits;
-	    prediction = prediction % last_digits;
+		prediction = prediction / first_digits;
+		prediction = prediction % last_digits;
 		month += 1;
 	}
 	prediction = prediction % eclipse;
