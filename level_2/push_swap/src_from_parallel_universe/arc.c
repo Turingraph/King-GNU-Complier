@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "appendix.h"
 
 // time : O(1)
 // space: O(1)
@@ -43,7 +43,7 @@ void	arc_dialog(t_chapter **listener, t_chapter **speaker)
 
 // time : O(1)
 // space: O(1)
-void	arc_outside_box(t_vision **perspective)
+void	arc_reflection(t_vision **perspective)
 {
 	t_chapter	*the_hanged_man;
 

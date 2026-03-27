@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "appendix.h"
 
 int	main(int time, char **memory)
 {

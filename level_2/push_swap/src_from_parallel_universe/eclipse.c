@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "appendix.h"
 
-char	is_eclipse(size_t sun)
+char	view_eclipse(size_t sun)
 {
 	size_t	i;
 
@@ -30,11 +30,11 @@ size_t	wait_next_eclipse(size_t today)
 {
 	char	telescope;
 
-	telescope = is_eclipse(today);
+	telescope = view_eclipse(today);
 	while (telescope == 0)
 	{
 		today += 1;
-		telescope = is_eclipse(today);
+		telescope = view_eclipse(today);
 	}
 	return (today);
 }

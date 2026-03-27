@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "appendix.h"
 
 long int	translating_word(char *src, char *err, size_t *digit, size_t sign)
 {

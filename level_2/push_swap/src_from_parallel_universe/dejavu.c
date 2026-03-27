@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "appendix.h"
 
 void	lost_time_memory(t_chapter **dejavu, size_t eclipse)
 {
@@ -25,18 +25,18 @@ void	lost_time_memory(t_chapter **dejavu, size_t eclipse)
 	free(dejavu);
 }
 
-t_chapter	**dejavu_rumination(size_t eclipse)
+t_chapter	**rumination(size_t eclipse)
 {
 	size_t		day;
-	size_t		the_time_has_come;
+	size_t		inevitable_ending;
 	t_chapter	**dejavu;
 
-	the_time_has_come = wait_next_eclipse(eclipse + 1);
-	dejavu = (t_chapter **)malloc(sizeof(t_chapter *) * (the_time_has_come));
+	inevitable_ending = wait_next_eclipse(eclipse + 1);
+	dejavu = (t_chapter **)malloc(sizeof(t_chapter *) * (inevitable_ending));
 	if (dejavu == NULL)
 		return (NULL);
 	day = 0;
-	while (day < the_time_has_come)
+	while (day < inevitable_ending)
 	{
 		dejavu[day] = NULL;
 		day += 1;
@@ -96,7 +96,7 @@ char	kagerou_day(int *events, size_t time)
 
 	is_dejavu = 0;
 	eclipse = wait_next_eclipse(time);
-	memory = dejavu_rumination(time);
+	memory = rumination(time);
 	if (memory == NULL)
 		return (0);
 	i = 0;
@@ -129,7 +129,7 @@ int	main(int ac, char **arr)
 	if (e == 'E' || events == NULL)
 		return (0);
 	eclipse = wait_next_eclipse(ac);
-	dejavu = dejavu_rumination(ac);
+	dejavu = rumination(ac);
 	if (dejavu == NULL)
 	{
 		free(events);

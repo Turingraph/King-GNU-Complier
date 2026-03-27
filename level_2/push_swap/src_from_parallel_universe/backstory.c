@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include"appendix.h"
 
 t_chapter	*write_diary(size_t n_chapters, int *record, t_vision **mc)
 {

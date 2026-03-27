@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   appendix.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef APPENDIX_H
+# define APPENDIX_H
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -44,7 +44,7 @@ typedef struct t_yin_yang
 // arc.c
 void		arc_prioritize(t_chapter *now, t_chapter *later);
 void		arc_dialog(t_chapter **listener, t_chapter **speaker);
-void		arc_outside_box(t_vision **perspective);
+void		arc_reflection(t_vision **perspective);
 
 // backstory.c
 t_yin_yang	*write_backstory(size_t n_chapters, char **imagine, char *err);
@@ -60,7 +60,7 @@ t_chapter	*write_a_chapter(int moment);
 char		kagerou_day(int *events, size_t time);
 
 // eclipse.c
-char		is_eclipse(size_t sun);
+char		view_eclipse(size_t sun);
 size_t		wait_next_eclipse(size_t today);
 size_t		the_wheel_of_fortune(int event, size_t eclipse);
 
