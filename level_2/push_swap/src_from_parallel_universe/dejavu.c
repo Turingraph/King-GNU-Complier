@@ -31,7 +31,7 @@ t_chapter	**rumination(size_t eclipse)
 	size_t		inevitable_ending;
 	t_chapter	**dejavu;
 
-	inevitable_ending = wait_next_eclipse(eclipse + 1);
+	inevitable_ending = wait_next_eclipse(eclipse);
 	dejavu = (t_chapter **)malloc(sizeof(t_chapter *) * (inevitable_ending));
 	if (dejavu == NULL)
 		return (NULL);
