@@ -12,6 +12,8 @@
 
 #include "appendix.h"
 
+// time : O(1)
+// space: O(1)
 void	say_story(char arc, char mc, char secret)
 {
 	if (secret != 1)
@@ -35,6 +37,8 @@ void	say_story(char arc, char mc, char secret)
 	}
 }
 
+// time : O(1)
+// space: O(1)
 void	show_story(char *me, char *them, char *secret, char tale)
 {
 	*me = 'a';
@@ -50,6 +54,8 @@ void	show_story(char *me, char *them, char *secret, char tale)
 	}
 }
 
+// time : O(1)
+// space: O(1)
 void	say_prioritize(t_yin_yang *story, char mc, char secret)
 {
 	char	my_tale;
@@ -73,6 +79,8 @@ void	say_prioritize(t_yin_yang *story, char mc, char secret)
 		write(1, "ss\n", 3);
 }
 
+// time : O(1)
+// space: O(1)
 void	say_dialog(t_yin_yang *story, char mc, char secret)
 {
 	if (story->them != NULL && mc == 'a')
@@ -97,6 +105,8 @@ void	say_dialog(t_yin_yang *story, char mc, char secret)
 		write(1, "**INVALID**", 11);
 }
 
+// time : O(1)
+// space: O(1)
 void	say_outside_box(t_yin_yang *story, char mc, char secret)
 {
 	if (story->them != NULL && (mc == 'a' || mc == 'c'))

@@ -47,20 +47,19 @@ void		arc_dialog(t_chapter **listener, t_chapter **speaker);
 void		arc_reflection(t_vision **perspective);
 
 // backstory.c
-t_yin_yang	*write_backstory(size_t n_chapters, char **imagine, char *err);
+t_yin_yang	*write_backstory(size_t n_chapters, int *record);
 size_t		reincarnation(t_vision **original_time, t_vision **parallel_time,
 				t_yin_yang *story, char *whoami);
 
 // biography.c
 int			*write_biography(size_t n_chapters, char **imagine, char *err);
-void		burning_memory(t_chapter *memory);
+void		memento_mori(t_chapter *memory);
 t_chapter	*write_a_chapter(int moment);
 
 // dejavu.c
 char		kagerou_day(int *events, size_t time);
 
 // eclipse.c
-char		view_eclipse(size_t sun);
 size_t		wait_next_eclipse(size_t today);
 size_t		the_wheel_of_fortune(int event, size_t eclipse);
 
@@ -72,5 +71,6 @@ void		say_dialog(t_yin_yang *story, char mc, char secret);
 void		say_outside_box(t_yin_yang *story, char mc, char secret);
 
 // the_illusion_of_separation.c
+void		the_illusion_of_separation(t_yin_yang *story, char secret);
 
 #endif

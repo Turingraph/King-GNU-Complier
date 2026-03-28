@@ -12,31 +12,33 @@
 
 #include "appendix.h"
 
-void	lost_time_memory(t_chapter **dejavu, size_t eclipse)
+// time : O(n)
+// space: O(1)
+void	burning_memory(t_chapter **dejavu, size_t eclipse)
 {
 	size_t	i;
 
 	i = 0;
 	while (i < eclipse)
 	{
-		burning_memory(dejavu[i]);
+		memento_mori(dejavu[i]);
 		i += 1;
 	}
 	free(dejavu);
 }
 
+// time : O(n)
+// space: O(n)
 t_chapter	**rumination(size_t eclipse)
 {
 	size_t		day;
-	size_t		inevitable_ending;
 	t_chapter	**dejavu;
 
-	inevitable_ending = wait_next_eclipse(eclipse);
-	dejavu = (t_chapter **)malloc(sizeof(t_chapter *) * (inevitable_ending));
+	dejavu = (t_chapter **)malloc(sizeof(t_chapter *) * (eclipse));
 	if (dejavu == NULL)
 		return (NULL);
 	day = 0;
-	while (day < inevitable_ending)
+	while (day < eclipse)
 	{
 		dejavu[day] = NULL;
 		day += 1;
@@ -44,7 +46,9 @@ t_chapter	**rumination(size_t eclipse)
 	return (dejavu);
 }
 
-void	*subliminal_stimuli(t_chapter **dejavu, int event, size_t eclipse)
+// time : O(1)
+// space: O(1)
+char	subliminal_stimuli(t_chapter **dejavu, int event, size_t eclipse)
 {
 	size_t		day;
 	t_chapter	*rabbit_hole;
@@ -54,18 +58,26 @@ void	*subliminal_stimuli(t_chapter **dejavu, int event, size_t eclipse)
 	{
 		dejavu[day] = write_a_chapter(event);
 		if (dejavu[day] == NULL)
-			lost_time_memory(dejavu, eclipse);
-		return (NULL);
+		{
+			burning_memory(dejavu, eclipse);
+			return (0);
+		}
+		return (1);
 	}
 	rabbit_hole = dejavu[day];
 	while (rabbit_hole->future != NULL)
 		rabbit_hole = rabbit_hole->future;
 	rabbit_hole->future = write_a_chapter(event);
 	if (rabbit_hole->future == NULL)
-		lost_time_memory(dejavu, eclipse);
-	return (NULL);
+	{
+		burning_memory(dejavu, eclipse);
+		return (0);
+	}
+	return (1);
 }
 
+// time : O(1)
+// space: O(1)
 char	have_i_seen_this_before(t_chapter **dejavu, int event, size_t eclipse)
 {
 	size_t		day;
@@ -86,7 +98,8 @@ char	have_i_seen_this_before(t_chapter **dejavu, int event, size_t eclipse)
 	return (0);
 }
 
-// or history_repeat_itself
+// time : O(n log(log(n)))
+// space: O(n)
 char	kagerou_day(int *events, size_t time)
 {
 	size_t		i;
@@ -96,18 +109,21 @@ char	kagerou_day(int *events, size_t time)
 
 	is_dejavu = 0;
 	eclipse = wait_next_eclipse(time);
-	memory = rumination(time);
+	if (eclipse == 0)
+		return (1);
+	memory = rumination(eclipse);
 	if (memory == NULL)
-		return (0);
+		return (1);
 	i = 0;
 	while (i < time && is_dejavu == 0)
 	{
 		if (have_i_seen_this_before(memory, events[i], eclipse) == 1)
 			is_dejavu = 1;
-		subliminal_stimuli(memory, events[i], eclipse);
+		if (subliminal_stimuli(memory, events[i], eclipse) == 0)
+			return (is_dejavu);
 		i += 1;
 	}
-	lost_time_memory(memory, eclipse);
+	burning_memory(memory, eclipse);
 	return (is_dejavu);
 }
 
@@ -147,7 +163,7 @@ int	main(int ac, char **arr)
 		i += 1;
 	}
 	free(events);
-	lost_time_memory(dejavu, eclipse);
+	burning_memory(dejavu, eclipse);
 	if (is_dejavu == 1)
 		write(1, "Duplication\n", 12);
 	else

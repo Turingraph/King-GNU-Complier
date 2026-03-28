@@ -12,77 +12,81 @@
 
 #include"appendix.h"
 
-t_chapter	*write_diary(size_t n_chapters, int *record, t_vision **mc)
+// time : O(n)
+// space: O(n)
+t_chapter	*write_diary(size_t n_chapters, int *record, t_chapter *grimoire)
 {
-	t_chapter	*chapter;
+	t_chapter	*diary;
 	size_t		i;
 
-	(*mc)->first = write_a_chapter(record[0]);
-	if ((*mc)->first == NULL)
-		return (NULL);
-	chapter = (*mc)->first;
+	diary = grimoire;
 	i = 1;
 	while (i < n_chapters)
 	{
-		chapter->future = write_a_chapter(record[i]);
-		if (chapter->future == NULL)
+		diary->future = write_a_chapter(record[i]);
+		if (diary->future == NULL)
 		{
-			burning_memory((*mc)->first);
+			memento_mori(grimoire);
 			return (NULL);
 		}
-		chapter = chapter->future;
+		diary = diary->future;
 		i += 1;
 	}
-	(*mc)->n_chapters = n_chapters;
-	(*mc)->last = chapter;
-	return (chapter);
+	return (diary);
 }
 
-t_yin_yang	*study_me(size_t n_chapters, int *record, t_vision **mc)
+// time : O(n)
+// space: O(n)
+t_vision	*study_me(size_t n_chapters, int *record)
+{
+	t_chapter	*chapter;
+	t_vision	*me;
+	size_t		i;
+
+	me = (t_vision *)malloc(sizeof(t_vision));
+	if (me == NULL)
+		return (NULL);
+	me->first = write_a_chapter(record[0]);
+	if (me->first == NULL)
+	{
+		free(me);
+		return (NULL);
+	}
+	me->n_chapters = n_chapters;
+	me->last = write_diary(n_chapters, record, me->first);
+	if (me->last == NULL)
+	{
+		free(me);
+		return (NULL);
+	}
+	return (me);
+}
+
+// time : O(n)
+// space: O(n)
+t_yin_yang	*write_backstory(size_t n_chapters, int *record)
 {
 	t_yin_yang	*story;
-	size_t		i;
-	t_chapter	*last;
+	int			*record;
 
 	story = (t_yin_yang *)malloc(sizeof(t_yin_yang));
 	if (story == NULL)
 		return (NULL);
-	last = write_diary(n_chapters, record, mc);
-	if (last == NULL)
+	story->me = study_me(n_chapters, record);
+	if (story->me == NULL)
 	{
-		burning_memory((*mc)->first);
-		free(*mc);
 		free(story);
+		free(record);
 		return (NULL);
 	}
+	story->them = NULL;
 	story->tree_of_life = 2;
 	story->seasons = 0;
-	story->me = *mc;
-	story->them = NULL;
 	return (story);
 }
 
-t_yin_yang	*write_backstory(size_t n_chapters, char **imagine, char *err)
-{
-	t_yin_yang	*story;
-	int			*record;
-	t_vision	*mc;
-
-	mc = (t_vision *)malloc(sizeof(t_vision));
-	if (mc == NULL)
-	{
-		free(story);
-		return (NULL);
-	}
-	record = write_biography(n_chapters, imagine, err);
-	if (record == NULL)
-		return (NULL);
-	if (*err == 'E')
-		return (NULL);
-	story = study_me(n_chapters, record, &mc);
-	return (story);
-}
-
+// time : O(1)
+// space: O(1)
 size_t	reincarnation(t_vision **original_time,
 	t_vision **parallel_time, t_yin_yang *story, char *whoami)
 {

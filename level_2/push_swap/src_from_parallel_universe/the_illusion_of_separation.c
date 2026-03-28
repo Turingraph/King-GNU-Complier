@@ -33,7 +33,7 @@ void	existential_crisis(t_yin_yang *story, char secret)
 	if (story->me != NULL)
 	{
 		say_dialog(story, 'b', secret);
-		say_outside_box(story, 'b', secret);
+		say_reflection(story, 'b', secret);
 	}
 	story->tree_of_life = 4;
 }
@@ -56,7 +56,7 @@ void	reverse_time_line(t_vision *original_time,
 		say_story('p', them, secret);
 		if (parallel_time->n_chapters > 1 && time > 2)
 		{
-			arc_outside_box(&parallel_time);
+			arc_reflection(&parallel_time);
 			say_story('r', them, secret);
 		}
 		i += 1;
@@ -83,7 +83,7 @@ void	observer_effect(t_vision *original_time,
 			arc_dialog(&original_time, &parallel_time);
 			say_story('p', me, secret);
 		}
-		arc_outside_box(&original_time);
+		arc_reflection(&original_time);
 		say_story('r', me, secret);
 		i += 1;
 	}
@@ -92,13 +92,13 @@ void	observer_effect(t_vision *original_time,
 		arc_dialog(&original_time, &parallel_time);
 		say_story('p', me, secret);
 	}
-	arc_outside_box(&original_time);
+	arc_reflection(&original_time);
 	say_story('r', me, secret);
 }
 
 // time : O(n)
 // space: O(1)
-void	hero_journey(t_yin_yang *story, char *whoami)
+size_t	hero_journey(t_yin_yang *story, char *whoami)
 {
 	t_vision	*original_time;
 	t_vision	*parallel_time;
@@ -120,6 +120,7 @@ void	hero_journey(t_yin_yang *story, char *whoami)
 			original_time->n_chapters % (tree * (story->seasons + 1)));
 	}
 	story->tree_of_life *= 2;
+	return (time);
 }
 
 // time : O(n log(n))
@@ -134,156 +135,6 @@ void	the_illusion_of_separation(t_yin_yang *story, char secret)
 	existential_crisis(story, secret);
 	while (story->tree_of_life <= time)
 	{
-		hero_journey(story, &whoami);
+		time = hero_journey(story, &whoami);
 	}
 }
-
-/*
-a: 1 2 3 4 5
-b:
-
-a: 2 3 4 5
-b: 1
-
-a: 3 4 5
-b: 2 1
-
-a: 3 4 5
-b: 1 2
-
-a: 4 5
-b: 3 1 2
-
-a: 4 5
-b: 1 2 3
-
-a: 5
-b: 4 1 2 3
-
-a: 5
-b: 1 2 3 4
-
-a: 
-b: 5 1 2 3 4
-
-a: 
-b: 1 2 3 4 5
-*/
-
-///////////////////////////////////////////////////////////////////////////
-
-/*
-a: 4 2 35 5 131 3 77
-b:
-
-a: 2 4 35 5 131 3 77
-b:
-
-a: 35 5 131 3 77
-b: 4 2
-
-a: 131 3 77
-b: 5 35 4 2
-
-a: 3 131 77
-b: 5 35 4 2
-
-a: 77
-b: 131 3 5 35 4 2
-
-a:
-b: 77 131 3 5 35 4 2
-
-a:
-b: 131 3 5 35 4 2 77
-*/
-
-/*
-a:
-b: 131 3 5 35 (4 2 77)
-
-a: 3 131
-b: 5 35 (4 2 77)
-
-a: 3 131
-b: 35 (4 2 77) 5
-
-a: 131
-b: 3 35 (4 2 77) 5
-
-a: 131
-b: 35 (4 2 77) 5 3
-
-a: 131
-b: (4 2 77) 5 3 35
-
-a: 
-b: 131 (4 2 77) 5 3 35
-
-a: 
-b: (4 2 77) 5 3 35 131
-*/
-
-/*
-a:
-b: 4 2 77 (5 3 35 131)
-
-a: 4
-b: 2 77 (5 3 35 131)
-
-a: 4
-b: 77 (5 3 35 131) 2
-
-a: 
-b: 4 77 (5 3 35 131) 2
-
-a: 
-b: 77 (5 3 35 131) 2 4
-
-a: 
-b: (5 3 35 131) 2 4 77
-*/
-
-/*
-a: 
-b: 5 3 35 131 2 4 77
-
-a: 5
-b: 3 35 131 2 4 77
-
-a: 3 5
-b: 35 131 2 4 77
-
-a: 5 3
-b: 35 131 2 4 77
-
-a: 35 5 3
-b: 131 2 4 77
-*/
-
-///////////////////////////////////////////////////////////////////////////
-/*
-a: 4 3 1 2 ...
-b: 
-
-a: 1 2 ...
-b: 3 4
-
-a: 2 ... 1
-b: 3 4
-
-a: ... 1 2
-b: 3 4
-
-a: 3 ... 1 2
-b: 4
-
-a: ... 1 2 3
-b: 4
-
-a: 4 ... 1 2 3
-b: 
-
-a: ... 1 2 3 4
-b: 
-*/

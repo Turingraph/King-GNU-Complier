@@ -12,7 +12,9 @@
 
 #include "appendix.h"
 
-long int	translating_word(char *src, char *err, size_t *digit, size_t sign)
+// time : O(1)
+// space: O(1)
+long int	first_draft(char *src, char *err, size_t *digit, size_t sign)
 {
 	long int	y;
 
@@ -32,7 +34,9 @@ long int	translating_word(char *src, char *err, size_t *digit, size_t sign)
 	return (y);
 }
 
-int	translating_book(char *src, char *err)
+// time : O(1)
+// space: O(1)
+int	edited_draft(char *src, char *err)
 {
 	long int	y;
 	size_t		digit;
@@ -43,7 +47,7 @@ int	translating_book(char *src, char *err)
 	if (src[digit] == '-')
 		sign = 1;
 	digit = sign;
-	y = translating_word(src, err, &digit, sign);
+	y = first_draft(src, err, &digit, sign);
 	if (sign == 1)
 		y *= -1;
 	if (src[digit] != '\0' && digit >= 11 + sign)
@@ -59,6 +63,8 @@ int	translating_book(char *src, char *err)
 	return ((int) y);
 }
 
+// time : O(n)
+// space: O(n)
 int	*write_biography(size_t n_chapters, char **imagine, char *err)
 {
 	int		*record;
@@ -70,7 +76,7 @@ int	*write_biography(size_t n_chapters, char **imagine, char *err)
 	i = 0;
 	while (i < n_chapters)
 	{
-		record[i] = translating_book(imagine, err);
+		record[i] = edited_draft(imagine, err);
 		if (*err == 'E')
 		{
 			free(record);
@@ -81,22 +87,26 @@ int	*write_biography(size_t n_chapters, char **imagine, char *err)
 	return (record);
 }
 
-void	burning_memory(t_chapter *memory)
+// time : O(n)
+// space: O(1)
+void	memento_mori(t_chapter *memory)
 {
-	t_chapter		*page;
+	t_chapter		*time;
 
 	if (memory != NULL)
 	{
 		while (memory->future != NULL)
 		{
-			page = memory->future;
+			time = memory->future;
 			free(memory);
-			memory = page;
+			memory = time;
 		}
 		free(memory);
 	}
 }
 
+// time : O(1)
+// space: O(1)
 t_chapter	*write_a_chapter(int moment)
 {
 	t_chapter	*record;
