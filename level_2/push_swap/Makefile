@@ -3,7 +3,7 @@
 # Poetry is the art of giving different names to the same thing"
 # ~ Henri Poincaré
 
-## # If you want to exist in the parallel universe,
+## # If you want to see the parallel universe,
 ## # you just add "_from_parallel_universe" at the ending of the variable
 ## # NAME, SRC, and BUILD.
 ## # change main.c to epilogue.c and change push_swap.h to appendix.h .
