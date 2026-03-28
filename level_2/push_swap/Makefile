@@ -11,10 +11,10 @@
 ## SRC = src_from_parallel_universe
 ## BUILD = build_from_parallel_universe
 ## MAIN = epilogue.c
-## LIB = appendix.h 
+## HEADER = appendix.h 
 
 NAME = push_swap
 SRC = src
 BUILD = build
 MAIN = main.c
-LIB = push_swap.h
+HEADER = push_swap.h
