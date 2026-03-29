@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 12:29:30 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/27 17:18:28 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/29 16:02:45 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ long int	first_draft(char *src, char *err, size_t *digit, size_t sign)
 	y = 0;
 	while (src[*digit] != '\0' && *digit < 11 + sign && *err != 'E')
 	{
-		if (digit == sign && src[*digit] == '0')
+		if (*digit == sign && src[*digit] == '0')
 			*err = 'E';
 		else if (src[*digit] >= '0' && src[*digit] <= '9')
 			y += (long int)(src[*digit] - '0');
@@ -42,6 +42,8 @@ int	edited_draft(char *src, char *err)
 	size_t		digit;
 	size_t		sign;
 
+	if (src[0] == '0' && src[1] == '\0')
+		return (0);
 	digit = 0;
 	sign = 0;
 	if (src[digit] == '-')
@@ -65,26 +67,26 @@ int	edited_draft(char *src, char *err)
 
 // time : O(n)
 // space: O(n)
-int	*write_biography(size_t n_chapters, char **imagine, char *err)
+int	*write_biography(size_t time, char **imagine, char *err)
 {
-	int		*record;
+	int		*biography;
 	size_t	i;
 
-	record = (int *)malloc(sizeof(int) * (n_chapters));
-	if (record == NULL)
+	biography = (int *)malloc(sizeof(int) * (time));
+	if (biography == NULL)
 		return (NULL);
 	i = 0;
-	while (i < n_chapters)
+	while (i < time)
 	{
-		record[i] = edited_draft(imagine, err);
+		biography[i] = edited_draft(imagine[i], err);
 		if (*err == 'E')
 		{
-			free(record);
+			free(biography);
 			return (NULL);
 		}
 		i += 1;
 	}
-	return (record);
+	return (biography);
 }
 
 // time : O(n)
@@ -109,12 +111,12 @@ void	memento_mori(t_chapter *memory)
 // space: O(1)
 t_chapter	*write_a_chapter(int moment)
 {
-	t_chapter	*record;
+	t_chapter	*chapter;
 
-	record = (t_chapter *)malloc(sizeof(t_chapter));
-	if (record == NULL)
+	chapter = (t_chapter *)malloc(sizeof(t_chapter));
+	if (chapter == NULL)
 		return (NULL);
-	record->future = NULL;
-	record->moment = moment;
-	return (record);
+	chapter->future = NULL;
+	chapter->moment = moment;
+	return (chapter);
 }

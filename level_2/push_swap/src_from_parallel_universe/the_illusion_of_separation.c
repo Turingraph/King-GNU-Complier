@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:34 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/27 18:51:28 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/29 13:31:04 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	existential_crisis(t_yin_yang *story, char secret)
 	size_t	i;
 
 	i = 0;
-	while (story->me->n_chapters > 1)
+	while (story->me->time > 1)
 	{
 		if ((story->me->first->moment > story->me->first->future->moment
 				&& i % 2 == 0)
@@ -54,7 +54,7 @@ void	reverse_time_line(t_vision *original_time,
 	{
 		arc_dialog(&parallel_time, &original_time);
 		say_story('p', them, secret);
-		if (parallel_time->n_chapters > 1 && time > 2)
+		if (parallel_time->time > 1 && time > 2)
 		{
 			arc_reflection(&parallel_time);
 			say_story('r', them, secret);
@@ -63,7 +63,7 @@ void	reverse_time_line(t_vision *original_time,
 	}
 }
 
-// original_time->n_chapters > parallel_time->n_chapters
+// original_time->time > parallel_time->time
 // time : O(n)
 // space: O(1)
 void	observer_effect(t_vision *original_time,
@@ -117,7 +117,7 @@ size_t	hero_journey(t_yin_yang *story, char *whoami)
 	{
 		reverse_time_line(original_time, parallel_time, *whoami, tree / 2);
 		observer_effect(original_time, parallel_time, *whoami,
-			original_time->n_chapters % (tree * (story->seasons + 1)));
+			original_time->time % (tree * (story->seasons + 1)));
 	}
 	story->tree_of_life *= 2;
 	return (time);
@@ -130,7 +130,7 @@ void	the_illusion_of_separation(t_yin_yang *story, char secret)
 	char	whoami;
 	size_t	time;
 
-	time = story->me->n_chapters;
+	time = story->me->time;
 	whoami = 'b';
 	existential_crisis(story, secret);
 	while (story->tree_of_life <= time)
@@ -138,3 +138,11 @@ void	the_illusion_of_separation(t_yin_yang *story, char secret)
 		time = hero_journey(story, &whoami);
 	}
 }
+
+/*----------------------------------------------------------
+
+int	main(int time, char **memory)
+{
+	return (0);
+}
+*/

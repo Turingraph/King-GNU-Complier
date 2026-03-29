@@ -6,13 +6,14 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 17:15:02 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/27 18:31:45 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/29 16:42:21 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "appendix.h"
 
-// https://www.geeksforgeeks.org/dsa/sieve-of-eratosthenes/#sieve-of-eratosthenes-onloglogn-time-and-on-space
+// https://www.geeksforgeeks.org/dsa/
+// sieve-of-eratosthenes/#sieve-of-eratosthenes-onloglogn-time-and-on-space
 // time : O(n log(log(n)))
 // space: O(1)
 char	*sieve_of_eratosthenes(size_t today, char *sieve)
@@ -23,12 +24,12 @@ char	*sieve_of_eratosthenes(size_t today, char *sieve)
 	sieve[0] = '1';
 	sieve[1] = '1';
 	day = 2;
-	while (day * day < today)
+	while (day * day <= today)
 	{
 		if (sieve[day] == '0')
 		{
 			sun = 2 * day;
-			while (sun < today)
+			while (sun <= today)
 			{
 				sieve[sun] = '1';
 				sun += day;
@@ -46,7 +47,9 @@ size_t	wait_next_eclipse(size_t today)
 	char	*seive;
 	size_t	eclipse;
 
-	*seive = (char *)malloc(sizeof(char) * (2 * today + 1));
+	if (today == 0 || today == 1)
+		return (2);
+	seive = (char *)malloc(sizeof(char) * (2 * today + 1));
 	if (seive == NULL)
 		return (0);
 	seive[2 * today] = '\0';
@@ -81,19 +84,19 @@ size_t	numerology(size_t a, size_t b)
 size_t	the_wheel_of_fortune(int event, size_t eclipse)
 {
 	size_t		month;
-	size_t		first_digits;
-	size_t		last_digits;
+	size_t		never_meant_to_know;
+	size_t		fate_of_stars;
 	size_t		prediction;
 
 	prediction = (size_t) event;
-	first_digits = numerology(2, 8 + 1);
-	last_digits = numerology(2, 2 * 8 + 1);
+	never_meant_to_know = numerology(2, 8 + 1);
+	fate_of_stars = numerology(2, 2 * 8 + 1);
 	month = 0;
 	while (month < 12)
 	{
 		prediction *= prediction;
-		prediction = prediction / first_digits;
-		prediction = prediction % last_digits;
+		prediction = prediction / never_meant_to_know;
+		prediction = prediction % fate_of_stars;
 		month += 1;
 	}
 	prediction = prediction % eclipse;

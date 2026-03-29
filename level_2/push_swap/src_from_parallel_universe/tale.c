@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   say_it.c                                           :+:      :+:    :+:   */
+/*   tale.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 17:45:02 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/27 17:46:58 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/29 13:31:01 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,18 +87,18 @@ void	say_dialog(t_yin_yang *story, char mc, char secret)
 	{
 		arc_dialog(&(story->me->first), &(story->them->first));
 		if (story->them != NULL)
-			story->them->n_chapters -= 1;
+			story->them->time -= 1;
 		if (story->me != NULL)
-			story->me->n_chapters += 1;
+			story->me->time += 1;
 		say_story('p', mc, secret);
 	}
 	if (story->me != NULL && mc == 'b')
 	{
 		arc_dialog(&(story->them->first), &(story->me->first));
 		if (story->them != NULL)
-			story->them->n_chapters += 1;
+			story->them->time += 1;
 		if (story->me != NULL)
-			story->me->n_chapters -= 1;
+			story->me->time -= 1;
 		say_story('p', mc, secret);
 	}
 	if (mc == 'c')
@@ -107,11 +107,19 @@ void	say_dialog(t_yin_yang *story, char mc, char secret)
 
 // time : O(1)
 // space: O(1)
-void	say_outside_box(t_yin_yang *story, char mc, char secret)
+void	say_reflection(t_yin_yang *story, char mc, char secret)
 {
 	if (story->them != NULL && (mc == 'a' || mc == 'c'))
-		arc_outside_box(&(story->me));
+		arc_reflection(&(story->me));
 	if (story->me != NULL && (mc == 'b' || mc == 'c'))
-		arc_outside_box(&(story->them));
+		arc_reflection(&(story->them));
 	say_story('r', mc, secret);
 }
+
+/*----------------------------------------------------------
+
+int	main(int time, char **memory)
+{
+	return (0);
+}
+*/

@@ -1,4 +1,16 @@
-#include "appendix.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   split_2.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/29 12:13:15 by phsottat          #+#    #+#             */
+/*   Updated: 2026/03/29 12:13:38 by phsottat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "stdlib.h"
 
 size_t	f_split_len(char *input, char separator)
 {
@@ -140,5 +152,6 @@ int	main(int ac, char **arr)
 
 /*
 cc -Wall -Wextra -Werror split.c
-valgrind --leak-check=full ./a.out " Yorushika Yoasobi   Zutomayo Yonezu  JOjo   "
+valgrind --leak-check=full ./a.out " 
+Yorushika Yoasobi   Zutomayo Yonezu  JOjo   "
 */

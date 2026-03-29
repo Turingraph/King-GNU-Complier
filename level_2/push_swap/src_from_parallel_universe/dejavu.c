@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 12:29:18 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/27 18:31:48 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/29 15:04:00 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 // time : O(n)
 // space: O(1)
-void	burning_memory(t_chapter **dejavu, size_t eclipse)
+void	burning_memory(t_chapter **memory, size_t eclipse)
 {
 	size_t	i;
 
 	i = 0;
 	while (i < eclipse)
 	{
-		memento_mori(dejavu[i]);
+		memento_mori(memory[i]);
 		i += 1;
 	}
-	free(dejavu);
+	free(memory);
 }
 
 // time : O(n)
@@ -32,45 +32,45 @@ void	burning_memory(t_chapter **dejavu, size_t eclipse)
 t_chapter	**rumination(size_t eclipse)
 {
 	size_t		day;
-	t_chapter	**dejavu;
+	t_chapter	**memory;
 
-	dejavu = (t_chapter **)malloc(sizeof(t_chapter *) * (eclipse));
-	if (dejavu == NULL)
+	memory = (t_chapter **)malloc(sizeof(t_chapter *) * (eclipse));
+	if (memory == NULL)
 		return (NULL);
 	day = 0;
 	while (day < eclipse)
 	{
-		dejavu[day] = NULL;
+		memory[day] = NULL;
 		day += 1;
 	}
-	return (dejavu);
+	return (memory);
 }
 
 // time : O(1)
 // space: O(1)
-char	subliminal_stimuli(t_chapter **dejavu, int event, size_t eclipse)
+char	subliminal_stimuli(t_chapter **memory, int event, size_t eclipse)
 {
 	size_t		day;
 	t_chapter	*rabbit_hole;
 
 	day = the_wheel_of_fortune(event, eclipse);
-	if (dejavu[day] == NULL)
+	if (memory[day] == NULL)
 	{
-		dejavu[day] = write_a_chapter(event);
-		if (dejavu[day] == NULL)
+		memory[day] = write_a_chapter(event);
+		if (memory[day] == NULL)
 		{
-			burning_memory(dejavu, eclipse);
+			burning_memory(memory, eclipse);
 			return (0);
 		}
 		return (1);
 	}
-	rabbit_hole = dejavu[day];
+	rabbit_hole = memory[day];
 	while (rabbit_hole->future != NULL)
 		rabbit_hole = rabbit_hole->future;
 	rabbit_hole->future = write_a_chapter(event);
 	if (rabbit_hole->future == NULL)
 	{
-		burning_memory(dejavu, eclipse);
+		burning_memory(memory, eclipse);
 		return (0);
 	}
 	return (1);
@@ -78,13 +78,13 @@ char	subliminal_stimuli(t_chapter **dejavu, int event, size_t eclipse)
 
 // time : O(1)
 // space: O(1)
-char	have_i_seen_this_before(t_chapter **dejavu, int event, size_t eclipse)
+char	have_i_seen_this_before(t_chapter **memory, int event, size_t eclipse)
 {
 	size_t		day;
 	t_chapter	*rabbit_hole;
 
 	day = the_wheel_of_fortune(event, eclipse);
-	rabbit_hole = dejavu[day];
+	rabbit_hole = memory[day];
 	if (rabbit_hole == NULL)
 		return (0);
 	if (rabbit_hole->moment == event)
@@ -103,11 +103,11 @@ char	have_i_seen_this_before(t_chapter **dejavu, int event, size_t eclipse)
 char	kagerou_day(int *events, size_t time)
 {
 	size_t		i;
-	char		is_dejavu;
+	char		dejavu;
 	t_chapter	**memory;
 	size_t		eclipse;
 
-	is_dejavu = 0;
+	dejavu = 0;
 	eclipse = wait_next_eclipse(time);
 	if (eclipse == 0)
 		return (1);
@@ -115,59 +115,14 @@ char	kagerou_day(int *events, size_t time)
 	if (memory == NULL)
 		return (1);
 	i = 0;
-	while (i < time && is_dejavu == 0)
+	while (i < time && dejavu == 0)
 	{
 		if (have_i_seen_this_before(memory, events[i], eclipse) == 1)
-			is_dejavu = 1;
+			dejavu = 1;
 		if (subliminal_stimuli(memory, events[i], eclipse) == 0)
-			return (is_dejavu);
+			return (dejavu);
 		i += 1;
 	}
 	burning_memory(memory, eclipse);
-	return (is_dejavu);
+	return (dejavu);
 }
-
-/*
-int	main(int ac, char **arr)
-{
-	size_t		i;
-	int			*events;
-	char		is_dejavu;
-	char		e;
-	t_chapter	**dejavu;
-	size_t		eclipse;
-
-	is_dejavu = 0;
-	if (ac < 2)
-		return (0);
-	e = 'K';
-	events = write_biography(ac - 1, arr + 1, &e);
-	if (e == 'E' || events == NULL)
-		return (0);
-	eclipse = wait_next_eclipse(ac);
-	dejavu = rumination(ac);
-	if (dejavu == NULL)
-	{
-		free(events);
-		return (0);
-	}
-	i = 0;
-	while (i < ac - 1)
-	{
-		if (have_i_seen_this_before(dejavu, events[i], eclipse) == 1)
-		{
-			i = ac;
-			is_dejavu = 1;
-		}
-		subliminal_stimuli(dejavu, events[i], eclipse);
-		i += 1;
-	}
-	free(events);
-	burning_memory(dejavu, eclipse);
-	if (is_dejavu == 1)
-		write(1, "Duplication\n", 12);
-	else
-		write(1, "Unique\n", 7);
-	return (0);
-}
-*/
