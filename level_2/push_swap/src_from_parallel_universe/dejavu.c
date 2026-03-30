@@ -119,10 +119,13 @@ char	kagerou_day(int *events, size_t time)
 	i = 0;
 	while (i < time && dejavu == 0)
 	{
-		if (have_i_seen_this_before(memory, events[i], eclipse) == 1)
+		if (have_i_seen_this_before(memory, events[i], eclipse) == (char) 1)
 			dejavu = 1;
-		if (subliminal_stimuli(memory, events[i], eclipse) == 0)
+		if (subliminal_stimuli(memory, events[i], eclipse) == (char) 0)
+		{
+			burning_memory(memory, eclipse);
 			return (dejavu);
+		}
 		i += 1;
 	}
 	burning_memory(memory, eclipse);

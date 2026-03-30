@@ -448,6 +448,7 @@ int	main(int time, char **memory)
 
 // *** dejavu.c ***
 
+/*
 //	*	rumination
 //	*	have_i_seen_this_before
 //	*	subliminal_stimuli
@@ -514,6 +515,40 @@ int	main(int time, char **memory)
 	free(biography);
 	return (0);
 }
+*/
+
+/*
+//	*	kagerou_day
+int	main(int time, char **memory)
+{
+	int			*biography;
+	char		err;
+
+	if (time < 2)
+	{
+		write(1, "No Input\n", 9);
+		return (0);
+	}
+	err = 'K';
+	biography = write_biography(time - 1, memory + 1, &err);
+	if (err == 'E')
+	{
+		write(1, "Input is invalid\n", 17);
+		return (0);
+	}
+	if (biography == NULL)
+	{
+		write(1, "Malloc Fail\n", 6);
+		return (0);
+	}
+	if (kagerou_day(biography, time - 1) == 1)
+		write(1, "It happened!\n", 13);
+	else
+		write(1, "Nope. It not.\n", 14);
+	free(biography);
+	return (0);
+}
+*/
 
 //----------------------------------------------------------
 
