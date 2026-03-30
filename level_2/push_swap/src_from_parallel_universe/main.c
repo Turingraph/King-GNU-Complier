@@ -418,12 +418,12 @@ int	main(int time, char **memory)
 	eclipse = wait_next_eclipse((size_t) day);
 	translation(1, eclipse);
 	write(1, " days later, something good will happened to you.\n", 50);
-	// translation(1, day);
-	// write(1, "^", 1);
-	// translation(1, eclipse);
-	// write(1, " = ", 3);
-	// translation(1, numerology(day, eclipse));
-	// write(1, "\n", 1);
+	translation(1, day);
+	write(1, "^", 1);
+	translation(1, 3);
+	write(1, " = ", 3);
+	translation(1, (int) numerology(day, 3));
+	write(1, "\n", 1);
 	return (0);
 }
 

@@ -24,12 +24,12 @@ char	*sieve_of_eratosthenes(size_t today, char *sieve)
 	sieve[0] = '1';
 	sieve[1] = '1';
 	day = 2;
-	while (day * day <= today)
+	while (day * day < today)
 	{
 		if (sieve[day] == '0')
 		{
 			sun = 2 * day;
-			while (sun <= today)
+			while (sun < today)
 			{
 				sieve[sun] = '1';
 				sun += day;
@@ -44,21 +44,27 @@ char	*sieve_of_eratosthenes(size_t today, char *sieve)
 // space: O(n)
 size_t	wait_next_eclipse(size_t today)
 {
-	char	*seive;
-	size_t	eclipse;
+	char	*sieve;
+	size_t	i;
 
 	if (today == 0 || today == 1)
 		return (2);
-	seive = (char *)malloc(sizeof(char) * (2 * today + 1));
-	if (seive == NULL)
+	sieve = (char *)malloc(sizeof(char) * (2 * today + 1));
+	if (sieve == NULL)
 		return (0);
-	seive[2 * today] = '\0';
-	sieve_of_eratosthenes(2 * today, seive);
-	eclipse = today;
-	while (eclipse < 2 * today && seive[today] == '1')
-		eclipse += 1;
-	free(seive);
-	return (eclipse);
+	i = 0;
+	while (i < 2 * today)
+	{
+		sieve[i] = '0';
+		i += 1;
+	}
+	sieve[i] = '\0';
+	sieve_of_eratosthenes(2 * today, sieve);
+	i = today;
+	while (sieve[i] == '1')
+		i += 1;
+	free(sieve);
+	return (i);
 }
 
 // time : O(n)
@@ -70,7 +76,7 @@ size_t	numerology(size_t a, size_t b)
 
 	i = 0;
 	y = 1;
-	while (i <= b)
+	while (i < b)
 	{
 		y *= a;
 		i += 1;
