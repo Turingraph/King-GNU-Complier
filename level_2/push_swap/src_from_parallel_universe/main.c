@@ -459,6 +459,7 @@ int	main(int time, char **memory)
 	t_chapter	**dejavu;
 	size_t		i;
 	size_t		eclipse;
+	// t_chapter	*rabbit_hole;
 
 	if (time < 2)
 	{
@@ -503,7 +504,9 @@ int	main(int time, char **memory)
 		reading_future(dejavu[i]);
 		i += 1;
 	}
-	if (have_i_seen_this_before(dejavu, 47, eclipse) == 1)
+	// rabbit_hole = dejavu[the_wheel_of_fortune(47, eclipse)];
+	// reading_future(rabbit_hole);
+	if (have_i_seen_this_before(dejavu, 47, eclipse) == (char) 1)
 		write(1, "I'm outside Plato Cave.\n", 24);
 	else
 		write(1, "Plato Cave isn't real.\n", 23);

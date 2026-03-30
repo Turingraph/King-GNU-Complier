@@ -95,6 +95,8 @@ char	have_i_seen_this_before(t_chapter **memory, int event, size_t eclipse)
 			return (1);
 		rabbit_hole = rabbit_hole->future;
 	}
+	if (rabbit_hole->moment == event)
+		return (1);
 	return (0);
 }
 
