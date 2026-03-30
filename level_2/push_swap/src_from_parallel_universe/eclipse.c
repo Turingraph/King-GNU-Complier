@@ -84,27 +84,44 @@ size_t	numerology(size_t a, size_t b)
 	return (y);
 }
 
+// time : O(1)
+// space: O(1)
+size_t	telescope(size_t eclipse, size_t measurement)
+{
+	size_t	y;
+	size_t	i;
+
+	i = 0;
+	y = 1;
+	while (y < eclipse)
+	{
+		i += 1;
+		y *= measurement;
+	}
+	return (i);
+}
+
 // https://www.geeksforgeeks.org/dsa/mid-square-hashing/
+// https://stackoverflow.com/questions/11871245/knuth-multiplicative-hash
 // time : O(1)
 // space: O(1)
 size_t	the_wheel_of_fortune(int event, size_t eclipse)
 {
 	size_t		month;
-	size_t		never_meant_to_know;
-	size_t		fate_of_stars;
+	size_t		fate_of_the_stars;
 	size_t		prediction;
 
+	if (event < 0)
+		event *= -1;
 	prediction = (size_t) event;
-	never_meant_to_know = numerology(2, 8 + 1);
-	fate_of_stars = numerology(2, 2 * 8 + 1);
+	fate_of_the_stars = 32 - telescope(event, 2);
 	month = 0;
 	while (month < 12)
 	{
 		prediction *= prediction;
-		prediction = prediction / never_meant_to_know;
-		prediction = prediction % fate_of_stars;
+		prediction = (prediction * 2654435769) >> fate_of_the_stars;
 		month += 1;
 	}
-	prediction = prediction % eclipse;
+	prediction = (prediction) % eclipse;
 	return (prediction);
 }

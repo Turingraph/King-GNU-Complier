@@ -62,6 +62,21 @@ void    reading_book(t_chapter *diary)
 	}
 }
 
+void    reading_future(t_chapter *diary)
+{
+	if (diary == NULL)
+		write(1, "NULL\n", 5);
+	while (diary != NULL)
+	{
+		translation(1, diary->moment);
+		if (diary->future != NULL)
+			write(1, " -> ", 4);
+		else
+			write(1, "\n", 1);
+		diary = diary->future;
+	}
+}
+
 /*
 t_yin_yang	*seven_years(size_t time, char **memory)
 {
@@ -391,6 +406,7 @@ int	main(int time, char **memory)
 
 // *** eclipse.c ***
 
+/*
 //	*	sieve_of_eratosthenes
 //	*	wait_next_eclipse
 //	*	numerology
@@ -426,11 +442,81 @@ int	main(int time, char **memory)
 	write(1, "\n", 1);
 	return (0);
 }
+*/
+
+//----------------------------------------------------------
+
+// *** dejavu.c ***
+
+//	*	rumination
+//	*	have_i_seen_this_before
+//	*	subliminal_stimuli
+//	*	burning_memory
+int	main(int time, char **memory)
+{
+	int			*biography;
+	char		err;
+	t_chapter	**dejavu;
+	size_t		i;
+	size_t		eclipse;
+
+	if (time < 2)
+	{
+		write(1, "No Input\n", 9);
+		return (0);
+	}
+	err = 'K';
+	biography = write_biography(time - 1, memory + 1, &err);
+	if (err == 'E')
+	{
+		write(1, "Input is invalid\n", 17);
+		return (0);
+	}
+	if (biography == NULL)
+	{
+		write(1, "Malloc Fail\n", 6);
+		return (0);
+	}
+	eclipse = wait_next_eclipse(time);
+	if (eclipse == 0)
+	{
+		free(biography);
+		write(1, "Malloc Fail\n", 12);
+		return (0);
+	}
+	else
+	{
+		translation(1, (int) eclipse);
+		write(1, " days left\n", 11);
+	}
+	dejavu = rumination(eclipse);
+	i = 0;
+	while (i < (size_t) time - 1)
+	{
+		subliminal_stimuli(dejavu, biography[i], eclipse);
+		i += 1;
+	}
+	i = 0;
+	while (i < eclipse)
+	{
+		write(1, ">>> ", 4);
+		reading_future(dejavu[i]);
+		i += 1;
+	}
+	if (have_i_seen_this_before(dejavu, 47, eclipse) == 1)
+		write(1, "I'm outside Plato Cave.\n", 24);
+	else
+		write(1, "Plato Cave isn't real.\n", 23);
+	burning_memory(dejavu, eclipse);
+	free(biography);
+	return (0);
+}
 
 //----------------------------------------------------------
 
 /*
 cc -Wall -Wextra -Werror main.c push_swap
 
-valgrind --leak-check=full ./a.out 
+valgrind --leak-check=full ./a.out 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
+
 */

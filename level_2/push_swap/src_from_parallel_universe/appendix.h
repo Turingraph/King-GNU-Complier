@@ -58,6 +58,10 @@ void		memento_mori(t_chapter *memory);
 t_chapter	*write_a_chapter(int moment);
 
 // dejavu.c
+void		burning_memory(t_chapter **memory, size_t eclipse);
+t_chapter	**rumination(size_t eclipse);
+char		subliminal_stimuli(t_chapter **memory, int event, size_t eclipse);
+char		have_i_seen_this_before(t_chapter **memory, int event, size_t eclipse);
 char		kagerou_day(int *events, size_t time);
 
 // eclipse.c
