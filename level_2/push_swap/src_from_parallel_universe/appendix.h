@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:15:47 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/31 15:59:26 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/31 17:53:30 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,12 @@ size_t		the_wheel_of_fortune(int event, size_t eclipse);
 void		say_story(char arc, char mc, char secret);
 void		show_story(char *me, char *them, char *secret, char tale);
 void		say_prioritize(t_yin_yang *story, char mc, char secret);
-void		say_conversation(t_yin_yang *story, char mc, char secret);
+void		say_conversation(t_yin_yang *story, char mc, char secret,
+				size_t time);
 void		say_reflection(t_yin_yang *story, char mc, char secret);
 
 // the_illusion_of_separation.c
-void		existential_crisis(t_yin_yang *story, char secret);
+void		existential_crisis(t_yin_yang *story, char secret, size_t i);
 void		reverse_time_line(t_vision **original_time,
 				t_vision **parallel_time, char tale, size_t time);
 // void		the_illusion_of_separation(t_yin_yang *story, char secret);

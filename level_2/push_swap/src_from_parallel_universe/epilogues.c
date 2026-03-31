@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:26:09 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/31 16:00:03 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/31 18:00:01 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -803,7 +803,6 @@ int	main(int time, char **memory)
 
 // *** the_illusion_of_separation.c ***
 
-/*
 //	*	existential_crisis
 int	main(int time, char **memory)
 {
@@ -845,7 +844,7 @@ int	main(int time, char **memory)
 	// telepathy(story->them->first);
 	write(1, "Me   : ", 7);
 	telepathy(story->me->first);
-	existential_crisis(story, 1);
+	existential_crisis(story, 0, 0);
 	write(1, "Them : ", 7);
 	telepathy(story->them->first);
 	write(1, "Me   : ", 7);
@@ -856,8 +855,8 @@ int	main(int time, char **memory)
 	free(story);
 	return (0);
 }
-*/
 
+/*
 //	*	reverse_time_line
 int	main(int time, char **memory)
 {
@@ -903,6 +902,7 @@ int	main(int time, char **memory)
 	the_most_important_thing_in_the_world(story);
 	return (0);
 }
+*/
 
 //----------------------------------------------------------
 
@@ -913,4 +913,32 @@ valgrind --leak-check=full ./a.out 1 2 3 4 5 6 7 8 9 10 11
 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
 
+./a.out 733 2636 2626 36363 262 373 372 7172 732   2 2211
+112 3322 332222 3333333 334 555 6667 3446 346 34545 7767
+45464 334554 6565 676667 | wc -l
+
+*/
+
+//----------------------------------------------------------
+
+/*
+a: 1 2 3 4 5 6 7
+b:
+
+i = 0
+a: 3 4 5 6 7
+b: 2 1
+
+a: 4 3 5 6 7
+b: 2 1
+
+a: 5 6 7
+b: 3 4 2 1
+
+i = 1
+a: 7
+b: 6 5 3 4 2 1
+
+a: 
+b:
 */

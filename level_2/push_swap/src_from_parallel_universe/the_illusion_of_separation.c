@@ -6,19 +6,18 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:34 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/31 15:59:39 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/31 17:59:12 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "appendix.h"
 
+/*
+// slower
 // time : O(n)
 // space: O(1)
-void	existential_crisis(t_yin_yang *story, char secret)
+void	existential_crisis(t_yin_yang *story, char secret, size_t i)
 {
-	size_t	i;
-
-	i = 0;
 	while (story->me->time > 1)
 	{
 		if ((story->me->first->moment > story->me->first->future->moment
@@ -26,14 +25,48 @@ void	existential_crisis(t_yin_yang *story, char secret)
 			|| (story->me->first->moment < story->me->first->future->moment
 				&& i % 2 == 1))
 			say_prioritize(story, 'a', secret);
-		say_conversation(story, 'b', secret);
-		say_conversation(story, 'b', secret);
+		say_conversation(story, 'b', secret, 1);
+		say_conversation(story, 'b', secret, 1);
 		i += 1;
 	}
 	if (story->me->first != NULL)
-		say_conversation(story, 'b', secret);
+		say_conversation(story, 'b', secret, 1);
 	story->tree_of_life = 4;
 }
+	// 34
+*/
+
+// time : O(n)
+// space: O(1)
+void	existential_crisis(t_yin_yang *story, char secret, size_t i)
+{
+	char	my_arc;
+	char	their_arc;
+
+	while (story->me->time > 1)
+	{
+		my_arc = i % 2;
+		their_arc = i % 2;
+		say_conversation(story, 'b', secret, 2);
+		if (story->me->first->future != NULL
+			&& story->me->first->moment < story->me->first->future->moment)
+			my_arc = (i + 1) % 2;
+		if (story->them->first->moment < story->them->first->future->moment)
+			their_arc = (i + 1) % 2;
+		if (my_arc != i % 2 && their_arc != i % 2)
+			say_prioritize(story, 'c', secret);
+		if (my_arc != i % 2 && their_arc == i % 2)
+			say_prioritize(story, 'a', secret);
+		if (my_arc == i % 2 && their_arc != i % 2)
+			say_prioritize(story, 'b', secret);
+		say_conversation(story, 'b', secret, 2);
+		i += 1;
+	}
+	if (story->me->first != NULL)
+		say_conversation(story, 'b', secret, 1);
+	story->tree_of_life = 4;
+}
+// 19
 
 // time : O(n)
 // space: O(1)
@@ -84,13 +117,13 @@ void	observer_effect(t_vision *original_time,
 		say_story('r', me, secret);
 		i += 1;
 	}
-	// if (parallel_time->first != NULL)
-	// {
-	// 	arc_conversation(&original_time, &parallel_time);
-	// 	say_story('p', me, secret);
-	// }
-	// arc_reflection(&original_time);
-	// say_story('r', me, secret);
+	if (parallel_time->first != NULL)
+	{
+		arc_conversation(&original_time, &parallel_time);
+		say_story('p', me, secret);
+	}
+	arc_reflection(&original_time);
+	say_story('r', me, secret);
 }
 
 // time : O(n)

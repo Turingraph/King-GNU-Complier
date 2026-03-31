@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 17:45:02 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/31 14:23:51 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/31 18:02:01 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,20 +81,31 @@ void	say_prioritize(t_yin_yang *story, char mc, char secret)
 
 // time : O(1)
 // space: O(1)
-void	say_conversation(t_yin_yang *story, char mc, char secret)
+void	say_conversation(t_yin_yang *story, char mc, char secret, size_t time)
 {
-	if (story->them != NULL && mc == 'a')
+	size_t	i;
+
+	i = 0;
+	while (i < time)
 	{
-		arc_conversation(&story->me, &story->them);
-		say_story('p', mc, secret);
+		if (story->them != NULL && mc == 'a')
+		{
+			arc_conversation(&story->me, &story->them);
+			say_story('p', mc, secret);
+			if (story->them->first == NULL)
+				i = time;
+		}
+		if (story->me != NULL && mc == 'b')
+		{
+			arc_conversation(&story->them, &story->me);
+			say_story('p', mc, secret);
+			if (story->me->first == NULL)
+				i = time;
+		}
+		if (mc == 'c')
+			write(1, "**INVALID**", 11);
+		i += 1;
 	}
-	if (story->me != NULL && mc == 'b')
-	{
-		arc_conversation(&story->them, &story->me);
-		say_story('p', mc, secret);
-	}
-	if (mc == 'c')
-		write(1, "**INVALID**", 11);
 }
 
 // time : O(1)
