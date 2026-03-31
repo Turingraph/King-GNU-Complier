@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 13:57:02 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/31 14:18:58 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/31 14:20:03 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char		is_in_hash_table(t_list **hash_table,
 char		duplication_check(int *src, size_t len);
 
 // prime.c a.k.a. eclipse.c
-size_t		get_next_prime(size_t today);
+size_t		get_next_prime(size_t len);
 size_t		hash_function(int item, size_t prime);
 
 // print.c a.k.a. tale.c
