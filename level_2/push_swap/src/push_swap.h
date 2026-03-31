@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 13:57:02 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/31 14:14:49 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/31 14:18:58 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void		arc_rotate(t_list_h **list);
 
 // get_input.c a.k.a. backstory.c
 t_list_h	*init_list_h(size_t len, int *src);
-t_list_2h	*init_list2h(size_t len, int *src);
-size_t		swap_list_h(t_list_h **a, t_list_h **b,
+t_list_2h	*init_list_2h(size_t len, int *src);
+size_t		swap_list_2h(t_list_h **a, t_list_h **b,
 				t_list_2h *list, char *mode);
 
 // atoi.c a.k.a. biography.c
