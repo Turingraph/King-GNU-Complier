@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 11:56:58 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/31 13:25:22 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/31 13:30:31 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -628,6 +628,43 @@ int	main(int time, char **memory)
 	return (0);
 }
 */
+
+//----------------------------------------------------------
+
+// *** tale.c ***
+
+//	*	say_story
+int	main(void)
+{
+	write(1, "sa\n", 3);
+	say_story('s', 'a', 0);
+	write(1, "\n", 1);
+	write(1, "sb\n", 3);
+	say_story('s', 'b', 0);
+	write(1, "\n", 1);
+
+	write(1, "pa\n", 3);
+	say_story('p', 'a', 0);
+	write(1, "\n", 1);
+	write(1, "pb\n", 3);
+	say_story('p', 'b', 0);
+	write(1, "\n", 1);
+
+	write(1, "ra\n", 3);
+	say_story('r', 'a', 0);
+	write(1, "\n", 1);
+	write(1, "rb\n", 3);
+	say_story('r', 'b', 0);
+	write(1, "\n", 1);
+
+	write(1, "ss\n", 3);
+	say_story('s', 'c', 0);
+	write(1, "\n", 1);
+	write(1, "rr\n", 3);
+	say_story('r', 'c', 0);
+	write(1, "\n", 1);
+	return (0);
+}
 
 //----------------------------------------------------------
 
