@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 13:57:02 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/31 14:20:03 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/31 18:22:07 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct t_list_h
 {
 	t_list	*first;
 	t_list	*last;
-	size_t	len;
+	size_t	time;
 }	t_list_h;
 
 typedef struct t_list_2h
