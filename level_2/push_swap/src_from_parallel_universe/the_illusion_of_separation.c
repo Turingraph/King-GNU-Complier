@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:34 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/31 14:35:27 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/31 15:59:39 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	existential_crisis(t_yin_yang *story, char secret)
 
 // time : O(n)
 // space: O(1)
-void	reverse_time_line(t_vision *original_time,
-		t_vision *parallel_time, char tale, size_t time)
+void	reverse_time_line(t_vision **original_time,
+		t_vision **parallel_time, char tale, size_t time)
 {
 	char	me;
 	char	them;
@@ -49,11 +49,11 @@ void	reverse_time_line(t_vision *original_time,
 	i = 0;
 	while (i < time && original_time != NULL)
 	{
-		arc_conversation(&parallel_time, &original_time);
+		arc_conversation(parallel_time, original_time);
 		say_story('p', them, secret);
-		if (parallel_time->time > 1 && time > 2)
+		if (*parallel_time != NULL && time > 2)
 		{
-			arc_reflection(&parallel_time);
+			arc_reflection(parallel_time);
 			say_story('r', them, secret);
 		}
 		i += 1;
@@ -84,17 +84,18 @@ void	observer_effect(t_vision *original_time,
 		say_story('r', me, secret);
 		i += 1;
 	}
-	if (parallel_time != NULL)
-	{
-		arc_conversation(&original_time, &parallel_time);
-		say_story('p', me, secret);
-	}
-	arc_reflection(&original_time);
-	say_story('r', me, secret);
+	// if (parallel_time->first != NULL)
+	// {
+	// 	arc_conversation(&original_time, &parallel_time);
+	// 	say_story('p', me, secret);
+	// }
+	// arc_reflection(&original_time);
+	// say_story('r', me, secret);
 }
 
 // time : O(n)
 // space: O(1)
+/*
 size_t	hero_journey(t_yin_yang *story, char *whoami)
 {
 	t_vision	*original_time;
@@ -119,6 +120,7 @@ size_t	hero_journey(t_yin_yang *story, char *whoami)
 	story->tree_of_life *= 2;
 	return (time);
 }
+*/
 
 // time : O(n log(n))
 // space: O(1)
@@ -137,3 +139,4 @@ void	the_illusion_of_separation(t_yin_yang *story, char secret)
 	}
 }
 */
+

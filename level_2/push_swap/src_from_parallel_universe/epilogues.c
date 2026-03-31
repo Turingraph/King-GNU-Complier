@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:26:09 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/31 14:39:51 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/31 16:00:03 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,24 @@ void	telepathy(t_chapter *diary)
 			write(1, "\n", 1);
 		diary = diary->future;
 	}
+}
+
+// time : O(n)
+// space: O(1)
+void	*the_most_important_thing_in_the_world(t_yin_yang *story)
+{
+	if (story == NULL)
+		return (NULL);
+	if (story->me != NULL && story->me->first != NULL)
+		memento_mori(story->me->first);
+	if (story->me != NULL)
+		free(story->me);
+	if (story->them != NULL && story->them->first != NULL)
+		memento_mori(story->them->first);
+	if (story->them != NULL)
+		free(story->them);
+	free(story);
+	return (NULL);
 }
 
 /*
@@ -840,10 +858,53 @@ int	main(int time, char **memory)
 }
 */
 
-//----------------------------------------------------------
+//	*	reverse_time_line
+int	main(int time, char **memory)
+{
+	int			*biography;
+	char		err;
+	t_yin_yang	*story;
+
+	if (time < 2)
+	{
+		write(1, "No Input\n", 9);
+		return (0);
+	}
+	err = 'K';
+	biography = write_biography(time - 1, memory + 1, &err);
+	if (err == 'E')
+	{
+		write(1, "Input is invalid\n", 17);
+		return (0);
+	}
+	if (biography == NULL)
+	{
+		write(1, "Malloc Fail\n", 6);
+		return (0);
+	}
+	story = introduction(time - 1, biography);
+	free(biography);
+	if (story == NULL)
+	{
+		write(1, "Malloc Fail\n", 6);
+		return (0);
+	}
+	if (story->me == NULL)
+	{
+		free(story);
+		write(1, "Malloc Fail\n", 6);
+		return (0);
+	}
+	reverse_time_line(&story->me, &story->them, 'a', 4);
+	write(1, "Me   : ", 7);
+	telepathy(story->me->first);
+	write(1, "Them : ", 7);
+	telepathy(story->them->first);
+	the_most_important_thing_in_the_world(story);
+	return (0);
+}
 
 //----------------------------------------------------------
-
 
 /*
 cc -Wall -Wextra -Werror epilogues.c push_swap

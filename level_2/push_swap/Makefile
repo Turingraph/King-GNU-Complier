@@ -1,3 +1,14 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/03/31 14:42:53 by phsottat          #+#    #+#              #
+#    Updated: 2026/03/31 14:42:55 by phsottat         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 # "Mathematics is the art of giving the same name to different things.
 # Poetry is the art of giving different names to the same thing"
