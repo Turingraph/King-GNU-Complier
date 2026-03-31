@@ -6,7 +6,7 @@
 #    By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/29 11:52:57 by phsottat          #+#    #+#              #
-#    Updated: 2026/03/29 12:10:51 by phsottat         ###   ########.fr        #
+#    Updated: 2026/03/31 13:39:17 by phsottat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = push_swap
 
 CC = cc -Wall -Wextra -Werror
 
-OBJ = arc.o backstory.o biography.o dejavu.o eclipse.o tale.o
+OBJ = arc.o backstory.o biography.o dejavu.o eclipse.o tale.o \
+	the_illusion_of_separation.o
 BUILD_OBJ = $(OBJ:%.o=build/%.o)
 
 # the_illusion_of_separation.o

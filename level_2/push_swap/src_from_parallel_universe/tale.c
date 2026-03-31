@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 17:45:02 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/31 12:53:11 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/31 14:23:51 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,17 @@ void	say_prioritize(t_yin_yang *story, char mc, char secret)
 		arc_prioritize(story->me->first, story->me->first->future);
 	if (their_tale == 1 && (mc == 'b' || mc == 'c'))
 		arc_prioritize(story->them->first, story->them->first->future);
-	if (mc == 'a' && my_tale == 1)
-		say_story('s', mc, secret);
-	if (mc == 'b' && their_tale == 1)
-		say_story('s', mc, secret);
-	if (mc == 'c' && my_tale == 1 && their_tale == 1)
+	if (my_tale == 1 && their_tale == 1 && secret != 1)
 		write(1, "ss\n", 3);
+	else if (my_tale == 1 && secret != 1)
+		write(1, "sa\n", 3);
+	else if (their_tale == 1 && secret != 1)
+		write(1, "sb\n", 3);
 }
 
 // time : O(1)
 // space: O(1)
-void	say_dialog(t_yin_yang *story, char mc, char secret)
+void	say_conversation(t_yin_yang *story, char mc, char secret)
 {
 	if (story->them != NULL && mc == 'a')
 	{
@@ -107,11 +107,3 @@ void	say_reflection(t_yin_yang *story, char mc, char secret)
 		arc_reflection(&(story->them));
 	say_story('r', mc, secret);
 }
-
-/*----------------------------------------------------------
-
-int	main(int time, char **memory)
-{
-	return (0);
-}
-*/

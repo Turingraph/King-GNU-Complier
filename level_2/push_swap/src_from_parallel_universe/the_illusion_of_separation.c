@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:34 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/29 13:31:04 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/31 14:35:27 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,12 @@ void	existential_crisis(t_yin_yang *story, char secret)
 			|| (story->me->first->moment < story->me->first->future->moment
 				&& i % 2 == 1))
 			say_prioritize(story, 'a', secret);
-		say_dialog(story, 'b', secret);
-		say_dialog(story, 'b', secret);
+		say_conversation(story, 'b', secret);
+		say_conversation(story, 'b', secret);
 		i += 1;
 	}
-	if (story->me != NULL)
-	{
-		say_dialog(story, 'b', secret);
-		say_reflection(story, 'b', secret);
-	}
+	if (story->me->first != NULL)
+		say_conversation(story, 'b', secret);
 	story->tree_of_life = 4;
 }
 
@@ -52,7 +49,7 @@ void	reverse_time_line(t_vision *original_time,
 	i = 0;
 	while (i < time && original_time != NULL)
 	{
-		arc_dialog(&parallel_time, &original_time);
+		arc_conversation(&parallel_time, &original_time);
 		say_story('p', them, secret);
 		if (parallel_time->time > 1 && time > 2)
 		{
@@ -80,7 +77,7 @@ void	observer_effect(t_vision *original_time,
 	{
 		if (parallel_time->first->moment <= original_time->first->moment)
 		{
-			arc_dialog(&original_time, &parallel_time);
+			arc_conversation(&original_time, &parallel_time);
 			say_story('p', me, secret);
 		}
 		arc_reflection(&original_time);
@@ -89,7 +86,7 @@ void	observer_effect(t_vision *original_time,
 	}
 	if (parallel_time != NULL)
 	{
-		arc_dialog(&original_time, &parallel_time);
+		arc_conversation(&original_time, &parallel_time);
 		say_story('p', me, secret);
 	}
 	arc_reflection(&original_time);
@@ -105,7 +102,7 @@ size_t	hero_journey(t_yin_yang *story, char *whoami)
 	size_t		time;
 	size_t		tree;
 
-	time = reincarnation(&original_time, &parallel_time, story, *whoami);
+	time = reincarnation(&original_time, &parallel_time, story, whoami);
 	tree = story->tree_of_life;
 	while (tree * (story->seasons + 1) <= time)
 	{
@@ -125,6 +122,7 @@ size_t	hero_journey(t_yin_yang *story, char *whoami)
 
 // time : O(n log(n))
 // space: O(1)
+/*
 void	the_illusion_of_separation(t_yin_yang *story, char secret)
 {
 	char	whoami;
@@ -137,12 +135,5 @@ void	the_illusion_of_separation(t_yin_yang *story, char secret)
 	{
 		time = hero_journey(story, &whoami);
 	}
-}
-
-/*----------------------------------------------------------
-
-int	main(int time, char **memory)
-{
-	return (0);
 }
 */
