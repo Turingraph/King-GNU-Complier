@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 17:45:02 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/29 13:31:01 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/31 12:53:11 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,20 +85,12 @@ void	say_dialog(t_yin_yang *story, char mc, char secret)
 {
 	if (story->them != NULL && mc == 'a')
 	{
-		arc_dialog(&(story->me->first), &(story->them->first));
-		if (story->them != NULL)
-			story->them->time -= 1;
-		if (story->me != NULL)
-			story->me->time += 1;
+		arc_conversation(&story->me, &story->them);
 		say_story('p', mc, secret);
 	}
 	if (story->me != NULL && mc == 'b')
 	{
-		arc_dialog(&(story->them->first), &(story->me->first));
-		if (story->them != NULL)
-			story->them->time += 1;
-		if (story->me != NULL)
-			story->me->time -= 1;
+		arc_conversation(&story->them, &story->me);
 		say_story('p', mc, secret);
 	}
 	if (mc == 'c')

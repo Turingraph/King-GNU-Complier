@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 12:29:40 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/29 15:41:30 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/31 12:38:29 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,19 @@ t_vision	*study_me(size_t time, int *biography)
 	me = (t_vision *)malloc(sizeof(t_vision));
 	if (me == NULL)
 		return (NULL);
-	me->first = write_a_chapter(biography[0]);
-	if (me->first == NULL)
+	me->first = NULL;
+	if (biography != NULL)
+		me->first = write_a_chapter(biography[0]);
+	if (me->first == NULL && biography != NULL)
 	{
 		free(me);
 		return (NULL);
 	}
 	me->time = time;
 	me->last = NULL;
-	me->last = write_fiction(time, biography, me->first);
-	if (me->last == NULL)
+	if (biography != NULL)
+		me->last = write_fiction(time, biography, me->first);
+	if (me->last == NULL && biography != NULL)
 	{
 		free(me);
 		return (NULL);

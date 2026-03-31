@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 17:15:02 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/29 16:42:21 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/31 13:18:33 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ size_t	wait_next_eclipse(size_t today)
 
 // time : O(n)
 // space: O(1)
+/*
 size_t	numerology(size_t a, size_t b)
 {
 	size_t	i;
@@ -83,10 +84,11 @@ size_t	numerology(size_t a, size_t b)
 	}
 	return (y);
 }
+*/
 
 // time : O(1)
 // space: O(1)
-size_t	telescope(size_t eclipse, size_t measurement)
+size_t	numerology(size_t eclipse, size_t measurement)
 {
 	size_t	y;
 	size_t	i;
@@ -108,18 +110,18 @@ size_t	telescope(size_t eclipse, size_t measurement)
 size_t	the_wheel_of_fortune(int event, size_t eclipse)
 {
 	size_t		month;
-	size_t		fate_of_the_stars;
+	size_t		knuthoth;
 	size_t		prediction;
 
 	if (event < 0)
 		event *= -1;
 	prediction = (size_t) event;
-	fate_of_the_stars = 32 - telescope(event, 2);
+	knuthoth = 32 - numerology(event, 2);
 	month = 0;
 	while (month < 3)
 	{
 		prediction *= prediction;
-		prediction = (prediction * 2654435769) >> fate_of_the_stars;
+		prediction = (prediction * 2654435769) >> knuthoth;
 		month += 1;
 	}
 	prediction = (prediction) % eclipse;

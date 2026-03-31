@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 11:56:58 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/29 16:41:41 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/31 13:25:22 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	translation(int fd, int x)
 	}
 }
 
-void    reading_book(t_chapter *diary)
+void    fortune_telling(t_chapter *diary)
 {
 	while (diary != NULL)
 	{
@@ -62,7 +62,7 @@ void    reading_book(t_chapter *diary)
 	}
 }
 
-void    reading_future(t_chapter *diary)
+void    telepathy(t_chapter *diary)
 {
 	if (diary == NULL)
 		write(1, "NULL\n", 5);
@@ -235,8 +235,8 @@ int	main(int time, char **memory)
 	translation(1, (int) me->time);
 	write(1, ")\n", 2);
 	write(1, "Spoiler: ", 9);
-	reading_book(me->last);
-	reading_book(me->first);
+	fortune_telling(me->last);
+	fortune_telling(me->first);
 	memento_mori(me->first);
 	free(me);
 	free(biography);
@@ -279,8 +279,8 @@ int	main(int time, char **memory)
 	translation(1, (int) me->time);
 	write(1, ")\n", 2);
 	write(1, "Spoiler: ", 9);
-	reading_book(me->last);
-	reading_book(me->first);
+	fortune_telling(me->last);
+	fortune_telling(me->first);
 	memento_mori(me->first);
 	free(me);
 	free(biography);
@@ -324,8 +324,8 @@ int	main(int time, char **memory)
 	translation(1, (int) story->me->time);
 	write(1, ")\n", 2);
 	write(1, "Spoiler: ", 9);
-	reading_book(story->me->last);
-	reading_book(story->me->first);
+	fortune_telling(story->me->last);
+	fortune_telling(story->me->first);
 	write(1, "Their Story is ", 15);
 	if (story->them == NULL)
 		write(1, "is the Problem of Other Minds\n", 30);
@@ -383,8 +383,8 @@ int	main(int time, char **memory)
 	translation(1, (int) them->time);
 	write(1, ")\n", 2);
 	write(1, "Spoiler: ", 9);
-	reading_book(them->last);
-	reading_book(them->first);
+	fortune_telling(them->last);
+	fortune_telling(them->first);
 	write(1, "Their Story is ", 15);
 	if (me == NULL)
 		write(1, "is the Problem of Other Minds\n", 30);
@@ -502,11 +502,11 @@ int	main(int time, char **memory)
 	while (i < eclipse)
 	{
 		write(1, ">>> ", 4);
-		reading_future(dejavu[i]);
+		telepathy(dejavu[i]);
 		i += 1;
 	}
 	// rabbit_hole = dejavu[the_wheel_of_fortune(47, eclipse)];
-	// reading_future(rabbit_hole);
+	// telepathy(rabbit_hole);
 	if (have_i_seen_this_before(dejavu, 47, eclipse) == (char) 1)
 		write(1, "I'm outside Plato Cave.\n", 24);
 	else
@@ -552,9 +552,90 @@ int	main(int time, char **memory)
 
 //----------------------------------------------------------
 
+// *** arc.c ***
+
+/*
+//	*	arc_prioritize
+//	*	arc_dialog
+//	*	arc_conversation
+//	*	arc_reflection
+int	main(int time, char **memory)
+{
+	int			*biography;
+	char		err;
+	t_yin_yang	*story;
+
+	if (time < 2)
+	{
+		write(1, "No Input\n", 9);
+		return (0);
+	}
+	err = 'K';
+	biography = write_biography(time - 1, memory + 1, &err);
+	if (err == 'E')
+	{
+		write(1, "Input is invalid\n", 17);
+		return (0);
+	}
+	if (biography == NULL)
+	{
+		write(1, "Malloc Fail\n", 6);
+		return (0);
+	}
+	story = introduction(time - 1, biography);
+	free(biography);
+	if (story == NULL)
+	{
+		write(1, "Malloc Fail\n", 6);
+		return (0);
+	}
+	if (story->me == NULL)
+	{
+		free(story);
+		write(1, "Malloc Fail\n", 6);
+		return (0);
+	}
+	telepathy(story->me->first);
+	write(1, "Prioritize\n", 11);
+	arc_prioritize(story->me->first, story->me->first->future);
+	telepathy(story->me->first);
+	write(1, "Dialog\n", 7);
+	arc_conversation(&story->them, &story->me);
+	write(1, "Them 1:", 7);
+	telepathy(story->them->first);
+	write(1, "Me 1:", 5);
+	telepathy(story->me->first);
+
+	arc_conversation(&story->them, &story->me);
+	write(1, "Them 2:", 7);
+	telepathy(story->them->first);
+	write(1, "Me 2:", 5);
+	telepathy(story->me->first);
+
+	write(1, "Reflection\n", 11);
+	arc_reflection(&story->me);
+	telepathy(story->me->first);
+	arc_reflection(&story->me);
+	telepathy(story->me->first);
+	if (story->them != NULL)
+	{
+		memento_mori(story->them->first);
+		free(story->them);
+	}
+	memento_mori(story->me->first);
+	free(story->me);
+	free(story);
+	return (0);
+}
+*/
+
+//----------------------------------------------------------
+
 /*
 cc -Wall -Wextra -Werror main.c push_swap
 
-valgrind --leak-check=full ./a.out 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
+valgrind --leak-check=full ./a.out 1 2 3 4 5 6 7 8 9 10 11
+12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
+31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
 
 */

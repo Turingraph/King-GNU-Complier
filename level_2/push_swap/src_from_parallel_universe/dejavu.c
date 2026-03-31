@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 12:29:18 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/29 15:04:00 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/03/31 11:41:28 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 // space: O(1)
 void	burning_memory(t_chapter **memory, size_t eclipse)
 {
-	size_t	i;
+	size_t	time;
 
-	i = 0;
-	while (i < eclipse)
+	time = 0;
+	while (time < eclipse)
 	{
-		memento_mori(memory[i]);
-		i += 1;
+		memento_mori(memory[time]);
+		time += 1;
 	}
 	free(memory);
 }
@@ -122,10 +122,7 @@ char	kagerou_day(int *events, size_t time)
 		if (have_i_seen_this_before(memory, events[i], eclipse) == (char) 1)
 			dejavu = 1;
 		if (subliminal_stimuli(memory, events[i], eclipse) == (char) 0)
-		{
-			burning_memory(memory, eclipse);
-			return (dejavu);
-		}
+			i = time;
 		i += 1;
 	}
 	burning_memory(memory, eclipse);
