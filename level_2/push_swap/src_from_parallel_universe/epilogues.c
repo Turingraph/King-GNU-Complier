@@ -962,6 +962,7 @@ int	main(int time, char **memory)
 }
 */
 
+/*
 //	*	existential_crisis
 //	*	reverse_time_line
 //	*	observer_effect
@@ -1039,13 +1040,14 @@ int	main(int time, char **memory)
 	the_most_important_thing_in_the_world(story);
 	return (0);
 }
+*/
 
 /*
+//	*	hero_journey
 int	main(int time, char **memory)
 {
 	int			*biography;
 	char		err;
-	char		whoami;
 	t_yin_yang	*story;
 
 	if (time < 2)
@@ -1096,32 +1098,11 @@ int	main(int time, char **memory)
 	write(1, "3rd Arc (tree = ", 16);
 	translation(1, story->tree_of_life);
 	write(1, ")\n", 2);
-	whoami = 'B';
-	hero_journey(story, &whoami);
+	hero_journey(story->them, story->me, story->tree_of_life, 'b');
 	write(1, "Them : ", 7);
 	telepathy(story->them->first);
 	write(1, "Me   : ", 7);
 	telepathy(story->me->first);
-
-	// write(1, "3rd Arc (tree = ", 16);
-	// translation(1, story->tree_of_life);
-	// write(1, ")\n", 2);
-	// whoami = 'B';
-	// reverse_time_line(&story->them, &story->me, whoami, story->tree_of_life / 2);
-	// write(1, "Them : ", 7);
-	// telepathy(story->them->first);
-	// write(1, "Me   : ", 7);
-	// telepathy(story->me->first);
-
-	// write(1, "4th Arc (tree = ", 16);
-	// translation(1, story->tree_of_life);
-	// write(1, ")\n", 2);
-	// whoami = 'B';
-	// observer_effect(story->them, story->me, whoami, story->tree_of_life / 2);
-	// write(1, "Them : ", 7);
-	// telepathy(story->them->first);
-	// write(1, "Me   : ", 7);
-	// telepathy(story->me->first);
 	the_most_important_thing_in_the_world(story);
 	return (0);
 }

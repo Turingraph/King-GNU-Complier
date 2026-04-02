@@ -76,7 +76,8 @@ void		reverse_time_line(t_vision **original_time,
 				t_vision **parallel_time, char whoami, size_t time);
 void		observer_effect(t_vision *original_time,
 				t_vision *parallel_time, char whoami, size_t time);
-// size_t		hero_journey(t_yin_yang *story, char *whoami);
+size_t		hero_journey(t_vision *original_time, t_vision *parallel_time,
+				size_t tree_of_life, char whoami);
 // void		the_illusion_of_separation(t_yin_yang *story, char secret);
 
 #endif

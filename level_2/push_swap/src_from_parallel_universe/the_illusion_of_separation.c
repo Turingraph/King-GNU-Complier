@@ -84,51 +84,36 @@ void	observer_effect(t_vision *original_time,
 	}
 }
 
-/*
 // time : O(n)
 // space: O(1)
-size_t	hero_journey(t_yin_yang *story, char *whoami)
+size_t	hero_journey(t_vision *original_time, t_vision *parallel_time,
+	size_t tree_of_life, char whoami)
 {
-	t_vision	*original_time;
-	t_vision	*parallel_time;
 	size_t		day;
 	size_t		life_energy;
-	size_t		to_be_continued;
 
-	life_energy = reincarnation(&original_time, &parallel_time, story, whoami);
+	life_energy = original_time->time;
 	day = 1;
-	while (story->tree_of_life * day <= life_energy)
+	while (tree_of_life * day <= life_energy)
 	{
-		reverse_time_line(&original_time, &parallel_time, *whoami, story->tree_of_life / 2);
-		observer_effect(original_time, parallel_time, *whoami, story->tree_of_life / 2);
+		reverse_time_line(&original_time, &parallel_time, whoami, tree_of_life / 2);
+		observer_effect(original_time, parallel_time, whoami, tree_of_life / 2);
 		day += 1;
 	}
-	to_be_continued = story->tree_of_life * day % life_energy;
-	if (to_be_continued > 0)
+	if (tree_of_life * day % life_energy > 0)
 	{
-		reverse_time_line(&original_time, &parallel_time, *whoami, to_be_continued - 1);
+		reverse_time_line(&original_time, &parallel_time, whoami, tree_of_life * day % life_energy - 1);
 		if (original_time->first->moment <= parallel_time->first->moment)
-		{
-			arc_conversation(&parallel_time, &original_time);
-			say_story('p', *whoami, 0);
-		}
+			arc_conversation(&parallel_time, &original_time, whoami);
 		while (parallel_time->first != NULL)
 		{
 			if (parallel_time->first->moment <= original_time->first->moment)
-			{
-				arc_conversation(&original_time, &parallel_time);
-				say_story('p', me, secret);
-			}
-			arc_reflection(&original_time);
-			say_story('r', me, secret);
+				arc_conversation(&original_time, &parallel_time, whoami);
+			arc_reflection(&original_time, whoami);
 		}
-		arc_reflection(&original_time);
-		say_story('r', me, secret);
 	}
-	story->tree_of_life *= 2;
 	return (life_energy);
 }
-*/
 
 // time : O(n log(n))
 // space: O(1)
