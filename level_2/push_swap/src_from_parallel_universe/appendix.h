@@ -82,6 +82,8 @@ void		say_reflection(t_yin_yang *story, char mc, char secret);
 void		existential_crisis(t_yin_yang *story, char secret, size_t i);
 void		reverse_time_line(t_vision **original_time,
 				t_vision **parallel_time, char tale, size_t time);
+void	observer_effect(t_vision *original_time,
+				t_vision *parallel_time, char tale, size_t time);
 // void		the_illusion_of_separation(t_yin_yang *story, char secret);
 
 #endif

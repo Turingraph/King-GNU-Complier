@@ -12,8 +12,6 @@
 
 #include "appendix.h"
 
-/*
-// slower
 // time : O(n)
 // space: O(1)
 void	existential_crisis(t_yin_yang *story, char secret, size_t i)
@@ -33,9 +31,9 @@ void	existential_crisis(t_yin_yang *story, char secret, size_t i)
 		say_conversation(story, 'b', secret, 1);
 	story->tree_of_life = 4;
 }
-	// 34
-*/
 
+/*
+// faster but have memory leak.
 // time : O(n)
 // space: O(1)
 void	existential_crisis(t_yin_yang *story, char secret, size_t i)
@@ -66,7 +64,7 @@ void	existential_crisis(t_yin_yang *story, char secret, size_t i)
 		say_conversation(story, 'b', secret, 1);
 	story->tree_of_life = 4;
 }
-// 19
+*/
 
 // time : O(n)
 // space: O(1)
@@ -108,7 +106,8 @@ void	observer_effect(t_vision *original_time,
 	i = 0;
 	while (i < time - 1)
 	{
-		if (parallel_time->first->moment <= original_time->first->moment)
+		if (parallel_time->first != NULL
+			&& parallel_time->first->moment <= original_time->first->moment)
 		{
 			arc_conversation(&original_time, &parallel_time);
 			say_story('p', me, secret);
