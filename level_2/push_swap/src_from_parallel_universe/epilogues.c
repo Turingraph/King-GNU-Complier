@@ -1032,7 +1032,7 @@ int	main(int time, char **memory)
 	translation(1, story->tree_of_life);
 	write(1, ")\n", 2);
 	whoami = 'B';
-	observer_effect(story->them, story->me, whoami, story->tree_of_life);
+	observer_effect(story->them, story->me, whoami, story->tree_of_life / 2);
 	write(1, "Them : ", 7);
 	telepathy(story->them->first);
 	write(1, "Me   : ", 7);

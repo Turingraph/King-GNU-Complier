@@ -96,7 +96,7 @@ void	reverse_time_line(t_vision **original_time,
 	}
 }
 
-// original_time->time > parallel_time->time
+// original_time->time > parallel_time->time, time = tree_of_life / 2
 // time : O(n)
 // space: O(1)
 void	observer_effect(t_vision *original_time,
@@ -109,7 +109,7 @@ void	observer_effect(t_vision *original_time,
 
 	show_story(&me, &them, &secret, whoami);
 	day = 0;
-	while (day < time / 2)
+	while (day < time)
 	{
 		if (parallel_time->first != NULL
 			&& parallel_time->first->moment <= original_time->first->moment)
@@ -146,7 +146,7 @@ size_t	hero_journey(t_yin_yang *story, char *whoami)
 	while (story->tree_of_life * day <= life_energy)
 	{
 		reverse_time_line(&original_time, &parallel_time, *whoami, story->tree_of_life / 2);
-		observer_effect(original_time, parallel_time, *whoami, story->tree_of_life);
+		observer_effect(original_time, parallel_time, *whoami, story->tree_of_life / 2);
 		day += 1;
 	}
 	// time_left = story->tree_of_life * day % life_energy;
