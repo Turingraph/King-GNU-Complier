@@ -121,66 +121,6 @@ size_t	hero_journey(t_vision *original_time, t_vision *parallel_time,
 void	the_illusion_of_separation(t_yin_yang *story, char secret)
 {
 	char	whoami;
-	size_t	life_engery;
-
-	existential_crisis(story, secret);
-	whoami = 'b';
-	if (secret == 1)
-		whoami = 'B';
-	life_engery = story->them->time;
-	while (story->tree_of_life < life_engery)
-		hero_journey(story, whoami);
-}
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-size_t	hero_journey(t_yin_yang *story, char *whoami)
-{
-	t_vision	*original_time;
-	t_vision	*parallel_time;
-	size_t		time;
-	size_t		tree;
-
-	time = reincarnation(&original_time, &parallel_time, story, whoami);
-	tree = story->tree_of_life;
-	while (tree * (story->seasons + 1) <= time)
-	{
-		reverse_time_line(original_time, parallel_time, *whoami, tree / 2);
-		observer_effect(original_time, parallel_time, *whoami, tree);
-		story->seasons += 1;
-	}
-	if (tree * (story->seasons + 1) > time)
-	{
-		reverse_time_line(original_time, parallel_time, *whoami, tree / 2);
-		observer_effect(original_time, parallel_time, *whoami,
-			original_time->time % (tree * (story->seasons + 1)));
-	}
-	story->tree_of_life *= 2;
-	return (time);
-}
-*/
-
-// time : O(n log(n))
-// space: O(1)
-/*
-void	the_illusion_of_separation(t_yin_yang *story, char secret)
-{
-	char	whoami;
 	size_t	time;
 
 	time = story->me->time;
