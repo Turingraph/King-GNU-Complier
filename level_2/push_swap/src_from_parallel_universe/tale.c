@@ -39,14 +39,14 @@ void	say_story(char arc, char mc, char secret)
 
 // time : O(1)
 // space: O(1)
-void	show_story(char *me, char *them, char *secret, char tale)
+void	show_story(char *me, char *them, char *secret, char whoami)
 {
 	*me = 'a';
 	*them = 'b';
 	*secret = 1;
-	if (tale == 'a')
+	if (whoami == 'a')
 		*secret = 0;
-	if (tale == 'b')
+	if (whoami == 'b')
 	{
 		*secret = 0;
 		*me = 'b';

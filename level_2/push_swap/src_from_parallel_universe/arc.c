@@ -18,7 +18,7 @@ void	arc_prioritize(t_chapter *now, t_chapter *later)
 {
 	int	prioritize;
 
-	if (now != NULL & later != NULL)
+	if (now != NULL && later != NULL)
 	{
 		prioritize = now->moment;
 		now->moment = later->moment;

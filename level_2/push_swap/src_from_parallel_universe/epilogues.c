@@ -803,6 +803,7 @@ int	main(int time, char **memory)
 
 // *** the_illusion_of_separation.c ***
 
+/*
 //	*	existential_crisis
 int	main(int time, char **memory)
 {
@@ -855,6 +856,7 @@ int	main(int time, char **memory)
 	free(story);
 	return (0);
 }
+*/
 
 /*
 //	*	reverse_time_line
@@ -943,19 +945,99 @@ int	main(int time, char **memory)
 		return (0);
 	}
 	write(1, "Before\n", 7);
-	reverse_time_line(&story->me, &story->them, 'b', 11);
+	reverse_time_line(&story->me, &story->them, 'B', 11);
 	write(1, "Me   : ", 7);
 	telepathy(story->me->first);
 	write(1, "Them : ", 7);
 	telepathy(story->them->first);
 	write(1, "After\n", 6);
-	observer_effect(story->me, story->them, 'a', 22);
+	observer_effect(story->me, story->them, 'A', 22);
 	write(1, "Me   : ", 7);
 	telepathy(story->me->first);
 	write(1, "Them : ", 7);
 	telepathy(story->them->first);
 	the_most_important_thing_in_the_world(story);
 	// 61
+	return (0);
+}
+*/
+
+/*
+//	*	existential_crisis
+//	*	reverse_time_line
+//	*	observer_effect
+int	main(int time, char **memory)
+{
+	int			*biography;
+	char		err;
+	char		whoami;
+	t_yin_yang	*story;
+
+	if (time < 2)
+	{
+		write(1, "No Input\n", 9);
+		return (0);
+	}
+	err = 'K';
+	biography = write_biography(time - 1, memory + 1, &err);
+	if (err == 'E')
+	{
+		write(1, "Input is invalid\n", 17);
+		return (0);
+	}
+	if (biography == NULL)
+	{
+		write(1, "Malloc Fail\n", 6);
+		return (0);
+	}
+	story = introduction(time - 1, biography);
+	free(biography);
+	if (story == NULL)
+	{
+		write(1, "Malloc Fail\n", 6);
+		return (0);
+	}
+	if (story->me == NULL)
+	{
+		free(story);
+		write(1, "Malloc Fail\n", 6);
+		return (0);
+	}
+	write(1, "1st Arc (tree = ", 16);
+	translation(1, story->tree_of_life);
+	write(1, ")\n", 2);
+	write(1, "Me   : ", 7);
+	telepathy(story->me->first);
+	existential_crisis(story, 1);
+
+	write(1, "2nd Arc (tree = ", 16);
+	translation(1, story->tree_of_life);
+	write(1, ")\n", 2);
+	write(1, "Them : ", 7);
+	telepathy(story->them->first);
+	write(1, "Me   : ", 7);
+	telepathy(story->me->first);
+
+	write(1, "3rd Arc (tree = ", 16);
+	translation(1, story->tree_of_life);
+	write(1, ")\n", 2);
+	whoami = 'B';
+	reverse_time_line(&story->them, &story->me, whoami, story->tree_of_life / 2);
+	write(1, "Them : ", 7);
+	telepathy(story->them->first);
+	write(1, "Me   : ", 7);
+	telepathy(story->me->first);
+
+	write(1, "4th Arc (tree = ", 16);
+	translation(1, story->tree_of_life);
+	write(1, ")\n", 2);
+	whoami = 'B';
+	observer_effect(story->them, story->me, whoami, story->tree_of_life);
+	write(1, "Them : ", 7);
+	telepathy(story->them->first);
+	write(1, "Me   : ", 7);
+	telepathy(story->me->first);
+	the_most_important_thing_in_the_world(story);
 	return (0);
 }
 */

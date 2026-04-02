@@ -16,18 +16,18 @@
 // space: O(1)
 void	existential_crisis(t_yin_yang *story, char secret)
 {
-	size_t	i;
+	size_t	day;
 
-	i = 0;
+	day = 0;
 	while (story->me->time > 1)
 	{
 		if ((story->me->first->moment > story->me->first->future->moment
-				&& i % 2 == 0)
+				&& day % 2 == 0)
 			|| (story->me->first->moment < story->me->first->future->moment
-				&& i % 2 == 1))
+				&& day % 2 == 1))
 			say_prioritize(story, 'a', secret);
 		say_conversation(story, 'b', secret, 2);
-		i += 1;
+		day += 1;
 	}
 	if (story->me->first != NULL)
 	{
@@ -74,16 +74,16 @@ void	existential_crisis(t_yin_yang *story, char secret, size_t i)
 // time : O(n)
 // space: O(1)
 void	reverse_time_line(t_vision **original_time,
-		t_vision **parallel_time, char tale, size_t time)
+		t_vision **parallel_time, char whoami, size_t time)
 {
 	char	me;
 	char	them;
 	char	secret;
-	size_t	i;
+	size_t	day;
 
-	show_story(&me, &them, &secret, tale);
-	i = 0;
-	while (i < time && original_time != NULL)
+	show_story(&me, &them, &secret, whoami);
+	day = 0;
+	while (day < time && original_time != NULL)
 	{
 		arc_conversation(parallel_time, original_time);
 		say_story('p', them, secret);
@@ -92,7 +92,7 @@ void	reverse_time_line(t_vision **original_time,
 			arc_reflection(parallel_time);
 			say_story('r', them, secret);
 		}
-		i += 1;
+		day += 1;
 	}
 }
 
@@ -100,16 +100,16 @@ void	reverse_time_line(t_vision **original_time,
 // time : O(n)
 // space: O(1)
 void	observer_effect(t_vision *original_time,
-	t_vision *parallel_time, char tale, size_t time)
+	t_vision *parallel_time, char whoami, size_t time)
 {
 	char	me;
 	char	them;
 	char	secret;
-	size_t	i;
+	size_t	day;
 
-	show_story(&me, &them, &secret, tale);
-	i = 0;
-	while (i < time - 1)
+	show_story(&me, &them, &secret, whoami);
+	day = 0;
+	while (day < time / 2)
 	{
 		if (parallel_time->first != NULL
 			&& parallel_time->first->moment <= original_time->first->moment)
@@ -117,27 +117,80 @@ void	observer_effect(t_vision *original_time,
 			arc_conversation(&original_time, &parallel_time);
 			say_story('p', me, secret);
 		}
+		else
+			day += 1;
 		arc_reflection(&original_time);
 		say_story('r', me, secret);
-		i += 1;
 	}
-	if (parallel_time->first != NULL)
+	while (parallel_time->first != NULL)
 	{
 		arc_conversation(&original_time, &parallel_time);
 		say_story('p', me, secret);
+		arc_reflection(&original_time);
+		say_story('r', me, secret);
 	}
-	arc_reflection(&original_time);
-	say_story('r', me, secret);
 }
 
 // time : O(n)
 // space: O(1)
-/*
 size_t	hero_journey(t_yin_yang *story, char *whoami)
 {
-	//
+	t_vision	*original_time;
+	t_vision	*parallel_time;
+	size_t		day;
+	size_t		life_energy;
+	// size_t		time_left;
+
+	life_energy = reincarnation(&original_time, &parallel_time, story, whoami);
+	day = 1;
+	while (story->tree_of_life * day <= life_energy)
+	{
+		reverse_time_line(&original_time, &parallel_time, *whoami, story->tree_of_life / 2);
+		observer_effect(original_time, parallel_time, *whoami, story->tree_of_life);
+		day += 1;
+	}
+	// time_left = story->tree_of_life * day % life_energy;
+	// if (time_left > 0)
+	// {
+	// 	reverse_time_line(&original_time, &parallel_time, *whoami, (time_left + 1) / 2);
+	// 	observer_effect(original_time, parallel_time, *whoami, time_left);
+	// }
+	story->tree_of_life *= 2;
+	return (life_energy);
+}
+
+// time : O(n log(n))
+// space: O(1)
+/*
+void	the_illusion_of_separation(t_yin_yang *story, char secret)
+{
+	char	whoami;
+	size_t	life_engery;
+
+	existential_crisis(story, secret);
+	whoami = 'b';
+	if (secret == 1)
+		whoami = 'B';
+	life_engery = story->them->time;
+	while (story->tree_of_life < life_engery)
+		hero_journey(story, whoami);
 }
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 size_t	hero_journey(t_yin_yang *story, char *whoami)

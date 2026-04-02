@@ -98,15 +98,16 @@ size_t	reincarnation(t_vision **original_time,
 	story->seasons = 0;
 	if (story->me != NULL)
 		life_energy = story->me->time;
-	if (*whoami == 'b')
+	if (*whoami == 'b' || *whoami == 'B')
 	{
 		*original_time = story->them;
 		*parallel_time = story->me;
-		*whoami = 'a';
-		if (story->them != NULL)
-			life_energy = story->them->time;
+		if (*whoami == 'B')
+			if (story->them != NULL)
+				life_energy = story->them->time;
+		*whoami -= 1;
 	}
 	else
-		*whoami = 'b';
+		*whoami += 1;
 	return (life_energy);
 }
