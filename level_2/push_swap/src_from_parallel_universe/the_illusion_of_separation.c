@@ -14,8 +14,11 @@
 
 // time : O(n)
 // space: O(1)
-void	existential_crisis(t_yin_yang *story, char secret, size_t i)
+void	existential_crisis(t_yin_yang *story, char secret)
 {
+	size_t	i;
+
+	i = 0;
 	while (story->me->time > 1)
 	{
 		if ((story->me->first->moment > story->me->first->future->moment
@@ -23,12 +26,14 @@ void	existential_crisis(t_yin_yang *story, char secret, size_t i)
 			|| (story->me->first->moment < story->me->first->future->moment
 				&& i % 2 == 1))
 			say_prioritize(story, 'a', secret);
-		say_conversation(story, 'b', secret, 1);
-		say_conversation(story, 'b', secret, 1);
+		say_conversation(story, 'b', secret, 2);
 		i += 1;
 	}
 	if (story->me->first != NULL)
+	{
 		say_conversation(story, 'b', secret, 1);
+		say_reflection(story, 'b', secret);
+	}
 	story->tree_of_life = 4;
 }
 
@@ -130,6 +135,13 @@ void	observer_effect(t_vision *original_time,
 /*
 size_t	hero_journey(t_yin_yang *story, char *whoami)
 {
+	//
+}
+*/
+
+/*
+size_t	hero_journey(t_yin_yang *story, char *whoami)
+{
 	t_vision	*original_time;
 	t_vision	*parallel_time;
 	size_t		time;
@@ -166,9 +178,6 @@ void	the_illusion_of_separation(t_yin_yang *story, char secret)
 	whoami = 'b';
 	existential_crisis(story, secret);
 	while (story->tree_of_life <= time)
-	{
 		time = hero_journey(story, &whoami);
-	}
 }
 */
-

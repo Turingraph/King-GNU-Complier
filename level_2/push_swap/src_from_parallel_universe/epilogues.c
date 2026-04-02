@@ -803,7 +803,6 @@ int	main(int time, char **memory)
 
 // *** the_illusion_of_separation.c ***
 
-/*
 //	*	existential_crisis
 int	main(int time, char **memory)
 {
@@ -845,7 +844,7 @@ int	main(int time, char **memory)
 	// telepathy(story->them->first);
 	write(1, "Me   : ", 7);
 	telepathy(story->me->first);
-	existential_crisis(story, 0, 0);
+	existential_crisis(story, 0);
 	write(1, "Them : ", 7);
 	telepathy(story->them->first);
 	write(1, "Me   : ", 7);
@@ -856,7 +855,6 @@ int	main(int time, char **memory)
 	free(story);
 	return (0);
 }
-*/
 
 /*
 //	*	reverse_time_line

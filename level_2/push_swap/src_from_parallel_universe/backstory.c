@@ -17,20 +17,20 @@
 t_chapter	*write_fiction(size_t time, int *biography, t_chapter *prologue)
 {
 	t_chapter	*chapter;
-	size_t		i;
+	size_t		day;
 
 	chapter = prologue;
-	i = 1;
-	while (i < time)
+	day = 1;
+	while (day < time)
 	{
-		chapter->future = write_a_chapter(biography[i]);
+		chapter->future = write_a_chapter(biography[day]);
 		if (chapter->future == NULL)
 		{
 			memento_mori(prologue);
 			return (NULL);
 		}
 		chapter = chapter->future;
-		i += 1;
+		day += 1;
 	}
 	return (chapter);
 }

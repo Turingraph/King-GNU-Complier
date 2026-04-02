@@ -70,21 +70,21 @@ int	edited_draft(char *src, char *err)
 int	*write_biography(size_t time, char **imagine, char *err)
 {
 	int		*biography;
-	size_t	i;
+	size_t	day;
 
 	biography = (int *)malloc(sizeof(int) * (time));
 	if (biography == NULL)
 		return (NULL);
-	i = 0;
-	while (i < time)
+	day = 0;
+	while (day < time)
 	{
-		biography[i] = edited_draft(imagine[i], err);
+		biography[day] = edited_draft(imagine[day], err);
 		if (*err == 'E')
 		{
 			free(biography);
 			return (NULL);
 		}
-		i += 1;
+		day += 1;
 	}
 	return (biography);
 }

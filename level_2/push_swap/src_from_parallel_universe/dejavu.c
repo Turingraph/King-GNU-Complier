@@ -104,7 +104,7 @@ char	have_i_seen_this_before(t_chapter **memory, int event, size_t eclipse)
 // space: O(n)
 char	kagerou_day(int *events, size_t time)
 {
-	size_t		i;
+	size_t		day;
 	char		dejavu;
 	t_chapter	**memory;
 	size_t		eclipse;
@@ -116,14 +116,14 @@ char	kagerou_day(int *events, size_t time)
 	memory = rumination(eclipse);
 	if (memory == NULL)
 		return (1);
-	i = 0;
-	while (i < time && dejavu == 0)
+	day = 0;
+	while (day < time && dejavu == 0)
 	{
-		if (have_i_seen_this_before(memory, events[i], eclipse) == (char) 1)
+		if (have_i_seen_this_before(memory, events[day], eclipse) == (char) 1)
 			dejavu = 1;
-		if (subliminal_stimuli(memory, events[i], eclipse) == (char) 0)
-			i = time;
-		i += 1;
+		if (subliminal_stimuli(memory, events[day], eclipse) == (char) 0)
+			day = time;
+		day += 1;
 	}
 	burning_memory(memory, eclipse);
 	return (dejavu);

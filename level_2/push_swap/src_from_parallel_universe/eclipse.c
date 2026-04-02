@@ -45,26 +45,26 @@ char	*sieve_of_eratosthenes(size_t today, char *sieve)
 size_t	wait_next_eclipse(size_t today)
 {
 	char	*sieve;
-	size_t	i;
+	size_t	day;
 
 	if (today == 0 || today == 1)
 		return (2);
 	sieve = (char *)malloc(sizeof(char) * (2 * today + 1));
 	if (sieve == NULL)
 		return (0);
-	i = 0;
-	while (i < 2 * today)
+	day = 0;
+	while (day < 2 * today)
 	{
-		sieve[i] = '0';
-		i += 1;
+		sieve[day] = '0';
+		day += 1;
 	}
-	sieve[i] = '\0';
+	sieve[day] = '\0';
 	sieve_of_eratosthenes(2 * today, sieve);
-	i = today;
-	while (sieve[i] == '1')
-		i += 1;
+	day = today;
+	while (sieve[day] == '1')
+		day += 1;
 	free(sieve);
-	return (i);
+	return (day);
 }
 
 // time : O(n)
@@ -72,17 +72,17 @@ size_t	wait_next_eclipse(size_t today)
 /*
 size_t	numerology(size_t a, size_t b)
 {
-	size_t	i;
-	size_t	y;
+	size_t	day;
+	size_t	night;
 
-	i = 0;
-	y = 1;
-	while (i < b)
+	day = 0;
+	night = 1;
+	while (day < b)
 	{
-		y *= a;
-		i += 1;
+		night *= a;
+		day += 1;
 	}
-	return (y);
+	return (night);
 }
 */
 
@@ -90,17 +90,17 @@ size_t	numerology(size_t a, size_t b)
 // space: O(1)
 size_t	numerology(size_t eclipse, size_t measurement)
 {
-	size_t	y;
-	size_t	i;
+	size_t	night;
+	size_t	day;
 
-	i = 0;
-	y = 1;
-	while (y < eclipse)
+	day = 0;
+	night = 1;
+	while (night < eclipse)
 	{
-		i += 1;
-		y *= measurement;
+		day += 1;
+		night *= measurement;
 	}
-	return (i);
+	return (day);
 }
 
 // https://www.geeksforgeeks.org/dsa/mid-square-hashing/

@@ -83,28 +83,28 @@ void	say_prioritize(t_yin_yang *story, char mc, char secret)
 // space: O(1)
 void	say_conversation(t_yin_yang *story, char mc, char secret, size_t time)
 {
-	size_t	i;
+	size_t	day;
 
-	i = 0;
-	while (i < time)
+	day = 0;
+	while (day < time)
 	{
 		if (story->them != NULL && mc == 'a')
 		{
 			arc_conversation(&story->me, &story->them);
 			say_story('p', mc, secret);
 			if (story->them->first == NULL)
-				i = time;
+				day = time;
 		}
 		if (story->me != NULL && mc == 'b')
 		{
 			arc_conversation(&story->them, &story->me);
 			say_story('p', mc, secret);
 			if (story->me->first == NULL)
-				i = time;
+				day = time;
 		}
 		if (mc == 'c')
 			write(1, "**INVALID**", 11);
-		i += 1;
+		day += 1;
 	}
 }
 
