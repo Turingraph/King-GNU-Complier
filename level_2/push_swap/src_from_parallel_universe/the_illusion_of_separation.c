@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:34 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/31 17:59:12 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/03 10:42:05 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	existential_crisis(t_yin_yang *story, char secret)
 
 // time : O(n)
 // space: O(1)
-void	reverse_time_line(t_vision **original_time,
+void	time_machine(t_vision **original_time,
 		t_vision **parallel_time, char whoami, size_t time)
 {
 	size_t	day;
@@ -96,13 +96,14 @@ size_t	hero_journey(t_vision *original_time, t_vision *parallel_time,
 	day = 1;
 	while (tree_of_life * day <= life_energy)
 	{
-		reverse_time_line(&original_time, &parallel_time, whoami, tree_of_life / 2);
+		time_machine(&original_time, &parallel_time, whoami, tree_of_life / 2);
 		observer_effect(original_time, parallel_time, whoami, tree_of_life / 2);
 		day += 1;
 	}
 	if (tree_of_life * day % life_energy > 0)
 	{
-		reverse_time_line(&original_time, &parallel_time, whoami, tree_of_life * day % life_energy - 1);
+		time_machine(&original_time, &parallel_time, whoami,
+			tree_of_life * day % life_energy - 1);
 		if (original_time->first->moment <= parallel_time->first->moment)
 			arc_conversation(&parallel_time, &original_time, whoami);
 		while (parallel_time->first != NULL)

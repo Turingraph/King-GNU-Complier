@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 17:42:31 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/31 17:25:51 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/03 10:35:45 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	arc_dialog(t_vision **listener, t_vision **speaker, char whoami)
 		if (whoami == 'a' || whoami == 'b')
 			say_story('p', whoami, 0);
 	}
+	else if ((*speaker) != NULL && (*speaker)->first == NULL)
+		free((*speaker));
 }
 
 // time : O(1)
@@ -85,8 +87,6 @@ void	arc_conversation(t_vision **listener, t_vision **speaker, char whoami)
 			(*listener) = study_me(1, NULL);
 			if ((*listener) != NULL)
 				arc_conversation(listener, speaker, whoami);
-			else
-				free((*listener));
 		}
 		else if ((*listener) != NULL && (*listener)->first == NULL)
 		{

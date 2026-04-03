@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:15:47 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/31 17:53:30 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/03 10:40:02 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ typedef struct t_yin_yang
 
 // arc.c
 void		arc_prioritize(t_chapter *now, t_chapter *later, char whoami);
-void		arc_conversation(t_vision **listener, t_vision **speaker, char whoami);
+void		arc_conversation(t_vision **listener, t_vision **speaker,
+				char whoami);
 void		arc_reflection(t_vision **perspective, char whoami);
 
 // backstory.c
@@ -72,7 +73,7 @@ size_t		the_wheel_of_fortune(int event, size_t eclipse);
 
 // the_illusion_of_separation.c
 void		existential_crisis(t_yin_yang *story, char secret);
-void		reverse_time_line(t_vision **original_time,
+void		time_machine(t_vision **original_time,
 				t_vision **parallel_time, char whoami, size_t time);
 void		observer_effect(t_vision *original_time,
 				t_vision *parallel_time, char whoami, size_t time);

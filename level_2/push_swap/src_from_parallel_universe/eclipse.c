@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 17:15:02 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/31 13:18:33 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/03 10:37:15 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,26 +67,7 @@ size_t	wait_next_eclipse(size_t today)
 	return (day);
 }
 
-// time : O(n)
-// space: O(1)
-/*
-size_t	numerology(size_t a, size_t b)
-{
-	size_t	day;
-	size_t	night;
-
-	day = 0;
-	night = 1;
-	while (day < b)
-	{
-		night *= a;
-		day += 1;
-	}
-	return (night);
-}
-*/
-
-// time : O(1)
+// time : O(log(n))
 // space: O(1)
 size_t	numerology(size_t eclipse, size_t measurement)
 {

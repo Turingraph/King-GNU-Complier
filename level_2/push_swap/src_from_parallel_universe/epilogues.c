@@ -6,12 +6,14 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:26:09 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/31 18:00:01 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/03 10:40:23 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "appendix.h"
 
+// time : O(1)
+// space: O(1)
 void	translate(int fd, int x)
 {
 	long	d;
@@ -31,6 +33,8 @@ void	translate(int fd, int x)
 	}
 }
 
+// time : O(1)
+// space: O(1)
 void	translation(int fd, int x)
 {
 	if (x == 0)
@@ -52,6 +56,8 @@ void	translation(int fd, int x)
 	}
 }
 
+// time : O(n)
+// space: O(1)
 void	fortune_telling(t_chapter *diary)
 {
 	while (diary != NULL)
@@ -62,6 +68,8 @@ void	fortune_telling(t_chapter *diary)
 	}
 }
 
+// time : O(n)
+// space: O(1)
 void	telepathy(t_chapter *diary)
 {
 	if (diary == NULL)
@@ -859,7 +867,7 @@ int	main(int time, char **memory)
 */
 
 /*
-//	*	reverse_time_line
+//	*	time_machine
 int	main(int time, char **memory)
 {
 	int			*biography;
@@ -896,7 +904,7 @@ int	main(int time, char **memory)
 		write(1, "Malloc Fail\n", 6);
 		return (0);
 	}
-	reverse_time_line(&story->me, &story->them, 'a', 4);
+	time_machine(&story->me, &story->them, 'a', 4);
 	write(1, "Me   : ", 7);
 	telepathy(story->me->first);
 	write(1, "Them : ", 7);
@@ -945,7 +953,7 @@ int	main(int time, char **memory)
 		return (0);
 	}
 	write(1, "Before\n", 7);
-	reverse_time_line(&story->me, &story->them, 'B', 11);
+	time_machine(&story->me, &story->them, 'B', 11);
 	write(1, "Me   : ", 7);
 	telepathy(story->me->first);
 	write(1, "Them : ", 7);
@@ -964,7 +972,7 @@ int	main(int time, char **memory)
 
 /*
 //	*	existential_crisis
-//	*	reverse_time_line
+//	*	time_machine
 //	*	observer_effect
 int	main(int time, char **memory)
 {
@@ -1022,7 +1030,7 @@ int	main(int time, char **memory)
 	translation(1, story->tree_of_life);
 	write(1, ")\n", 2);
 	whoami = 'b';
-	reverse_time_line(&story->them, &story->me, whoami, story->tree_of_life / 2);
+	time_machine(&story->them, &story->me, whoami, story->tree_of_life / 2);
 	write(1, "Them : ", 7);
 	telepathy(story->them->first);
 	write(1, "Me   : ", 7);
@@ -1042,7 +1050,6 @@ int	main(int time, char **memory)
 }
 */
 
-/*
 //	*	hero_journey
 int	main(int time, char **memory)
 {
@@ -1106,7 +1113,6 @@ int	main(int time, char **memory)
 	the_most_important_thing_in_the_world(story);
 	return (0);
 }
-*/
 
 //----------------------------------------------------------
 
