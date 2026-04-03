@@ -6,7 +6,7 @@
 #    By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/29 11:52:57 by phsottat          #+#    #+#              #
-#    Updated: 2026/04/03 10:48:44 by phsottat         ###   ########.fr        #
+#    Updated: 2026/04/03 13:33:57 by phsottat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = push_swap
 
 CC = cc -Wall -Wextra -Werror
 
-OBJ = arc.o backstory.o biography.o dejavu.o eclipse.o tale.o \
-	hero_journey.o
+OBJ = arc.o backstory.o biography.o dejavu.o eclipse.o hero_journey.o
+
 BUILD_OBJ = $(OBJ:%.o=build/%.o)
 
 SRC = $(OBJ:%.o=%.c)

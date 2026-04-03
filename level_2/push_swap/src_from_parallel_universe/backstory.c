@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 12:29:40 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/31 12:38:29 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/03 11:21:06 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ t_yin_yang	*introduction(size_t time, int *biography)
 	}
 	story->them = NULL;
 	story->tree_of_life = 2;
-	story->seasons = 0;
 	return (story);
 }
 
@@ -95,7 +94,6 @@ size_t	reincarnation(t_vision **original_time,
 	*original_time = story->me;
 	*parallel_time = story->them;
 	life_energy = 0;
-	story->seasons = 0;
 	if (story->me != NULL)
 		life_energy = story->me->time;
 	if (*whoami == 'b' || *whoami == 'B')

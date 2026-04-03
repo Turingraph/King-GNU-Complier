@@ -1,0 +1,26 @@
+a: 3 4 5 6 
+b: 10 11
+
+./a.out 1 2 3 4 5 6 7 8 9 10 11 12 13
+
+while (parallel_time->time > 0)
+
+==2955501== LEAK SUMMARY:
+==2955501==    definitely lost: 0 bytes in 0 blocks
+==2955501==    indirectly lost: 0 bytes in 0 blocks
+==2955501==      possibly lost: 0 bytes in 0 blocks
+==2955501==    still reachable: 280 bytes in 16 blocks
+==2955501==         suppressed: 0 bytes in 0 blocks
+==2955501== Reachable blocks (those to which a pointer was found) are not shown.
+==2955501== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+
+while (parallel_time->first != NULL)
+
+==2955743== LEAK SUMMARY:
+==2955743==    definitely lost: 16 bytes in 1 blocks
+==2955743==    indirectly lost: 160 bytes in 10 blocks
+==2955743==      possibly lost: 0 bytes in 0 blocks
+==2955743==    still reachable: 104 bytes in 5 blocks
+==2955743==         suppressed: 0 bytes in 0 blocks
+==2955743== Reachable blocks (those to which a pointer was found) are not shown.
+==2955743== To see them, rerun with: --leak-check=full --show-leak-kinds=all

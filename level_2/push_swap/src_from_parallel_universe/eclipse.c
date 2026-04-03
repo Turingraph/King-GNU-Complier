@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 17:15:02 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/03 10:37:15 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/03 15:21:14 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ size_t	numerology(size_t eclipse, size_t measurement)
 // space: O(1)
 size_t	the_wheel_of_fortune(int event, size_t eclipse)
 {
-	size_t		month;
+	size_t		trinity;
 	size_t		knuthoth;
 	size_t		prediction;
 
@@ -98,12 +98,12 @@ size_t	the_wheel_of_fortune(int event, size_t eclipse)
 		event *= -1;
 	prediction = (size_t) event;
 	knuthoth = 32 - numerology(event, 2);
-	month = 0;
-	while (month < 3)
+	trinity = 0;
+	while (trinity < 3)
 	{
 		prediction *= prediction;
 		prediction = (prediction * 2654435769) >> knuthoth;
-		month += 1;
+		trinity += 1;
 	}
 	prediction = (prediction) % eclipse;
 	return (prediction);

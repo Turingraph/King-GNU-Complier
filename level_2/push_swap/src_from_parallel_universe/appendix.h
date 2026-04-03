@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:15:47 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/03 10:48:10 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/03 14:49:06 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef struct t_yin_yang
 	t_vision	*me;
 	t_vision	*them;
 	size_t		tree_of_life;
-	size_t		seasons;
 }	t_yin_yang;
 
 // mc = a -> me
@@ -79,6 +78,6 @@ void		observer_effect(t_vision *original_time,
 				t_vision *parallel_time, char whoami, size_t time);
 size_t		hero_journey(t_vision *original_time, t_vision *parallel_time,
 				size_t tree_of_life, char whoami);
-// void		the_illusion_of_separation(t_yin_yang *story, char secret);
+void		the_illusion_of_separation(t_yin_yang *story, char secret);
 
 #endif

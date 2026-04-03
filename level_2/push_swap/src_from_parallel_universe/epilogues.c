@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:26:09 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/03 10:40:23 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/03 17:31:10 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -809,7 +809,7 @@ int	main(int time, char **memory)
 
 //----------------------------------------------------------
 
-// *** the_illusion_of_separation.c ***
+// *** hero_journey.c ***
 
 /*
 //	*	existential_crisis
@@ -1050,6 +1050,7 @@ int	main(int time, char **memory)
 }
 */
 
+/*
 //	*	hero_journey
 int	main(int time, char **memory)
 {
@@ -1110,6 +1111,69 @@ int	main(int time, char **memory)
 	telepathy(story->them->first);
 	write(1, "Me   : ", 7);
 	telepathy(story->me->first);
+	the_most_important_thing_in_the_world(story);
+	return (0);
+}
+*/
+
+//	*	the_illusion_of_separation
+int	main(int time, char **memory)
+{
+	int			*biography;
+	char		err;
+	t_yin_yang	*story;
+
+	if (time < 2)
+	{
+		write(1, "No Input\n", 9);
+		return (0);
+	}
+	err = 'K';
+	biography = write_biography(time - 1, memory + 1, &err);
+	if (err == 'E')
+	{
+		write(1, "Input is invalid\n", 17);
+		return (0);
+	}
+	if (biography == NULL)
+	{
+		write(1, "Malloc Fail\n", 6);
+		return (0);
+	}
+	story = introduction(time - 1, biography);
+	free(biography);
+	if (story == NULL)
+	{
+		write(1, "Malloc Fail\n", 6);
+		return (0);
+	}
+	if (story->me == NULL)
+	{
+		free(story);
+		write(1, "Malloc Fail\n", 6);
+		return (0);
+	}
+	write(1, "1st Arc (tree = ", 16);
+	translation(1, story->tree_of_life);
+	existential_crisis(story, 0);
+	hero_journey(story->them, story->me, 4, 'b');
+
+	// time_machine(&story->me, &story->them, 'a', 2);
+
+	// the_illusion_of_separation(story, 0);
+	write(1, ")\n", 2);
+	write(1, "Me   : ", 7);
+	telepathy(story->me->first);
+	write(1, "Them : ", 7);
+	telepathy(story->them->first);
+
+	// write(1, "2nd Arc (tree = ", 16);
+	// write(1, ")\n", 2);
+	// write(1, "Them : ", 7);
+	// telepathy(story->them->first);
+	// write(1, "Me   : ", 7);
+	// telepathy(story->me->first);
+
 	the_most_important_thing_in_the_world(story);
 	return (0);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   the_illusion_of_separation.c                       :+:      :+:    :+:   */
+/*   hero_journey.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:34 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/03 10:47:51 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/03 17:28:38 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	time_machine(t_vision **original_time,
 		day += 1;
 	}
 }
+// 6 5 4 3
 
 // original_time->time > parallel_time->time, time = tree_of_life / 2
 // time : O(n)
@@ -108,26 +109,70 @@ size_t	hero_journey(t_vision *original_time, t_vision *parallel_time,
 			arc_conversation(&parallel_time, &original_time, whoami);
 		while (parallel_time->first != NULL)
 		{
-			if (parallel_time->first->moment <= original_time->first->moment)
-				arc_conversation(&original_time, &parallel_time, whoami);
+			arc_conversation(&original_time, &parallel_time, whoami);
 			arc_reflection(&original_time, whoami);
 		}
 	}
 	return (life_energy);
 }
-
+// 4 * 3 % 10 = 2
+/*
 // time : O(n log(n))
 // space: O(1)
-/*
-void	the_illusion_of_separation(t_yin_yang *story, char secret)
+t_vision	*the_illusion_of_separation(t_yin_yang *story, char secret)
 {
-	char	whoami;
-	size_t	time;
+	char		whoami;
+	// size_t		time;
+	t_vision	*original_time;
+	t_vision	*parallel_time;
 
-	time = story->me->time;
-	whoami = 'b';
+	// time = story->me->time;
+	whoami = 'b' - secret * ('a' - 'A');
 	existential_crisis(story, secret);
-	while (story->tree_of_life <= time)
-		time = hero_journey(story, &whoami);
+	reincarnation(&original_time, &parallel_time, story, &whoami);
+	return (original_time);
+	// time = 0;
+	// while (time < 2)
+	// // while (story->tree_of_life <= time)
+	// {
+	// 	reincarnation(&original_time, &parallel_time, story, &whoami);
+	// 	hero_journey(original_time, parallel_time, story->tree_of_life, whoami);
+	// 	story->tree_of_life *= 2;
+	// 	time += 1;
+	// }
+	// if (story->tree_of_life % (time / 2) > 0)
+	// {
+	// 	reincarnation(&original_time, &parallel_time, story, &whoami);
+	// 	time_machine(&original_time, &parallel_time, whoami,
+	// 		story->tree_of_life / 2);
+	// 	// observer_effect(original_time, parallel_time,
+	// 	// 	story->tree_of_life / 2, whoami);
+	// }
 }
 */
+
+void	the_illusion_of_separation(t_yin_yang *story, char secret)
+{
+	char		whoami;
+	size_t		time;
+	t_vision	*original_time;
+	t_vision	*parallel_time;
+
+	time = story->me->time;
+	whoami = 'a' - secret * ('a' - 'A');
+	existential_crisis(story, secret);
+	while (story->tree_of_life <= time / 2)
+	{
+		reincarnation(&original_time, &parallel_time, story, &whoami);
+		hero_journey(original_time, parallel_time, story->tree_of_life, whoami);
+		story->tree_of_life *= 2;
+	}
+	// if (story->tree_of_life % (time / 2) > 0)
+	// {
+	// 	reincarnation(&original_time, &parallel_time, story, &whoami);
+	// 	time_machine(&original_time, &parallel_time, whoami,
+	// 		story->tree_of_life / 2);
+	// 	// observer_effect(original_time, parallel_time,
+	// 	// 	story->tree_of_life / 2, whoami);
+	// }
+}
