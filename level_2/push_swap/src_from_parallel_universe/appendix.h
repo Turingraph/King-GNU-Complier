@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:15:47 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/03 10:40:02 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/03 10:48:10 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char		kagerou_day(int *events, size_t time);
 size_t		wait_next_eclipse(size_t today);
 size_t		the_wheel_of_fortune(int event, size_t eclipse);
 
-// the_illusion_of_separation.c
+// hero_journey.c
 void		existential_crisis(t_yin_yang *story, char secret);
 void		time_machine(t_vision **original_time,
 				t_vision **parallel_time, char whoami, size_t time);
