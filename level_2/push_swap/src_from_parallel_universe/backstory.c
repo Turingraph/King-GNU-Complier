@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 12:29:40 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/03 11:21:06 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/03 17:57:49 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,26 +86,36 @@ t_yin_yang	*introduction(size_t time, int *biography)
 
 // time : O(1)
 // space: O(1)
-size_t	reincarnation(t_vision **original_time,
+char	reincarnation(t_vision **original_time,
 	t_vision **parallel_time, t_yin_yang *story, char *whoami)
 {
-	size_t	life_energy;
+	char	whoiam;
 
+	whoiam = *whoami;
 	*original_time = story->me;
 	*parallel_time = story->them;
-	life_energy = 0;
-	if (story->me != NULL)
-		life_energy = story->me->time;
 	if (*whoami == 'b' || *whoami == 'B')
 	{
 		*original_time = story->them;
 		*parallel_time = story->me;
-		if (*whoami == 'B')
-			if (story->them != NULL)
-				life_energy = story->them->time;
 		*whoami -= 1;
 	}
 	else
 		*whoami += 1;
-	return (life_energy);
+	return (whoiam);
+}
+
+// time : O(1)
+// space: O(1)
+char	whoareyou(char whoiam)
+{
+	if (whoiam == 'a')
+		return ('b');
+	if (whoiam == 'A')
+		return ('B');
+	if (whoiam == 'b')
+		return ('a');
+	if (whoiam == 'B')
+		return ('A');
+	return ('c');
 }

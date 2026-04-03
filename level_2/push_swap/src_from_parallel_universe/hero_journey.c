@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:34 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/03 17:28:38 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/03 18:18:34 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,28 +151,35 @@ t_vision	*the_illusion_of_separation(t_yin_yang *story, char secret)
 }
 */
 
+		// write(1, "whoiam: ", 8);
+		// write(1, &whoiam, 1);
+		// write(1, "\n", 1);
+
+// time : O(n log(n))
+// space: O(1)
 void	the_illusion_of_separation(t_yin_yang *story, char secret)
 {
+	char		whoiam;
 	char		whoami;
 	size_t		time;
 	t_vision	*original_time;
 	t_vision	*parallel_time;
 
 	time = story->me->time;
-	whoami = 'a' - secret * ('a' - 'A');
+	whoami = 'b' - secret * ('a' - 'A');
 	existential_crisis(story, secret);
 	while (story->tree_of_life <= time / 2)
 	{
-		reincarnation(&original_time, &parallel_time, story, &whoami);
-		hero_journey(original_time, parallel_time, story->tree_of_life, whoami);
+		whoiam = reincarnation(&original_time, &parallel_time, story, &whoami);
+		hero_journey(original_time, parallel_time, story->tree_of_life, whoiam);
 		story->tree_of_life *= 2;
 	}
-	// if (story->tree_of_life % (time / 2) > 0)
-	// {
-	// 	reincarnation(&original_time, &parallel_time, story, &whoami);
-	// 	time_machine(&original_time, &parallel_time, whoami,
-	// 		story->tree_of_life / 2);
-	// 	// observer_effect(original_time, parallel_time,
-	// 	// 	story->tree_of_life / 2, whoami);
-	// }
+	if (story->tree_of_life > time / 2)
+	{
+		whoiam = reincarnation(&original_time, &parallel_time, story, &whoami);
+		time_machine(&original_time, &parallel_time, whoiam,
+			story->tree_of_life / 2);
+		observer_effect(original_time, parallel_time,
+			story->tree_of_life / 2, whoiam);
+	}
 }

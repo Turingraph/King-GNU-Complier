@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:15:47 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/03 14:49:06 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/03 17:42:46 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		arc_reflection(t_vision **perspective, char whoami);
 // backstory.c
 t_vision	*study_me(size_t time, int *biography);
 t_yin_yang	*introduction(size_t time, int *biography);
-size_t		reincarnation(t_vision **original_time, t_vision **parallel_time,
+char		reincarnation(t_vision **original_time, t_vision **parallel_time,
 				t_yin_yang *story, char *whoami);
 
 // biography.c

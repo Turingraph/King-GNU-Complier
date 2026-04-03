@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:26:09 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/03 17:31:10 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/03 17:48:07 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1155,12 +1155,12 @@ int	main(int time, char **memory)
 	}
 	write(1, "1st Arc (tree = ", 16);
 	translation(1, story->tree_of_life);
-	existential_crisis(story, 0);
-	hero_journey(story->them, story->me, 4, 'b');
+	// existential_crisis(story, 0);
+	// hero_journey(story->them, story->me, 4, 'b');
 
 	// time_machine(&story->me, &story->them, 'a', 2);
 
-	// the_illusion_of_separation(story, 0);
+	the_illusion_of_separation(story, 0);
 	write(1, ")\n", 2);
 	write(1, "Me   : ", 7);
 	telepathy(story->me->first);
