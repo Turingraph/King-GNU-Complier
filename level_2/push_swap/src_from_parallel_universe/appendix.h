@@ -33,7 +33,7 @@ typedef struct t_yin_yang
 {
 	t_vision	*me;
 	t_vision	*them;
-	size_t		tree_of_life;
+	size_t		life_tree;
 }	t_yin_yang;
 
 // mc = a -> me
@@ -41,10 +41,9 @@ typedef struct t_yin_yang
 // mc = c -> us
 
 // arc.c
-void		arc_prioritize(t_chapter *now, t_chapter *later, char whoami);
-void		arc_conversation(t_vision **listener, t_vision **speaker,
-				char whoami);
-void		arc_reflection(t_vision **perspective, char whoami);
+void		arc_prioritize(t_yin_yang *story, char secret);
+void		arc_first_to_be_continue(t_yin_yang *story, char whoami,
+				size_t time);
 
 // backstory.c
 t_vision	*study_me(size_t time, int *biography);
@@ -73,11 +72,18 @@ size_t		the_wheel_of_fortune(int event, size_t eclipse);
 // hero_journey.c
 void		existential_crisis(t_yin_yang *story, char secret);
 void		time_machine(t_vision **original_time,
-				t_vision **parallel_time, char whoami, size_t time);
+				t_vision **parallel_time, char whoiam, size_t time);
 void		observer_effect(t_vision *original_time,
 				t_vision *parallel_time, char whoami, size_t time);
 size_t		hero_journey(t_vision *original_time, t_vision *parallel_time,
-				size_t tree_of_life, char whoami);
+				size_t life_tree, char whoami);
 void		the_illusion_of_separation(t_yin_yang *story, char secret);
+
+// say.c
+void		say_story(char arc, char mc, char secret);
+void		say_prioritize(t_chapter *now, t_chapter *later, char whoiam);
+void		say_conversation(t_vision **listener, t_vision **speaker,
+				char whoami, size_t time);
+void		say_reflection(t_vision **perspective, char whoami);
 
 #endif

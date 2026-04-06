@@ -79,8 +79,15 @@ t_yin_yang	*introduction(size_t time, int *biography)
 		free(story);
 		return (NULL);
 	}
-	story->them = NULL;
-	story->tree_of_life = 2;
+	story->them = study_me(0, NULL);
+	if (story->them == NULL)
+	{
+		memento_mori(story->me->first);
+		free(story->me);
+		free(story);
+		return (NULL);
+	}
+	story->life_tree = 2;
 	return (story);
 }
 
