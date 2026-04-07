@@ -1,0 +1,21 @@
+a: 1 2 3 4 5 6
+b:
+pb
+pb
+sa
+a: 4 3 5 6
+b: 2 1
+pb
+rb
+pb
+rb
+rb
+rb
+a: 5 6
+b: 4 3 2 1
+pb
+rb
+pb
+rb
+a: 
+b: 4 3 2 1 5 6

@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:26:09 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/07 13:50:53 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/07 14:03:06 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -823,7 +823,6 @@ int	main(int time, char **memory)
 
 // *** hero_journey.c ***
 
-/*
 //	*	existential_crisis
 int	main(int time, char **memory)
 {
@@ -861,22 +860,17 @@ int	main(int time, char **memory)
 		write(1, "Malloc Fail\n", 6);
 		return (0);
 	}
-	// write(1, "Them 1:", 7);
-	// telepathy(story->them->first);
-	write(1, "Me   : ", 7);
+	write(1, "Input: ", 7);
 	telepathy(story->me->first);
 	existential_crisis(story, 0);
+	write(1, "*** Existential Crisis ***\n", 27);
 	write(1, "Them : ", 7);
 	telepathy(story->them->first);
 	write(1, "Me   : ", 7);
 	telepathy(story->me->first);
-	memento_mori(story->them->first);
-	free(story->me);
-	free(story->them);
-	free(story);
+	the_most_important_thing_in_the_world(story);
 	return (0);
 }
-*/
 
 /*
 //	*	time_machine
