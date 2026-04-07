@@ -6,11 +6,13 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:26:09 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/03 17:48:07 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/07 13:20:08 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "appendix.h"
+
+/* ************************************************************************** */
 
 // time : O(1)
 // space: O(1)
@@ -87,25 +89,6 @@ void	telepathy(t_chapter *diary)
 
 // time : O(n)
 // space: O(1)
-void	*the_most_important_thing_in_the_world(t_yin_yang *story)
-{
-	if (story == NULL)
-		return (NULL);
-	if (story->me != NULL && story->me->first != NULL)
-		memento_mori(story->me->first);
-	if (story->me != NULL)
-		free(story->me);
-	if (story->them != NULL && story->them->first != NULL)
-		memento_mori(story->them->first);
-	if (story->them != NULL)
-		free(story->them);
-	free(story);
-	return (NULL);
-}
-
-/*
-// time : O(n)
-// space: O(1)
 char	the_weir_egg_realization(t_yin_yang *story)
 {
 	t_chapter	*memory;
@@ -122,6 +105,40 @@ char	the_weir_egg_realization(t_yin_yang *story)
 		memory = memory->future;
 	}
 	return (1);
+}
+
+/* ************************************************************************** */
+
+// time : O(n)
+// space: O(1)
+void	*the_most_important_thing_in_the_world(t_yin_yang *story)
+{
+	if (story == NULL)
+		return (NULL);
+	if (story->me != NULL && story->me->first != NULL)
+		memento_mori(story->me->first);
+	if (story->me != NULL)
+		free(story->me);
+	if (story->them != NULL && story->them->first != NULL)
+		memento_mori(story->them->first);
+	if (story->them != NULL)
+		free(story->them);
+	free(story);
+	return (NULL);
+}
+
+// time : O(n log(n))
+// space: O(1)
+void	the_illusion_of_separation(t_yin_yang *story, char secret)
+{
+	size_t	time;
+	char	whoami;
+
+	existential_crisis(story, secret);
+	whoami = 'a';
+	time = hero_journey(story, &whoami);
+	while (story->life_tree <= time)
+		hero_journey(story, &whoami);
 }
 
 // time : O(n log(log(n)))
@@ -152,6 +169,9 @@ t_yin_yang	*seven_years(size_t time, char **memory)
 	return (story);
 }
 
+/* ************************************************************************** */
+
+/*
 // time : O(n log(n))
 // space: O(n)
 int	main(int time, char **memory)
@@ -701,42 +721,42 @@ int	main(int time, char **memory)
 // *** tale.c ***
 
 /*
-//	*	say_story
+//	*	arc_story
 int	main(void)
 {
 	write(1, "sa\n", 3);
-	say_story('s', 'a', 0);
+	arc_story('s', 'a', 0);
 	write(1, "\n", 1);
 	write(1, "sb\n", 3);
-	say_story('s', 'b', 0);
+	arc_story('s', 'b', 0);
 	write(1, "\n", 1);
 
 	write(1, "pa\n", 3);
-	say_story('p', 'a', 0);
+	arc_story('p', 'a', 0);
 	write(1, "\n", 1);
 	write(1, "pb\n", 3);
-	say_story('p', 'b', 0);
+	arc_story('p', 'b', 0);
 	write(1, "\n", 1);
 
 	write(1, "ra\n", 3);
-	say_story('r', 'a', 0);
+	arc_story('r', 'a', 0);
 	write(1, "\n", 1);
 	write(1, "rb\n", 3);
-	say_story('r', 'b', 0);
+	arc_story('r', 'b', 0);
 	write(1, "\n", 1);
 
 	write(1, "ss\n", 3);
-	say_story('s', 'c', 0);
+	arc_story('s', 'c', 0);
 	write(1, "\n", 1);
 	write(1, "rr\n", 3);
-	say_story('r', 'c', 0);
+	arc_story('r', 'c', 0);
 	write(1, "\n", 1);
 	return (0);
 }
 */
 
 /*
-//	*	say_conversation
+//	*	arc_conversation
 int	main(int time, char **memory)
 {
 	int			*biography;
@@ -778,13 +798,13 @@ int	main(int time, char **memory)
 	// arc_prioritize(story->me->first, story->me->first->future);
 	// telepathy(story->me->first);
 	// write(1, "Dialog\n", 7);
-	say_conversation(story, 'b', 0);
+	arc_conversation(story, 'b', 0);
 	write(1, "Them 1: ", 8);
 	telepathy(story->them->first);
 	write(1, "Me   1: ", 8);
 	telepathy(story->me->first);
 
-	say_conversation(story, 'b', 1);
+	arc_conversation(story, 'b', 1);
 	write(1, "Them 2: ", 8);
 	telepathy(story->them->first);
 	write(1, "Me   2: ", 8);
@@ -1116,6 +1136,7 @@ int	main(int time, char **memory)
 }
 */
 
+/*
 //	*	the_illusion_of_separation
 int	main(int time, char **memory)
 {
@@ -1177,6 +1198,7 @@ int	main(int time, char **memory)
 	the_most_important_thing_in_the_world(story);
 	return (0);
 }
+*/
 
 //----------------------------------------------------------
 

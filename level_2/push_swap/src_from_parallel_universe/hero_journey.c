@@ -1,18 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hero_journey.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/07 11:08:35 by phsottat          #+#    #+#             */
+/*   Updated: 2026/04/07 13:20:02 by phsottat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "appendix.h"
 
 // time : O(n)
 // space: O(1)
 void	time_machine(t_vision **original_time,
-		t_vision **parallel_time, char whoami, size_t time)
+	t_vision **parallel_time, char whoami, size_t time)
 {
 	size_t	day;
 
 	day = 0;
 	while (day < time && original_time != NULL)
 	{
-		say_conversation(parallel_time, original_time, whoami, 1);
-		if ((*parallel_time)->first != NULL)
-			say_reflection(parallel_time, whoami);
+		arc_conversation(original_time, parallel_time, whoami, 1);
+		arc_reflection(original_time, whoami);
 		day += 1;
 	}
 }
@@ -29,25 +40,53 @@ void	observer_effect(t_yin_yang *story, char whoami, size_t shift,
 	while (parallel_time->first != NULL && shift > 0 && tfihs > 0)
 	{
 		if (parallel_time->first->moment >= original_time->first->moment)
-		{
-			say_conversation(&original_time, &parallel_time, whoami, 1);
-			tfihs -= 1;
-		}
+			tfihs -= arc_conversation(&original_time,
+					&parallel_time, whoami, 1);
 		else
 			shift -= 1;
-		say_reflection(&original_time, whoami);
+		arc_reflection(&original_time, whoami);
 	}
 	while (shift > 0)
 	{
-		say_reflection(&original_time, whoami);
+		arc_reflection(&original_time, whoami);
 		shift -= 1;
 	}
 	while (parallel_time->first != NULL && tfihs > 0)
 	{
-		say_conversation(&original_time, &parallel_time, whoami, 1);
-		say_reflection(&original_time, whoami);
+		arc_conversation(&original_time, &parallel_time, whoami, 1);
+		arc_reflection(&original_time, whoami);
 		tfihs -= 1;
 	}
+}
+
+// time : O(1)
+// space: O(1)
+void	entanglement(t_yin_yang *story, char secret)
+{
+	char	me;
+	char	them;
+
+	me = 0;
+	them = 0;
+	if (story->me->first != NULL && story->me->first->future != NULL
+		&& story->me->first->moment < story->me->first->future->moment)
+		me = 1;
+	if (story->them->first != NULL && story->them->first->future != NULL
+		&& story->them->first->moment < story->them->first->future->moment)
+		them = 1;
+	if (me == 1 && them == 1)
+	{
+		arc_prioritize(story->me->first, story->me->first->future, 'A');
+		arc_prioritize(story->me->first, story->me->first->future, 'B');
+		if (secret != 1)
+			arc_story('s', 's', 0);
+	}
+	if (me == 1 && them == 0)
+		arc_prioritize(story->me->first, story->me->first->future,
+			'a' - secret * ('a' - 'A'));
+	if (me == 0 && them == 1)
+		arc_prioritize(story->me->first, story->me->first->future,
+			'b' - secret * ('b' - 'B'));
 }
 
 // time : O(n)
@@ -63,16 +102,16 @@ void	existential_crisis(t_yin_yang *story, char secret)
 	time = story->me->time;
 	while (day < time / 4)
 	{
-		say_conversation(&story->them, &story->me, whoami, 2);
-		arc_prioritize(story, secret);
+		arc_conversation(&story->them, &story->me, whoami, 2);
+		entanglement(story, secret);
 		observer_effect(story, whoami, 2, 2);
 		day += 1;
 	}
 	day = 0;
 	if (time % 4 >= 2 && story->me->first->moment > story->me->first->future)
 	{
-		say_prioritize(story->me->first, story->me->first->future, whoami - 1);
-		say_conversation(&story->them, &story->me, whoami, 2);
+		arc_prioritize(story->me->first, story->me->first->future, whoami - 1);
+		arc_conversation(&story->them, &story->me, whoami, 2);
 		day = 2;
 	}
 	if (time % 4 > 0)
@@ -82,7 +121,7 @@ void	existential_crisis(t_yin_yang *story, char secret)
 
 // time : O(n)
 // space: O(1)
-void	hero_journey(t_yin_yang *story, char *whoami)
+size_t	hero_journey(t_yin_yang *story, char *whoami)
 {
 	size_t		day;
 	size_t		time;
@@ -92,18 +131,21 @@ void	hero_journey(t_yin_yang *story, char *whoami)
 
 	whoiam = reincarnation(&original_time, &parallel_time, story, whoami);
 	day = 0;
-	time = story->me->time;
+	time = parallel_time->time;
 	while (day < time / (story->life_tree * 2))
 	{
-		time_machine(&original_time, &parallel_time, *whoami, story->life_tree);
+		time_machine(&parallel_time, &original_time, *whoami, story->life_tree);
 		observer_effect(story, whoiam, story->life_tree, story->life_tree);
 		day += 1;
 	}
-	// something similar to existential_crisis.
-	// 2 cases including
-	//	a.	[time % (story->life_tree * 2) >= story->life_tree]
-	//	b.	[0 < time % (story->life_tree * 2) < story->life_tree]
-	// time_machine(&original_time, &parallel_time, *whoami, story->life_tree);
-	// observer_effect(story, whoiam, story->life_tree, time % story->life_tree);
+	day = 0;
+	if (time % (story->life_tree * 2) >= story->life_tree)
+	{
+		time_machine(&parallel_time, &original_time, *whoami, story->life_tree);
+		day = story->life_tree;
+	}
+	if (time % (story->life_tree * 2) > 0)
+		observer_effect(story, whoiam, day, original_time->time);
 	story->life_tree *= 2;
+	return (time);
 }

@@ -1,69 +1,105 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   arc.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/27 17:42:31 by phsottat          #+#    #+#             */
+/*   Updated: 2026/04/07 13:19:51 by phsottat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "appendix.h"
 
 // time : O(1)
 // space: O(1)
-void	arc_prioritize(t_yin_yang *story, char secret)
+void	arc_story(char arc, char mc, char secret)
 {
-	char	me;
-	char	them;
-
-	me = 0;
-	them = 0;
-	if (story->me->first != NULL && story->me->first->future != NULL
-		&& story->me->first->moment < story->me->first->future->moment)
-		me = 1;
-	if (story->them->first != NULL && story->them->first->future != NULL
-		&& story->them->first->moment < story->them->first->future->moment)
-		them = 1;
-	if (me == 1 && them == 1)
+	if (secret != 1)
 	{
-		say_prioritize(story->me->first, story->me->first->future, 'A');
-		say_prioritize(story->me->first, story->me->first->future, 'B');
-		if (secret != 1)
-			say_story('s', 's', 0);
+		if (arc == 's' && mc == 'a')
+			write(1, "sa\n", 3);
+		if (arc == 'p' && mc == 'a')
+			write(1, "pa\n", 3);
+		if (arc == 'r' && mc == 'a')
+			write(1, "ra\n", 3);
+		if (arc == 's' && mc == 'b')
+			write(1, "sb\n", 3);
+		if (arc == 'p' && mc == 'b')
+			write(1, "pb\n", 3);
+		if (arc == 'r' && mc == 'b')
+			write(1, "rb\n", 3);
+		if (arc == 's' && mc == 's')
+			write(1, "ss\n", 3);
+		if (arc == 'r' && mc == 'r')
+			write(1, "rr\n", 3);
 	}
-	if (me == 1 && them == 0)
-		say_prioritize(story->me->first, story->me->first->future, 'a' - secret * ('a' - 'A'));
-	if (me == 0 && them == 1)
-		say_prioritize(story->me->first, story->me->first->future, 'b' - secret * ('b' - 'B'));
 }
 
 // time : O(1)
 // space: O(1)
-void	arc_first_to_be_continue(t_yin_yang *story, char whoami, size_t time)
+void	arc_prioritize(t_chapter *now, t_chapter *later, char whoami)
 {
-	if (time % 4 >= 2
-		&& story->me->first != NULL && story->me->first->future != NULL
-		&& story->me->first->moment > story->me->first->future)
+	int	prioritize;
+
+	if (now != NULL && later != NULL)
 	{
-		say_prioritize(story->me->first, story->me->first->future, whoami - 1);
-		say_conversation(&story->them, &story->me, whoami);
-		say_conversation(&story->them, &story->me, whoami);
-		observer_effect(story, whoami, 2, story->me->time);
-	}
-	if (time % 4 == 1)
-	{
-		say_conversation(&story->them, &story->me, whoami);
-		say_reflection(&story->them, whoami);
+		prioritize = now->moment;
+		now->moment = later->moment;
+		later->moment = prioritize;
+		if (whoami == 'a' || whoami == 'b')
+			arc_story('s', whoami, 0);
 	}
 }
 
-// time : O(n)
+// time : O(1)
 // space: O(1)
-void	arc_to_be_continue(t_yin_yang *story, char whoami, size_t time)
+size_t	arc_conversation(t_vision **listener, t_vision **speaker, char whoami,
+			size_t time)
 {
-	if (time % 4 >= 2
-		&& story->me->first != NULL && story->me->first->future != NULL
-		&& story->me->first->moment > story->me->first->future)
+	size_t		reset_time;
+	t_chapter	*diary;
+
+	reset_time = time;
+	while (time > 0)
 	{
-		say_prioritize(story->me->first, story->me->first->future, whoami - 1);
-		say_conversation(&story->them, &story->me, whoami);
-		say_conversation(&story->them, &story->me, whoami);
-		observer_effect(story, whoami, 2, story->me->time);
+		if ((*speaker) != NULL && (*speaker)->first != NULL)
+		{
+			diary = (*listener)->first;
+			(*listener)->first = (*speaker)->first;
+			if (diary == NULL)
+				(*listener)->last = (*listener)->first;
+			if ((*speaker)->first->future == NULL)
+				(*speaker)->last = NULL;
+			(*speaker)->first = (*speaker)->first->future;
+			(*listener)->first->future = diary;
+			(*listener)->time += 1;
+			(*speaker)->time -= 1;
+			if (whoami == 'a' || whoami == 'b')
+				arc_story('p', whoami, 0);
+		}
+		time -= 1;
 	}
-	if (time % 4 == 1)
+	return (reset_time);
+}
+
+// time : O(1)
+// space: O(1)
+void	arc_reflection(t_vision **perspective, char whoami)
+{
+	t_chapter	*diary;
+
+	if ((*perspective)->first != NULL && (*perspective)->last != NULL
+		&& (*perspective)->first != (*perspective)->last
+		&& (whoami == 'a' || whoami == 'b'))
+		arc_story('r', whoami, 0);
+	diary = (*perspective)->first;
+	if (diary != NULL)
 	{
-		say_conversation(&story->them, &story->me, whoami);
-		say_reflection(&story->them, whoami);
+		(*perspective)->first = (*perspective)->first->future;
+		(*perspective)->last->future = diary;
+		(*perspective)->last = (*perspective)->last->future;
+		(*perspective)->last->future = NULL;
 	}
 }
