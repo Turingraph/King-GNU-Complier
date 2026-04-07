@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:26:09 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/07 13:39:11 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/07 13:50:53 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -714,6 +714,7 @@ int	main(int time, char **memory)
 }
 */
 
+/*
 //	*	arc_story
 int	main(void)
 {
@@ -746,6 +747,7 @@ int	main(void)
 	write(1, "\n", 1);
 	return (0);
 }
+*/
 
 /*
 //	*	arc_conversation
@@ -754,6 +756,7 @@ int	main(int time, char **memory)
 	int			*biography;
 	char		err;
 	t_yin_yang	*story;
+	size_t		day;
 
 	if (time < 2)
 	{
@@ -785,36 +788,33 @@ int	main(int time, char **memory)
 		write(1, "Malloc Fail\n", 6);
 		return (0);
 	}
+	day = 0;
+	write(1, "Input->first: ", 14);
 	telepathy(story->me->first);
-	// write(1, "Prioritize\n", 11);
-	// arc_prioritize(story->me->first, story->me->first->future);
-	// telepathy(story->me->first);
-	// write(1, "Dialog\n", 7);
-	arc_conversation(story, 'b', 0);
-	write(1, "Them 1: ", 8);
-	telepathy(story->them->first);
-	write(1, "Me   1: ", 8);
-	telepathy(story->me->first);
-
-	arc_conversation(story, 'b', 1);
-	write(1, "Them 2: ", 8);
-	telepathy(story->them->first);
-	write(1, "Me   2: ", 8);
-	telepathy(story->me->first);
-
-	// write(1, "Reflection\n", 11);
-	// arc_reflection(&story->me);
-	// telepathy(story->me->first);
-	// arc_reflection(&story->me);
-	// telepathy(story->me->first);
-	if (story->them != NULL)
+	write(1, "Input->last : ", 14);
+	telepathy(story->me->last);
+	while (story->me->first != NULL)
 	{
-		memento_mori(story->them->first);
-		free(story->them);
+		write(1, "*** ", 4);
+		translation(1, day);
+		write(1, " ***", 4);
+		arc_conversation(&story->them, &story->me, 'b', 1);
+		write(1, "Them  : ", 8);
+		telepathy(story->them->first);
+		write(1, "Me    : ", 8);
+		telepathy(story->me->first);
+		write(1, "\n", 1);
+		day += 1;
 	}
-	memento_mori(story->me->first);
-	free(story->me);
-	free(story);
+	write(1, "Input->first: ", 14);
+	telepathy(story->me->first);
+	write(1, "Input->last : ", 14);
+	telepathy(story->me->last);
+	write(1, "Jnput->first: ", 14);
+	telepathy(story->them->first);
+	write(1, "Jnput->last : ", 14);
+	telepathy(story->them->last);
+	the_most_important_thing_in_the_world(story);
 	return (0);
 }
 */
