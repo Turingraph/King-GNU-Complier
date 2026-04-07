@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 11:08:35 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/07 13:20:02 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/07 13:37:37 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,8 @@ void	existential_crisis(t_yin_yang *story, char secret)
 		day += 1;
 	}
 	day = 0;
-	if (time % 4 >= 2 && story->me->first->moment > story->me->first->future)
+	if (time % 4 >= 2
+		&& story->me->first->moment > story->me->first->future->moment)
 	{
 		arc_prioritize(story->me->first, story->me->first->future, whoami - 1);
 		arc_conversation(&story->them, &story->me, whoami, 2);

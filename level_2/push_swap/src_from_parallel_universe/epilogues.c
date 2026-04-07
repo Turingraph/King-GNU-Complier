@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:26:09 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/07 13:20:08 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/07 13:39:11 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	telepathy(t_chapter *diary)
 	}
 }
 
+/*
 // time : O(n)
 // space: O(1)
 char	the_weir_egg_realization(t_yin_yang *story)
@@ -106,6 +107,7 @@ char	the_weir_egg_realization(t_yin_yang *story)
 	}
 	return (1);
 }
+*/
 
 /* ************************************************************************** */
 
@@ -126,6 +128,8 @@ void	*the_most_important_thing_in_the_world(t_yin_yang *story)
 	free(story);
 	return (NULL);
 }
+
+/*
 
 // time : O(n log(n))
 // space: O(1)
@@ -168,6 +172,7 @@ t_yin_yang	*seven_years(size_t time, char **memory)
 		write(1, "Error\n", 6);
 	return (story);
 }
+*/
 
 /* ************************************************************************** */
 
@@ -684,43 +689,31 @@ int	main(int time, char **memory)
 	}
 	telepathy(story->me->first);
 	write(1, "Prioritize\n", 11);
-	arc_prioritize(story->me->first, story->me->first->future);
+	arc_prioritize(story->me->first, story->me->first->future, 'a');
 	telepathy(story->me->first);
-	write(1, "Dialog\n", 7);
-	arc_conversation(&story->them, &story->me);
+	write(1, "Conversation\n", 13);
+	arc_conversation(&story->them, &story->me, 'b', 1);
 	write(1, "Them 1:", 7);
 	telepathy(story->them->first);
 	write(1, "Me 1:", 5);
 	telepathy(story->me->first);
 
-	arc_conversation(&story->them, &story->me);
+	arc_conversation(&story->them, &story->me, 'b', 1);
 	write(1, "Them 2:", 7);
 	telepathy(story->them->first);
 	write(1, "Me 2:", 5);
 	telepathy(story->me->first);
 
 	write(1, "Reflection\n", 11);
-	arc_reflection(&story->me);
+	arc_reflection(&story->me, 'a');
 	telepathy(story->me->first);
-	arc_reflection(&story->me);
+	arc_reflection(&story->me, 'a');
 	telepathy(story->me->first);
-	if (story->them != NULL)
-	{
-		memento_mori(story->them->first);
-		free(story->them);
-	}
-	memento_mori(story->me->first);
-	free(story->me);
-	free(story);
+	the_most_important_thing_in_the_world(story);
 	return (0);
 }
 */
 
-//----------------------------------------------------------
-
-// *** tale.c ***
-
-/*
 //	*	arc_story
 int	main(void)
 {
@@ -746,14 +739,13 @@ int	main(void)
 	write(1, "\n", 1);
 
 	write(1, "ss\n", 3);
-	arc_story('s', 'c', 0);
+	arc_story('s', 's', 0);
 	write(1, "\n", 1);
 	write(1, "rr\n", 3);
-	arc_story('r', 'c', 0);
+	arc_story('r', 'r', 0);
 	write(1, "\n", 1);
 	return (0);
 }
-*/
 
 /*
 //	*	arc_conversation

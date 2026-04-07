@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 17:42:31 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/07 13:19:51 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/07 13:37:07 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	arc_reflection(t_vision **perspective, char whoami)
 		&& (whoami == 'a' || whoami == 'b'))
 		arc_story('r', whoami, 0);
 	diary = (*perspective)->first;
-	if (diary != NULL)
+	if (diary != NULL && (*perspective)->time > 1)
 	{
 		(*perspective)->first = (*perspective)->first->future;
 		(*perspective)->last->future = diary;
