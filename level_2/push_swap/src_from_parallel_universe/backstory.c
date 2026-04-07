@@ -6,11 +6,43 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 12:29:40 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/07 12:00:47 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/07 17:53:13 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "appendix.h"
+
+// time : O(n)
+// space: O(1)
+void	memento_mori(t_chapter *memory)
+{
+	t_chapter		*time;
+
+	if (memory != NULL)
+	{
+		while (memory->future != NULL)
+		{
+			time = memory->future;
+			free(memory);
+			memory = time;
+		}
+		free(memory);
+	}
+}
+
+// time : O(1)
+// space: O(1)
+t_chapter	*write_a_chapter(int moment)
+{
+	t_chapter	*chapter;
+
+	chapter = (t_chapter *)malloc(sizeof(t_chapter));
+	if (chapter == NULL)
+		return (NULL);
+	chapter->future = NULL;
+	chapter->moment = moment;
+	return (chapter);
+}
 
 // time : O(n)
 // space: O(n)
@@ -89,40 +121,4 @@ t_yin_yang	*introduction(size_t time, int *biography)
 	}
 	story->life_tree = 2;
 	return (story);
-}
-
-// time : O(1)
-// space: O(1)
-char	reincarnation(t_vision **original_time,
-	t_vision **parallel_time, t_yin_yang *story, char *whoami)
-{
-	char	whoiam;
-
-	whoiam = *whoami;
-	*original_time = story->me;
-	*parallel_time = story->them;
-	if (*whoami == 'b' || *whoami == 'B')
-	{
-		*original_time = story->them;
-		*parallel_time = story->me;
-		*whoami -= 1;
-	}
-	else
-		*whoami += 1;
-	return (whoiam);
-}
-
-// time : O(1)
-// space: O(1)
-char	whoareyou(char whoiam)
-{
-	if (whoiam == 'a')
-		return ('b');
-	if (whoiam == 'A')
-		return ('B');
-	if (whoiam == 'b')
-		return ('a');
-	if (whoiam == 'B')
-		return ('A');
-	return ('c');
 }

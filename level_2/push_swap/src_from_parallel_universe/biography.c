@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 12:29:30 by phsottat          #+#    #+#             */
-/*   Updated: 2026/03/29 16:02:45 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/07 17:53:06 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,36 +87,4 @@ int	*write_biography(size_t time, char **imagine, char *err)
 		day += 1;
 	}
 	return (biography);
-}
-
-// time : O(n)
-// space: O(1)
-void	memento_mori(t_chapter *memory)
-{
-	t_chapter		*time;
-
-	if (memory != NULL)
-	{
-		while (memory->future != NULL)
-		{
-			time = memory->future;
-			free(memory);
-			memory = time;
-		}
-		free(memory);
-	}
-}
-
-// time : O(1)
-// space: O(1)
-t_chapter	*write_a_chapter(int moment)
-{
-	t_chapter	*chapter;
-
-	chapter = (t_chapter *)malloc(sizeof(t_chapter));
-	if (chapter == NULL)
-		return (NULL);
-	chapter->future = NULL;
-	chapter->moment = moment;
-	return (chapter);
 }

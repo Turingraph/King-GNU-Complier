@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 11:08:35 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/07 13:37:37 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/07 18:25:04 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,28 +33,24 @@ void	time_machine(t_vision **original_time,
 void	observer_effect(t_yin_yang *story, char whoami, size_t shift,
 	size_t tfihs)
 {
-	t_vision	*original_time;
-	t_vision	*parallel_time;
-
-	whoami = reincarnation(&original_time, &parallel_time, story, &whoami);
-	while (parallel_time->first != NULL && shift > 0 && tfihs > 0)
+	while (story->me->first != NULL && shift > 0 && tfihs > 0)
 	{
-		if (parallel_time->first->moment >= original_time->first->moment)
-			tfihs -= arc_conversation(&original_time,
-					&parallel_time, whoami, 1);
+		if (story->me->first->moment >= story->them->first->moment)
+			tfihs -= arc_conversation(&story->them,
+					&story->me, whoami, 1);
 		else
 			shift -= 1;
-		arc_reflection(&original_time, whoami);
+		arc_reflection(&story->them, whoami);
 	}
 	while (shift > 0)
 	{
-		arc_reflection(&original_time, whoami);
+		arc_reflection(&story->them, whoami);
 		shift -= 1;
 	}
-	while (parallel_time->first != NULL && tfihs > 0)
+	while (story->me->first != NULL && tfihs > 0)
 	{
-		arc_conversation(&original_time, &parallel_time, whoami, 1);
-		arc_reflection(&original_time, whoami);
+		arc_conversation(&story->them, &story->me, whoami, 1);
+		arc_reflection(&story->them, whoami);
 		tfihs -= 1;
 	}
 }
@@ -77,7 +73,7 @@ void	entanglement(t_yin_yang *story, char secret)
 	if (me == 1 && them == 1)
 	{
 		arc_prioritize(story->me->first, story->me->first->future, 'A');
-		arc_prioritize(story->me->first, story->me->first->future, 'B');
+		arc_prioritize(story->them->first, story->them->first->future, 'B');
 		if (secret != 1)
 			arc_story('s', 's', 0);
 	}
@@ -85,7 +81,7 @@ void	entanglement(t_yin_yang *story, char secret)
 		arc_prioritize(story->me->first, story->me->first->future,
 			'a' - secret * ('a' - 'A'));
 	if (me == 0 && them == 1)
-		arc_prioritize(story->me->first, story->me->first->future,
+		arc_prioritize(story->them->first, story->them->first->future,
 			'b' - secret * ('b' - 'B'));
 }
 
@@ -108,12 +104,12 @@ void	existential_crisis(t_yin_yang *story, char secret)
 		day += 1;
 	}
 	day = 0;
-	if (time % 4 >= 2
-		&& story->me->first->moment > story->me->first->future->moment)
+	if (time % 4 >= 2)
 	{
-		arc_prioritize(story->me->first, story->me->first->future, whoami - 1);
-		arc_conversation(&story->them, &story->me, whoami, 2);
-		day = 2;
+		if (story->me->first->moment > story->me->first->future->moment)
+			arc_prioritize(story->me->first, story->me->first->future,
+				whoami - 1);
+		day = arc_conversation(&story->them, &story->me, whoami, 2);
 	}
 	if (time % 4 > 0)
 		observer_effect(story, whoami, day, story->me->time);
@@ -122,31 +118,29 @@ void	existential_crisis(t_yin_yang *story, char secret)
 
 // time : O(n)
 // space: O(1)
-size_t	hero_journey(t_yin_yang *story, char *whoami)
+void	hero_journey(t_yin_yang *story, char secret)
 {
 	size_t		day;
 	size_t		time;
-	t_vision	*original_time;
-	t_vision	*parallel_time;
-	char		whoiam;
+	char		whoami;
 
-	whoiam = reincarnation(&original_time, &parallel_time, story, whoami);
+	whoami = 'b' - secret * ('a' - 'A');
 	day = 0;
-	time = parallel_time->time;
+	time = story->them->time;
 	while (day < time / (story->life_tree * 2))
 	{
-		time_machine(&parallel_time, &original_time, *whoami, story->life_tree);
-		observer_effect(story, whoiam, story->life_tree, story->life_tree);
+		time_machine(&story->me, &story->them, whoami - 1, story->life_tree);
+		observer_effect(story, whoami, story->life_tree, story->life_tree);
 		day += 1;
 	}
 	day = 0;
 	if (time % (story->life_tree * 2) >= story->life_tree)
 	{
-		time_machine(&parallel_time, &original_time, *whoami, story->life_tree);
+		time_machine(&story->me, &story->them, whoami - 1, story->life_tree);
 		day = story->life_tree;
 	}
 	if (time % (story->life_tree * 2) > 0)
-		observer_effect(story, whoiam, day, original_time->time);
+		observer_effect(story, whoami,
+			time % (story->life_tree * 2) - day, day);
 	story->life_tree *= 2;
-	return (time);
 }

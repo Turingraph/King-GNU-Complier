@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:26:09 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/07 14:03:06 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/07 18:51:15 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 /* ************************************************************************** */
 
+/*
 // time : O(1)
 // space: O(1)
 void	translate(int fd, int x)
@@ -87,29 +88,24 @@ void	telepathy(t_chapter *diary)
 	}
 }
 
-/*
 // time : O(n)
 // space: O(1)
-char	the_weir_egg_realization(t_yin_yang *story)
+char	the_weir_egg_realization(t_chapter *story)
 {
 	t_chapter	*memory;
 
 	if (story == NULL)
 		return (0);
-	if (story->them != NULL || story->me == NULL)
-		return (0);
-	memory = story->me;
-	while (memory->future != NULL)
+	memory = story;
+	while (memory != NULL && memory->future != NULL)
 	{
-		if (memory->moment > memory->future->moment)
+		if (memory->moment < memory->future->moment)
 			return (0);
 		memory = memory->future;
 	}
 	return (1);
 }
 */
-
-/* ************************************************************************** */
 
 // time : O(n)
 // space: O(1)
@@ -129,20 +125,13 @@ void	*the_most_important_thing_in_the_world(t_yin_yang *story)
 	return (NULL);
 }
 
-/*
-
 // time : O(n log(n))
 // space: O(1)
 void	the_illusion_of_separation(t_yin_yang *story, char secret)
 {
-	size_t	time;
-	char	whoami;
-
 	existential_crisis(story, secret);
-	whoami = 'a';
-	time = hero_journey(story, &whoami);
-	while (story->life_tree <= time)
-		hero_journey(story, &whoami);
+	while (story->life_tree < story->them->time)
+		hero_journey(story, secret);
 }
 
 // time : O(n log(log(n)))
@@ -150,33 +139,32 @@ void	the_illusion_of_separation(t_yin_yang *story, char secret)
 t_yin_yang	*seven_years(size_t time, char **memory)
 {
 	int			*biography;
-	int			err;
+	char		err;
 	t_yin_yang	*story;
 
 	err = 'K';
 	biography = write_biography(time, memory, &err);
 	if (biography == NULL)
 	{
-		write(1, "Error\n", 6);
+		if (err == 'E')
+			write(1, "Input is invalid\n", 17);
+		else
+			write(1, "Malloc Fail\n", 12);
 		return (NULL);
 	}
-	if (err == 'E' || kagerou_day(biography, time) == 1)
+	if (kagerou_day(biography, time) == 1)
 	{
 		free(biography);
-		write(1, "Error\n", 6);
+		write(1, "Detecting Duplicated Input\n", 27);
 		return (NULL);
 	}
-	story = write_backstory(time, biography);
+	story = introduction(time, biography);
 	free(biography);
 	if (story == NULL)
-		write(1, "Error\n", 6);
+		write(1, "Malloc Fail\n", 12);
 	return (story);
 }
-*/
 
-/* ************************************************************************** */
-
-/*
 // time : O(n log(n))
 // space: O(n)
 int	main(int time, char **memory)
@@ -185,23 +173,85 @@ int	main(int time, char **memory)
 
 	if (time < 2)
 	{
-		write(1, "Error\n", 6);
+		write(1, "No Input\n", 9);
 		return (0);
 	}
 	story = seven_years(time - 1, memory + 1);
 	if (story == NULL)
 		return (0);
-	the_illusion_of_separation(story, 0);
-	if (the_weir_egg_realization(story) == 1)
-		write(1, "Sort Correctly\n", 15);
-	else
-		write(1, "Sort Incorrectly\n", 17);
-	memento_mori(story->me);
-	memento_mori(story->them);
-	free(story);
+	the_illusion_of_separation(story, 1);
+	the_most_important_thing_in_the_world(story);
 	return (0);
 }
-*/
+
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* *** DEAFT *** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
 
 //----------------------------------------------------------
 
@@ -823,6 +873,7 @@ int	main(int time, char **memory)
 
 // *** hero_journey.c ***
 
+/*
 //	*	existential_crisis
 int	main(int time, char **memory)
 {
@@ -871,6 +922,7 @@ int	main(int time, char **memory)
 	the_most_important_thing_in_the_world(story);
 	return (0);
 }
+*/
 
 /*
 //	*	time_machine
@@ -910,7 +962,7 @@ int	main(int time, char **memory)
 		write(1, "Malloc Fail\n", 6);
 		return (0);
 	}
-	time_machine(&story->me, &story->them, 'a', 4);
+	time_machine(&story->them, &story->me, 'b', 4);
 	write(1, "Me   : ", 7);
 	telepathy(story->me->first);
 	write(1, "Them : ", 7);
@@ -959,22 +1011,77 @@ int	main(int time, char **memory)
 		return (0);
 	}
 	write(1, "Before\n", 7);
-	time_machine(&story->me, &story->them, 'B', 11);
+	time_machine(&story->them, &story->me, 'B', 5);
 	write(1, "Me   : ", 7);
 	telepathy(story->me->first);
 	write(1, "Them : ", 7);
 	telepathy(story->them->first);
 	write(1, "After\n", 6);
-	observer_effect(story->me, story->them, 'A', 22);
+	observer_effect(story, 'A', 4, 5);
 	write(1, "Me   : ", 7);
 	telepathy(story->me->first);
 	write(1, "Them : ", 7);
 	telepathy(story->them->first);
 	the_most_important_thing_in_the_world(story);
-	// 61
 	return (0);
 }
 */
+
+// existential_crisis
+// a: 6 3 4 98 1 43 22 3
+// b:
+// pb
+// pb
+// ss
+// a: 98 4 1 43 22 3
+// b: 6 3
+// pb
+// rb
+// rb
+// a: 4 1 43 22 3
+// b: 3 98 6
+// pb
+// rb
+// rb
+// a: 1 43 22 3
+// b: 98 6 4 3
+// pb
+// pb
+// a: 22 3
+// b: 43 1 98 6 4 3
+// rb
+// pb
+// rb
+// pb
+// rb
+// rb
+// a: 
+// b: 98 6 4 3 43 22 3 1
+
+// observer_effect
+// a: 98 6 4 3
+// b: 43 22 3 1
+
+// pb
+// rb
+// rb
+// a: 6 4 3
+// b: 22 3 1 98 43
+
+// rb
+// pb
+// rb
+// pb
+// a: 3
+// b: 4 3 1 98 43 22 6
+
+// rb
+// pb
+// rb
+// rb
+// rb
+// a: 
+// b: 3 3 1 98 43 22 6 4
 
 /*
 //	*	existential_crisis
@@ -1018,14 +1125,14 @@ int	main(int time, char **memory)
 		return (0);
 	}
 	write(1, "1st Arc (tree = ", 16);
-	translation(1, story->tree_of_life);
+	translation(1, story->life_tree);
 	write(1, ")\n", 2);
 	write(1, "Me   : ", 7);
 	telepathy(story->me->first);
-	existential_crisis(story, 1);
+	existential_crisis(story, 0);
 
 	write(1, "2nd Arc (tree = ", 16);
-	translation(1, story->tree_of_life);
+	translation(1, story->life_tree);
 	write(1, ")\n", 2);
 	write(1, "Them : ", 7);
 	telepathy(story->them->first);
@@ -1033,20 +1140,20 @@ int	main(int time, char **memory)
 	telepathy(story->me->first);
 
 	write(1, "3rd Arc (tree = ", 16);
-	translation(1, story->tree_of_life);
+	translation(1, story->life_tree);
 	write(1, ")\n", 2);
-	whoami = 'b';
-	time_machine(&story->them, &story->me, whoami, story->tree_of_life / 2);
+	whoami = 'a';
+	time_machine(&story->me, &story->them, whoami, story->life_tree);
 	write(1, "Them : ", 7);
 	telepathy(story->them->first);
 	write(1, "Me   : ", 7);
 	telepathy(story->me->first);
 
 	write(1, "4th Arc (tree = ", 16);
-	translation(1, story->tree_of_life);
+	translation(1, story->life_tree);
 	write(1, ")\n", 2);
 	whoami = 'b';
-	observer_effect(story->them, story->me, whoami, story->tree_of_life / 2);
+	observer_effect(story, whoami, story->life_tree, story->life_tree);
 	write(1, "Them : ", 7);
 	telepathy(story->them->first);
 	write(1, "Me   : ", 7);
@@ -1095,14 +1202,14 @@ int	main(int time, char **memory)
 		return (0);
 	}
 	write(1, "1st Arc (tree = ", 16);
-	translation(1, story->tree_of_life);
+	translation(1, story->life_tree);
 	write(1, ")\n", 2);
 	write(1, "Me   : ", 7);
 	telepathy(story->me->first);
 	existential_crisis(story, 1);
 
 	write(1, "2nd Arc (tree = ", 16);
-	translation(1, story->tree_of_life);
+	translation(1, story->life_tree);
 	write(1, ")\n", 2);
 	write(1, "Them : ", 7);
 	telepathy(story->them->first);
@@ -1110,9 +1217,9 @@ int	main(int time, char **memory)
 	telepathy(story->me->first);
 
 	write(1, "3rd Arc (tree = ", 16);
-	translation(1, story->tree_of_life);
+	translation(1, story->life_tree);
 	write(1, ")\n", 2);
-	hero_journey(story->them, story->me, story->tree_of_life, 'b');
+	hero_journey(story, 1);
 	write(1, "Them : ", 7);
 	telepathy(story->them->first);
 	write(1, "Me   : ", 7);
@@ -1121,6 +1228,10 @@ int	main(int time, char **memory)
 	return (0);
 }
 */
+
+//----------------------------------------------------------
+
+// *** epilogues.c ***
 
 /*
 //	*	the_illusion_of_separation
@@ -1161,26 +1272,13 @@ int	main(int time, char **memory)
 		return (0);
 	}
 	write(1, "1st Arc (tree = ", 16);
-	translation(1, story->tree_of_life);
-	// existential_crisis(story, 0);
-	// hero_journey(story->them, story->me, 4, 'b');
-
-	// time_machine(&story->me, &story->them, 'a', 2);
-
-	the_illusion_of_separation(story, 0);
+	translation(1, story->life_tree);
+	the_illusion_of_separation(story, 1);
 	write(1, ")\n", 2);
 	write(1, "Me   : ", 7);
 	telepathy(story->me->first);
 	write(1, "Them : ", 7);
 	telepathy(story->them->first);
-
-	// write(1, "2nd Arc (tree = ", 16);
-	// write(1, ")\n", 2);
-	// write(1, "Them : ", 7);
-	// telepathy(story->them->first);
-	// write(1, "Me   : ", 7);
-	// telepathy(story->me->first);
-
 	the_most_important_thing_in_the_world(story);
 	return (0);
 }
