@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:15:47 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/07 13:19:58 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/07 13:21:46 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ size_t		the_wheel_of_fortune(int event, size_t eclipse);
 // hero_journey.c
 void		time_machine(t_vision **original_time,
 				t_vision **parallel_time, char whoiam, size_t time);
-void		observer_effect(t_vision *original_time,
-				t_vision *parallel_time, char whoami, size_t time);
+void		observer_effect(t_yin_yang *story, char whoami, size_t shift,
+				size_t tfihs);
 void		entanglement(t_yin_yang *story, char secret);
 void		existential_crisis(t_yin_yang *story, char secret);
 size_t		hero_journey(t_yin_yang *story, char *whoami);
