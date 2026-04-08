@@ -6,11 +6,11 @@
 #    By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/29 11:52:57 by phsottat          #+#    #+#              #
-#    Updated: 2026/04/03 13:33:57 by phsottat         ###   ########.fr        #
+#    Updated: 2026/04/08 10:29:21 by phsottat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME = push_swap_lib
 
 CC = cc -Wall -Wextra -Werror
 

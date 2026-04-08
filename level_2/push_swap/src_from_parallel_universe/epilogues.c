@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:26:09 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/07 18:51:15 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/08 13:41:38 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 /* ************************************************************************** */
 
-/*
 // time : O(1)
 // space: O(1)
 void	translate(int fd, int x)
@@ -90,6 +89,23 @@ void	telepathy(t_chapter *diary)
 
 // time : O(n)
 // space: O(1)
+void	yhtapelet(t_chapter *diary)
+{
+	if (diary == NULL)
+		write(1, "NULL\n", 5);
+	while (diary != NULL)
+	{
+		translation(1, diary->moment);
+		if (diary->flashback != NULL)
+			write(1, " -> ", 4);
+		else
+			write(1, "\n", 1);
+		diary = diary->flashback;
+	}
+}
+
+// time : O(n)
+// space: O(1)
 char	the_weir_egg_realization(t_chapter *story)
 {
 	t_chapter	*memory;
@@ -105,7 +121,6 @@ char	the_weir_egg_realization(t_chapter *story)
 	}
 	return (1);
 }
-*/
 
 // time : O(n)
 // space: O(1)
@@ -165,6 +180,7 @@ t_yin_yang	*seven_years(size_t time, char **memory)
 	return (story);
 }
 
+/*
 // time : O(n log(n))
 // space: O(n)
 int	main(int time, char **memory)
@@ -179,10 +195,58 @@ int	main(int time, char **memory)
 	story = seven_years(time - 1, memory + 1);
 	if (story == NULL)
 		return (0);
-	the_illusion_of_separation(story, 1);
+	the_illusion_of_separation(story, 0);
 	the_most_important_thing_in_the_world(story);
 	return (0);
 }
+*/
+
+// time : O(n log(n))
+// space: O(n)
+int	main(int time, char **memory)
+{
+	t_yin_yang	*story;
+
+	if (time < 2)
+	{
+		write(1, "No Input\n", 9);
+		return (0);
+	}
+	story = seven_years(time - 1, memory + 1);
+	if (story == NULL)
+		return (0);
+	// write(1, "Input: ", 7);
+	// telepathy(story->me->first);
+	write(1, "tupnI: ", 7);
+	yhtapelet(story->me->last);
+	the_illusion_of_separation(story, 1);
+	// write(1, "Output: ", 8);
+	// telepathy(story->them->first);
+	write(1, "tuptuO: ", 8);
+	yhtapelet(story->them->last);
+	write(1, "Score: ", 7);
+	if (the_weir_egg_realization(story->them->first) == 1)
+		write(1, "100\n", 4);
+	else
+		write(1, "0\n", 2);
+	the_most_important_thing_in_the_world(story);
+	return (0);
+}
+
+//----------------------------------------------------------
+
+/*
+cc -Wall -Wextra -Werror epilogues.c push_swap_lib -o push_swap
+
+valgrind --leak-check=full ./a.out 1 2 3 4 5 6 7 8 9 10 11
+12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
+31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
+
+./a.out 733 2636 2626 36363 262 373 372 7172 732   2 2211
+112 3322 332222 3333333 334 555 6667 3446 346 34545 7767
+45464 334554 6565 676667 | wc -l
+
+*/
 
 /* ************************************************************************** */
 /* ************************************************************************** */
@@ -1282,21 +1346,6 @@ int	main(int time, char **memory)
 	the_most_important_thing_in_the_world(story);
 	return (0);
 }
-*/
-
-//----------------------------------------------------------
-
-/*
-cc -Wall -Wextra -Werror epilogues.c push_swap
-
-valgrind --leak-check=full ./a.out 1 2 3 4 5 6 7 8 9 10 11
-12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
-31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
-
-./a.out 733 2636 2626 36363 262 373 372 7172 732   2 2211
-112 3322 332222 3333333 334 555 6667 3446 346 34545 7767
-45464 334554 6565 676667 | wc -l
-
 */
 
 //----------------------------------------------------------

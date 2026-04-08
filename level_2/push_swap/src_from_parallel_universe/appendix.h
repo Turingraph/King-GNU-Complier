@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:15:47 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/07 17:53:35 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/08 13:33:17 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct t_chapter
 {
 	int					moment;
 	struct t_chapter	*future;
+	struct t_chapter	*flashback;
 }	t_chapter;
 
 typedef struct t_vision
@@ -42,10 +43,11 @@ typedef struct t_yin_yang
 
 // arc.c
 void		arc_story(char arc, char mc, char secret);
-void		arc_prioritize(t_chapter *now, t_chapter *later, char whoiam);
+size_t		arc_prioritize(t_chapter *now, t_chapter *later, char whoiam);
 size_t		arc_conversation(t_vision **listener, t_vision **speaker,
 				char whoami, size_t time);
-void		arc_reflection(t_vision **perspective, char whoami);
+size_t		arc_reflection(t_vision **perspective, char whoami);
+size_t		arc_noitcelfer(t_vision **perspective, char whoami);
 
 // backstory.c
 void		memento_mori(t_chapter *memory);

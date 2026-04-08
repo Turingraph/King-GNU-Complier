@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 12:29:40 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/07 17:53:13 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/08 11:47:15 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_chapter	*write_a_chapter(int moment)
 	if (chapter == NULL)
 		return (NULL);
 	chapter->future = NULL;
+	chapter->flashback = NULL;
 	chapter->moment = moment;
 	return (chapter);
 }
@@ -49,6 +50,7 @@ t_chapter	*write_a_chapter(int moment)
 t_chapter	*write_fiction(size_t time, int *biography, t_chapter *prologue)
 {
 	t_chapter	*chapter;
+	t_chapter	*flashback;
 	size_t		day;
 
 	chapter = prologue;
@@ -61,7 +63,9 @@ t_chapter	*write_fiction(size_t time, int *biography, t_chapter *prologue)
 			memento_mori(prologue);
 			return (NULL);
 		}
+		flashback = chapter;
 		chapter = chapter->future;
+		chapter->flashback = flashback;
 		day += 1;
 	}
 	return (chapter);
