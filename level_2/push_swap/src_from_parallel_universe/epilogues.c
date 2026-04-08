@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:26:09 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/08 13:41:38 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/08 16:37:38 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,6 @@ t_yin_yang	*seven_years(size_t time, char **memory)
 	return (story);
 }
 
-/*
 // time : O(n log(n))
 // space: O(n)
 int	main(int time, char **memory)
@@ -195,12 +194,12 @@ int	main(int time, char **memory)
 	story = seven_years(time - 1, memory + 1);
 	if (story == NULL)
 		return (0);
-	the_illusion_of_separation(story, 0);
+	the_illusion_of_separation(story, 1);
 	the_most_important_thing_in_the_world(story);
 	return (0);
 }
-*/
 
+/*
 // time : O(n log(n))
 // space: O(n)
 int	main(int time, char **memory)
@@ -219,11 +218,12 @@ int	main(int time, char **memory)
 	// telepathy(story->me->first);
 	write(1, "tupnI: ", 7);
 	yhtapelet(story->me->last);
-	the_illusion_of_separation(story, 1);
-	// write(1, "Output: ", 8);
-	// telepathy(story->them->first);
-	write(1, "tuptuO: ", 8);
-	yhtapelet(story->them->last);
+	existential_crisis(story, 0);
+	// the_illusion_of_separation(story, 1);
+	write(1, "Output: ", 8);
+	telepathy(story->them->first);
+	// write(1, "tuptuO: ", 8);
+	// yhtapelet(story->them->last);
 	write(1, "Score: ", 7);
 	if (the_weir_egg_realization(story->them->first) == 1)
 		write(1, "100\n", 4);
@@ -232,6 +232,7 @@ int	main(int time, char **memory)
 	the_most_important_thing_in_the_world(story);
 	return (0);
 }
+*/
 
 //----------------------------------------------------------
 
