@@ -19,10 +19,10 @@
 typedef struct t_chapter
 {
 	int					moment;
-	char				light_and_night;
 	struct t_chapter	*future;
-	struct t_chapter	*flashback;
 }	t_chapter;
+
+// 2 * super_position - 1: {0, 1} -> {-1, 1}
 
 typedef struct t_vision
 {
