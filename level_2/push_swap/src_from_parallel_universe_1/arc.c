@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 17:42:31 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/08 13:36:26 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/16 16:11:42 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	arc_story(char arc, char mc, char secret)
 
 // time : O(1)
 // space: O(1)
-size_t	arc_prioritize(t_chapter *now, t_chapter *later, char whoami)
+void	arc_prioritize(t_chapter *now, t_chapter *later, char whoami)
 {
 	int	prioritize;
 
@@ -57,8 +57,35 @@ size_t	arc_prioritize(t_chapter *now, t_chapter *later, char whoami)
 		if (whoami == 'a' || whoami == 'b')
 			arc_story('s', whoami, 0);
 	}
-	return (1);
 }
+
+/*
+// time : O(1)
+// space: O(1)
+int	arc_prioritize(t_chapter *now, t_chapter *later, char whoami,
+	char *sieve)
+{
+	int	prioritize;
+
+	if (now != NULL && later != NULL)
+	{
+		prioritize = now->moment;
+		now->moment = later->moment;
+		later->moment = prioritize;
+		if (whoami == 'a' || whoami == 'b')
+			arc_story('s', whoami, 0);
+	}
+	if (sieve != NULL)
+	{
+		if (*sieve == '0')
+			*sieve = '1';
+		else
+			*sieve = '0';
+		return ((2 * *sieve - '0') - 1);
+	}
+	return (0);
+}
+*/
 
 // time : O(n)
 // space: O(n)

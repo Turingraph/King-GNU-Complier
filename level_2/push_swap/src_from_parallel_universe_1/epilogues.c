@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:26:09 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/08 16:37:38 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/16 16:23:07 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void	*the_most_important_thing_in_the_world(t_yin_yang *story)
 	return (NULL);
 }
 
+/*
 // time : O(n log(n))
 // space: O(1)
 void	the_illusion_of_separation(t_yin_yang *story, char secret)
@@ -181,6 +182,7 @@ int	main(int time, char **memory)
 	the_most_important_thing_in_the_world(story);
 	return (0);
 }
+*/
 
 /*
 // time : O(n log(n))
@@ -919,7 +921,7 @@ int	main(int time, char **memory)
 
 //----------------------------------------------------------
 
-// *** hero_journey.c ***
+// *** set_back.c ***
 
 /*
 //	*	existential_crisis
@@ -1334,24 +1336,77 @@ int	main(int time, char **memory)
 
 //----------------------------------------------------------
 
+int	main(int time, char **memory)
+{
+	int			*biography;
+	char		err;
+	char		*sieve;
+	t_yin_yang	*story;
+
+	if (time < 2)
+	{
+		write(1, "No Input\n", 9);
+		return (0);
+	}
+	err = 'K';
+	biography = write_biography(time - 1, memory + 1, &err);
+	if (err == 'E')
+	{
+		write(1, "Input is invalid\n", 17);
+		return (0);
+	}
+	if (biography == NULL)
+	{
+		write(1, "Malloc Fail\n", 6);
+		return (0);
+	}
+	story = introduction(time - 1, biography);
+	free(biography);
+	if (story == NULL)
+	{
+		write(1, "Malloc Fail\n", 6);
+		return (0);
+	}
+	if (story->me == NULL)
+	{
+		free(story);
+		write(1, "Malloc Fail\n", 6);
+		return (0);
+	}
+	write(1, "sieve: ", 7);
+	sieve = determinism(time);
+	if (sieve == NULL)
+	{
+		the_most_important_thing_in_the_world(story);
+		write(1, "Malloc Fail\n", 6);
+		return (0);
+	}
+	write(1, sieve, time);
+	free(sieve);
+	write(1, "\n", 1);
+	write(1, "1st Arc (tree = ", 16);
+	translation(1, story->life_tree);
+	sieve = determinism(story->me->time / 4 + 1);
+	if (sieve == NULL)
+	{
+		the_most_important_thing_in_the_world(story);
+		write(1, "Malloc Fail\n", 6);
+		return (0);
+	}
+	existential_crisis(story, 1, sieve);
+	write(1, ")\n", 2);
+	write(1, sieve, time / 4 + 1);
+	write(1, "\n", 1);
+	write(1, "Me   : ", 7);
+	telepathy(story->me->first);
+	write(1, "Them : ", 7);
+	telepathy(story->them->first);
+	the_most_important_thing_in_the_world(story);
+	return (0);
+}
+
+//----------------------------------------------------------
+
 /*
-a: 1 2 3 4 5 6 7
-b:
-
-i = 0
-a: 3 4 5 6 7
-b: 2 1
-
-a: 4 3 5 6 7
-b: 2 1
-
-a: 5 6 7
-b: 3 4 2 1
-
-i = 1
-a: 7
-b: 6 5 3 4 2 1
-
-a: 
-b:
+cc -Wall -Wextra -Werror epilogues.c push_swap_lib -o push_swap
 */

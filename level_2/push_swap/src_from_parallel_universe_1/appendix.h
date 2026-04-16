@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:15:47 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/08 13:33:17 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/16 16:11:31 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct t_yin_yang
 
 // arc.c
 void		arc_story(char arc, char mc, char secret);
-size_t		arc_prioritize(t_chapter *now, t_chapter *later, char whoiam);
+void		arc_prioritize(t_chapter *now, t_chapter *later, char whoiam);
 size_t		arc_conversation(t_vision **listener, t_vision **speaker,
 				char whoami, size_t time);
 size_t		arc_reflection(t_vision **perspective, char whoami);
@@ -72,7 +72,8 @@ char		kagerou_day(int *events, size_t time);
 size_t		wait_next_eclipse(size_t today);
 size_t		the_wheel_of_fortune(int event, size_t eclipse);
 
-// hero_journey.c
+/*
+// set_back.c
 void		time_machine(t_vision **original_time,
 				t_vision **parallel_time, char whoiam, size_t time);
 void		observer_effect(t_yin_yang *story, char whoami, size_t shift,
@@ -80,5 +81,13 @@ void		observer_effect(t_yin_yang *story, char whoami, size_t shift,
 void		entanglement(t_yin_yang *story, char secret);
 void		existential_crisis(t_yin_yang *story, char secret);
 void		hero_journey(t_yin_yang *story, char secret);
+*/
+
+// hero_journey.c
+char		*determinism(size_t time);
+void		entanglement(t_yin_yang *story, char secret, int s, char last);
+void		observer_effect(t_yin_yang *story, int whoami, size_t shift,
+				size_t tfihs);
+void		existential_crisis(t_yin_yang *story, char secret, char *sieve);
 
 #endif
