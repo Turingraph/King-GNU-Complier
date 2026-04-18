@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hero_journey.c                                     :+:      :+:    :+:   */
+/*   hero_journey_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 11:08:35 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/08 19:08:06 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/18 16:06:31 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,6 @@ void	entanglement(t_yin_yang *story, char secret)
 			'b' - secret * ('b' - 'B'));
 }
 
-// Make 8 Chunk.
-// Avoid using time_machine.
-
-// 4 3 2 1 5 6 7 8
-// (9 10 11 12) [16 15 14 13] [24 23 22 21] (25 26 27 28) (29 30 31 32) [36 35 34 33] [44 43 42 41] (45 46 47 48) (49 50 51 52) [56 55 54 53]
 // time : O(n)
 // space: O(1)
 void	existential_crisis(t_yin_yang *story, char secret)

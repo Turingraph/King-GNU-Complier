@@ -6,30 +6,13 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 11:29:04 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/16 18:22:59 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/18 16:43:47 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "appendix.h"
 // #include <stdlib.h>
 // #include <unistd.h>
-
-// ~moment = 1 - (moment - '0') + '0';
-
-// time : O(n)
-// space: O(n)
-char	*determinism(char *sieve, char moment, size_t start, size_t stop)
-{
-	size_t	day;
-
-	day = 1;
-	while (day + start <= stop)
-		day *= 2;
-	if (day > stop)
-		day /= 2;
-	sieve[day + start] = moment;
-	determinism(sieve, (char)(1 - (moment - '0') + '0'), start, start + day);
-}
 
 // char	*determinism(size_t start, size_t stop, char *sieve, char moment)
 // {
