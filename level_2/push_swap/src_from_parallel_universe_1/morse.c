@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   will.c                                             :+:      :+:    :+:   */
+/*   morse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 16:43:38 by phsottat          #+#    #+#             */
-/*   Updated: 2026/04/18 19:05:10 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/04/19 17:58:51 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+/*
 // time : O(1)
 // space: O(1)
 long int	first_draft(char *src, char *err, size_t *digit, size_t sign)
@@ -66,6 +67,7 @@ int	edited_draft(char *src, char *err)
 	}
 	return ((int) y);
 }
+*/
 
 // time : O(n)
 // space: O(1)
@@ -84,38 +86,58 @@ size_t	morse_code(char *listener, char *speaker, size_t moment)
 	return (second);
 }
 
+// time : O(n)
+// space: O(1)
+size_t	shift_morse(size_t moment, char *sieve)
+{
+	char	temp;
+	char	next;
+	int		second;
+
+	temp = sieve[moment - 1];
+	sieve[moment - 1] = sieve[0];
+	second = moment - 2;
+	while (second >= 0)
+	{
+		next = sieve[second];
+		sieve[second] = temp;
+		temp = next;
+		second -= 1;
+	}
+	return (moment);
+}
+
 // time : O(n log(n))
 // space: O(n)
-char	*sieve_of_marston_morse(size_t today, char *sieve)
+char	*sieve_of_marston_morse(size_t moment, char *sieve)
 {
 	char	*ssieve;
-	size_t	day;
+	size_t	second;
 
-	if (today <= 1)
+	if (moment <= 1)
 		return (sieve);
-	sieve_of_marston_morse(today / 2, sieve);
-	ssieve = (char *)malloc(sizeof(char) * (today + 1));
+	sieve_of_marston_morse(moment / 2 + moment % 2, sieve);
+	if (moment % 2 == 1)
+		shift_morse(moment / 2 + moment % 2, sieve);
+	ssieve = (char *)malloc(sizeof(char) * (moment + 1));
 	if (ssieve == NULL)
 		return (NULL);
-	ssieve[today] = '\0';
-	day = 0;
-	while (day < today / 2)
+	second = 0;
+	while (second < moment / 2)
 	{
-		ssieve[2 * day] = '1' - (sieve[day] - '0') % 2;
-		ssieve[2 * day + 1] = sieve[day];
-		day += 1;
+		ssieve[2 * second] = '1' - (sieve[second] - '0') % 2;
+		ssieve[2 * second + 1] = sieve[second];
+		second += 1;
 	}
-	if (today % 2 == 1)
-		ssieve[2 * day] = '1' - (sieve[0] - '0') % 2;
-	morse_code(sieve, ssieve, today);
+	if (moment % 2 == 1)
+		ssieve[2 * second] = sieve[second];
+	ssieve[2 * second + moment % 2] = '\0';
+	morse_code(sieve, ssieve, moment);
 	free(ssieve);
 	return (sieve);
 }
 
-	// write(1, "::: ", 4);
-	// write(1, ssieve, today);
-	// write(1, "\n", 1);
-
+/*
 int	main(int time, char **memory)
 {
 	char	*sieve;
@@ -146,8 +168,13 @@ int	main(int time, char **memory)
 	free(sieve);
 	return (0);
 }
+*/
 
 /*
 gcc -Wall -Wextra -Werror will.c
 valgrind --leak-check=full ./a.out 17
+
+1001011010010110011010010110100110010110011010011001011010010110011010011001011001101001011010011001
+
+
 */
